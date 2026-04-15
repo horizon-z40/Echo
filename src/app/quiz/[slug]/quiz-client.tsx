@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, pm16Questions, pm16Options, calculatePm16Result } from "@/lib/data";
+import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, sbtiQuestions, calculateSbtiResult } from "@/lib/data";
 import { TestQuestion, TestOption } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +15,9 @@ interface QuizClientProps {
 function getTestQuestions(testId: string): TestQuestion[] {
   if (testId === "test-mbti") return mbtiQuestions;
   if (testId === "test-bigfive") return bigFiveQuestions;
-  if (testId === "test-pm16") return pm16Questions;
+  if (testId === "test-sbti") {
+    return sbtiQuestions.map(q => ({ id: q.id, testId: q.testId, text: q.text, order: q.order }));
+  }
   return [];
 }
 
@@ -30,8 +32,10 @@ function getOptions(testId: string, questionId: string): TestOption[] {
       questionId,
     }));
   }
-  if (testId === "test-pm16") {
-    return pm16Options[questionId] || [];
+  if (testId === "test-sbti") {
+    const q = sbtiQuestions.find(q => q.id === questionId);
+    if (!q) return [];
+    return q.options.map(o => ({ id: o.id, questionId, text: o.text, value: 0, dimensionScores: o.scores as unknown as Record<string, number> }));
   }
   return [];
 }
@@ -135,8 +139,8 @@ export function QuizClient({ slug }: QuizClientProps) {
       const calc = calculateMbtiResult(answers);
       resultCode = calc.typeCode;
       dimensionScores = calc.dimensionScores;
-    } else if (test.id === "test-pm16") {
-      const calc = calculatePm16Result(answers);
+    } else if (test.id === "test-sbti") {
+      const calc = calculateSbtiResult(answers);
       resultCode = calc.typeCode;
       dimensionScores = calc.dimensionScores;
     }
