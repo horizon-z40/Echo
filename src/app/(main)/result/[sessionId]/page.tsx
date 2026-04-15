@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
-import { mbtiResults, mbtiDimensions, tests } from "@/lib/data";
+import { mbtiResults, mbtiDimensions, pm16Results, pm16Dimensions, tests } from "@/lib/data";
 import { TestResult, TestDimension } from "@/lib/types";
 import {
   RadarChart,
@@ -88,6 +88,10 @@ export default function ResultPage() {
       const r = mbtiResults.find((r) => r.typeCode === data.resultCode);
       setResult(r || mbtiResults[0]);
       setDimensions(mbtiDimensions);
+    } else if (data.testId === "test-pm16") {
+      const r = pm16Results.find((r) => r.typeCode === data.resultCode);
+      setResult(r || pm16Results[0]);
+      setDimensions(pm16Dimensions);
     }
   }, [sessionId, router]);
 

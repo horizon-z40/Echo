@@ -132,6 +132,22 @@ export const tests: Test[] = [
     coverGradient: 'from-amber-500 via-orange-500 to-rose-600',
     createdAt: '2024-03-15',
   },
+  {
+    id: 'test-pm16',
+    title: 'PM16 哲学人格测试',
+    slug: 'pm16-philosophy',
+    description: 'PM16 通过四个哲学认知维度——知识来源、推理方式、价值立场与存在观——揭示你独特的思维底色。16 种哲学人格类型，每一种都是一种看世界的方式。',
+    shortDescription: '通过哲学四维度，发现你看世界的独特底层逻辑',
+    categoryId: 'cat-1',
+    questionCount: 32,
+    estimatedMinutes: 12,
+    tags: ['哲学', '思维', '原创'],
+    completionCount: 12847,
+    isPopular: false,
+    isFeatured: true,
+    coverGradient: 'from-slate-700 via-indigo-800 to-violet-900',
+    createdAt: '2024-04-15',
+  },
 ];
 
 // ==== 16-Type Personality Test Data ====
@@ -691,3 +707,450 @@ export function calculateMbtiResult(answers: Record<string, string>): {
   const result = mbtiResults.find(r => r.typeCode === typeCode) || mbtiResults[0];
   return { typeCode, dimensionScores: dimScores, result };
 }
+
+// ==== PM16 Philosophy Personality Test ====
+// Dimensions:
+//   dim-re: 知识来源  理性 (R/Rationalist, score>0) vs 经验 (E/Empiricist, score<0)
+//   dim-di: 推理方式  演绎 (D/Deductive, score>0) vs 归纳 (I/Inductive, score<0)
+//   dim-uc: 价值立场  普遍 (U/Universalist, score>0) vs 情境 (C/Contextualist, score<0)
+//   dim-cr: 存在观   建构 (C/Constructivist, score>0) vs 实在 (R/Realist, score<0)
+
+export const pm16Dimensions: TestDimension[] = [
+  { id: 'pm-re', testId: 'test-pm16', name: '知识来源', description: '你认为真知从哪里来', minLabel: '经验主义 (E)', maxLabel: '理性主义 (R)', color: '#8b5cf6' },
+  { id: 'pm-di', testId: 'test-pm16', name: '推理方式', description: '你倾向于如何得出结论', minLabel: '归纳 (I)', maxLabel: '演绎 (D)', color: '#06b6d4' },
+  { id: 'pm-uc', testId: 'test-pm16', name: '价值立场', description: '你如何看待道德与价值判断', minLabel: '情境主义 (C)', maxLabel: '普遍主义 (U)', color: '#10b981' },
+  { id: 'pm-cr', testId: 'test-pm16', name: '存在观', description: '你认为现实世界的本质是什么', minLabel: '实在论 (R)', maxLabel: '建构论 (C)', color: '#f59e0b' },
+];
+
+export const pm16Questions: TestQuestion[] = [
+  // 知识来源 dim-re
+  { id: 'pm-q1',  testId: 'test-pm16', text: '你更倾向于认为，真正可靠的知识来源于…', order: 1,  dimensionId: 'pm-re' },
+  { id: 'pm-q2',  testId: 'test-pm16', text: '当一个结论在逻辑上无懈可击，即使缺乏实验验证，你也会接受它吗？', order: 2,  dimensionId: 'pm-re' },
+  { id: 'pm-q3',  testId: 'test-pm16', text: '你更相信哪种方式能帮你理解世界？', order: 3,  dimensionId: 'pm-re' },
+  { id: 'pm-q4',  testId: 'test-pm16', text: '对于"我思故我在"这类纯粹靠思维得出的命题，你觉得…', order: 4,  dimensionId: 'pm-re' },
+  { id: 'pm-q5',  testId: 'test-pm16', text: '数学真理是否需要通过现实检验才算成立？', order: 5,  dimensionId: 'pm-re' },
+  { id: 'pm-q6',  testId: 'test-pm16', text: '你更认同哪种说法？', order: 6,  dimensionId: 'pm-re' },
+  { id: 'pm-q7',  testId: 'test-pm16', text: '面对一个全新领域，你更倾向于先…', order: 7,  dimensionId: 'pm-re' },
+  { id: 'pm-q8',  testId: 'test-pm16', text: '如果两种知识相互冲突——逻辑推导的结论与亲眼所见的现象，你更信任…', order: 8,  dimensionId: 'pm-re' },
+  // 推理方式 dim-di
+  { id: 'pm-q9',  testId: 'test-pm16', text: '思考问题时，你更喜欢从哪里出发？', order: 9,  dimensionId: 'pm-di' },
+  { id: 'pm-q10', testId: 'test-pm16', text: '你更擅长哪种推理？', order: 10, dimensionId: 'pm-di' },
+  { id: 'pm-q11', testId: 'test-pm16', text: '当面对一个复杂问题时，你更倾向于…', order: 11, dimensionId: 'pm-di' },
+  { id: 'pm-q12', testId: 'test-pm16', text: '你更认同哪种观点：规律是被发现的，还是被总结的？', order: 12, dimensionId: 'pm-di' },
+  { id: 'pm-q13', testId: 'test-pm16', text: '遇到不熟悉的新情境，你会…', order: 13, dimensionId: 'pm-di' },
+  { id: 'pm-q14', testId: 'test-pm16', text: '你在论证时，更依赖的是…', order: 14, dimensionId: 'pm-di' },
+  { id: 'pm-q15', testId: 'test-pm16', text: '分析一件事，你更习惯先…', order: 15, dimensionId: 'pm-di' },
+  { id: 'pm-q16', testId: 'test-pm16', text: '你认为科学进步的主要路径是…', order: 16, dimensionId: 'pm-di' },
+  // 价值立场 dim-uc
+  { id: 'pm-q17', testId: 'test-pm16', text: '你认为道德判断…', order: 17, dimensionId: 'pm-uc' },
+  { id: 'pm-q18', testId: 'test-pm16', text: '"在某些极端情境下撒谎是正确的"——你怎么看这句话？', order: 18, dimensionId: 'pm-uc' },
+  { id: 'pm-q19', testId: 'test-pm16', text: '你更倾向于评价行为的哪个方面？', order: 19, dimensionId: 'pm-uc' },
+  { id: 'pm-q20', testId: 'test-pm16', text: '一条跨越文化的"普世道德法则"…', order: 20, dimensionId: 'pm-uc' },
+  { id: 'pm-q21', testId: 'test-pm16', text: '当"规则"与具体"情境中的善意结果"冲突时，你倾向于…', order: 21, dimensionId: 'pm-uc' },
+  { id: 'pm-q22', testId: 'test-pm16', text: '你更认同哪种说法？', order: 22, dimensionId: 'pm-uc' },
+  { id: 'pm-q23', testId: 'test-pm16', text: '面对不同文化的道德观念，你的第一反应是…', order: 23, dimensionId: 'pm-uc' },
+  { id: 'pm-q24', testId: 'test-pm16', text: '评价一个人的行为，最重要的标准是…', order: 24, dimensionId: 'pm-uc' },
+  // 存在观 dim-cr
+  { id: 'pm-q25', testId: 'test-pm16', text: '"现实"在我们认识它之前就独立存在——你认为这句话…', order: 25, dimensionId: 'pm-cr' },
+  { id: 'pm-q26', testId: 'test-pm16', text: '语言和概念对我们理解世界的作用是…', order: 26, dimensionId: 'pm-cr' },
+  { id: 'pm-q27', testId: 'test-pm16', text: '你认为人类的"客观认识"…', order: 27, dimensionId: 'pm-cr' },
+  { id: 'pm-q28', testId: 'test-pm16', text: '真理是…', order: 28, dimensionId: 'pm-cr' },
+  { id: 'pm-q29', testId: 'test-pm16', text: '科学描述的世界与真实世界之间的关系是…', order: 29, dimensionId: 'pm-cr' },
+  { id: 'pm-q30', testId: 'test-pm16', text: '"自我"这个概念是…', order: 30, dimensionId: 'pm-cr' },
+  { id: 'pm-q31', testId: 'test-pm16', text: '人类对自然规律的认识是…', order: 31, dimensionId: 'pm-cr' },
+  { id: 'pm-q32', testId: 'test-pm16', text: '不同文化产生不同世界观，你认为这说明…', order: 32, dimensionId: 'pm-cr' },
+];
+
+export const pm16Options: Record<string, TestOption[]> = {
+  'pm-q1': [
+    { id: 'pm-q1-a', questionId: 'pm-q1', text: '理性与先天的推理能力——有些真理无需经验就能认识', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q1-b', questionId: 'pm-q1', text: '两者都重要，理性与经验相互补充', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q1-c', questionId: 'pm-q1', text: '感官经验与观察——没有观察就没有知识', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q2': [
+    { id: 'pm-q2-a', questionId: 'pm-q2', text: '会，逻辑上成立就足够了', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q2-b', questionId: 'pm-q2', text: '部分接受，还需要一定的现实依据', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q2-c', questionId: 'pm-q2', text: '不会，没有经验验证的结论很可疑', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q3': [
+    { id: 'pm-q3-a', questionId: 'pm-q3', text: '在头脑中推演和建构逻辑体系', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q3-b', questionId: 'pm-q3', text: '两种都需要，不同场景用不同方法', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q3-c', questionId: 'pm-q3', text: '走进现实，亲身体验和观察', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q4': [
+    { id: 'pm-q4-a', questionId: 'pm-q4', text: '它揭示了思维本身的力量，十分深刻', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q4-b', questionId: 'pm-q4', text: '有一定道理，但需要进一步分析', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q4-c', questionId: 'pm-q4', text: '这只是语言游戏，缺乏实质内容', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q5': [
+    { id: 'pm-q5-a', questionId: 'pm-q5', text: '不需要，数学是先于经验存在的逻辑体系', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q5-b', questionId: 'pm-q5', text: '数学有其内在逻辑，但也可以联系实际', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q5-c', questionId: 'pm-q5', text: '需要，任何知识最终要回到现实检验', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q6': [
+    { id: 'pm-q6-a', questionId: 'pm-q6', text: '"心灵天生就具备认识真理的能力"', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q6-b', questionId: 'pm-q6', text: '"心灵既有先天结构，也依赖后天经验"', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q6-c', questionId: 'pm-q6', text: '"心灵是一块白板，一切来自经验"', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q7': [
+    { id: 'pm-q7-a', questionId: 'pm-q7', text: '建立概念框架，再用框架去理解现象', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q7-b', questionId: 'pm-q7', text: '理论与实践交替推进', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q7-c', questionId: 'pm-q7', text: '大量接触现象，慢慢归纳出规律', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q8': [
+    { id: 'pm-q8-a', questionId: 'pm-q8', text: '逻辑推导的结论——感官可能欺骗我们', value: 2, dimensionScores: { 'pm-re': 2 } },
+    { id: 'pm-q8-b', questionId: 'pm-q8', text: '视情况，两者都需要认真考察', value: 1, dimensionScores: { 'pm-re': 0 } },
+    { id: 'pm-q8-c', questionId: 'pm-q8', text: '亲眼所见的现象——逻辑可能有前提错误', value: 0, dimensionScores: { 'pm-re': -2 } },
+  ],
+  'pm-q9': [
+    { id: 'pm-q9-a', questionId: 'pm-q9', text: '一个公理或基本原则，然后向下推导', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q9-b', questionId: 'pm-q9', text: '根据具体情况，两种方向都会用', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q9-c', questionId: 'pm-q9', text: '具体案例和现象，然后向上寻找规律', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q10': [
+    { id: 'pm-q10-a', questionId: 'pm-q10', text: '从原则出发推出结论（演绎）', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q10-b', questionId: 'pm-q10', text: '两种都擅长', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q10-c', questionId: 'pm-q10', text: '从案例中归纳总结（归纳）', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q11': [
+    { id: 'pm-q11-a', questionId: 'pm-q11', text: '先确立核心假设，再逐步分解子问题', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q11-b', questionId: 'pm-q11', text: '同时从两个方向探索', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q11-c', questionId: 'pm-q11', text: '先收集大量信息，再从中发现模式', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q12': [
+    { id: 'pm-q12-a', questionId: 'pm-q12', text: '规律是被发现的，自然界本就有其内在秩序', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q12-b', questionId: 'pm-q12', text: '两者都有道理', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q12-c', questionId: 'pm-q12', text: '规律是被总结的，是人类对现象的抽象', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q13': [
+    { id: 'pm-q13-a', questionId: 'pm-q13', text: '尝试用已有的原则框架来理解它', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q13-b', questionId: 'pm-q13', text: '先了解情况，再决定用什么框架', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q13-c', questionId: 'pm-q13', text: '先观察和体验，看看能发现什么规律', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q14': [
+    { id: 'pm-q14-a', questionId: 'pm-q14', text: '逻辑上的一致性与必然性', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q14-b', questionId: 'pm-q14', text: '逻辑加上案例支撑', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q14-c', questionId: 'pm-q14', text: '充足的案例和数据证据', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q15': [
+    { id: 'pm-q15-a', questionId: 'pm-q15', text: '明确核心命题，再展开分析', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q15-b', questionId: 'pm-q15', text: '视具体情况而定', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q15-c', questionId: 'pm-q15', text: '收集相关信息和实例，再尝试理解', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q16': [
+    { id: 'pm-q16-a', questionId: 'pm-q16', text: '从理论出发，推导出可检验的假设', value: 2, dimensionScores: { 'pm-di': 2 } },
+    { id: 'pm-q16-b', questionId: 'pm-q16', text: '理论与实验相互推动', value: 1, dimensionScores: { 'pm-di': 0 } },
+    { id: 'pm-q16-c', questionId: 'pm-q16', text: '从大量观察中总结出规律和模型', value: 0, dimensionScores: { 'pm-di': -2 } },
+  ],
+  'pm-q17': [
+    { id: 'pm-q17-a', questionId: 'pm-q17', text: '有客观基础，有些行为本质上就是对或错的', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q17-b', questionId: 'pm-q17', text: '有一定普遍性，但也受情境影响', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q17-c', questionId: 'pm-q17', text: '总是相对的，离不开具体情境和文化背景', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q18': [
+    { id: 'pm-q18-a', questionId: 'pm-q18', text: '错，诚实是道德基本原则，不能因情境而放弃', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q18-b', questionId: 'pm-q18', text: '需要权衡，有时确实难以判断', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q18-c', questionId: 'pm-q18', text: '有道理，好的结果有时需要灵活对待规则', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q19': [
+    { id: 'pm-q19-a', questionId: 'pm-q19', text: '行为本身是否符合道德原则', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q19-b', questionId: 'pm-q19', text: '原则与结果都很重要', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q19-c', questionId: 'pm-q19', text: '行为带来的实际结果和影响', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q20': [
+    { id: 'pm-q20-a', questionId: 'pm-q20', text: '是可能的，人类有共同的道德直觉和理性', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q20-b', questionId: 'pm-q20', text: '有一些基本共识，但细节因文化而异', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q20-c', questionId: 'pm-q20', text: '道德本质上是文化建构的，普世道德是幻觉', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q21': [
+    { id: 'pm-q21-a', questionId: 'pm-q21', text: '坚持规则，规则的普遍性正是其价值所在', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q21-b', questionId: 'pm-q21', text: '视情况权衡，寻找最合理的处理方式', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q21-c', questionId: 'pm-q21', text: '优先考虑情境和结果，规则是工具不是目的', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q22': [
+    { id: 'pm-q22-a', questionId: 'pm-q22', text: '"对的事无论何时何地都是对的"', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q22-b', questionId: 'pm-q22', text: '"大多数道德原则是普遍的，但细节因情境而异"', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q22-c', questionId: 'pm-q22', text: '"离开了具体情境，道德判断就失去意义"', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q23': [
+    { id: 'pm-q23-a', questionId: 'pm-q23', text: '这说明不同文化对同一道德真理有不同理解方式', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q23-b', questionId: 'pm-q23', text: '既有共通之处，也有各自的合理性', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q23-c', questionId: 'pm-q23', text: '这说明道德本就是文化的产物，没有高下之分', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q24': [
+    { id: 'pm-q24-a', questionId: 'pm-q24', text: '行为是否遵循了普遍的道德原则', value: 2, dimensionScores: { 'pm-uc': 2 } },
+    { id: 'pm-q24-b', questionId: 'pm-q24', text: '原则、动机与结果共同决定', value: 1, dimensionScores: { 'pm-uc': 0 } },
+    { id: 'pm-q24-c', questionId: 'pm-q24', text: '在具体情境中是否做出了最好的选择', value: 0, dimensionScores: { 'pm-uc': -2 } },
+  ],
+  'pm-q25': [
+    { id: 'pm-q25-a', questionId: 'pm-q25', text: '对，外部世界独立于我们的认知而存在', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q25-b', questionId: 'pm-q25', text: '部分同意，有一个外部世界，但我们的认知会塑造对它的理解', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q25-c', questionId: 'pm-q25', text: '存疑，"现实"是认知与经验共同建构的', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+  'pm-q26': [
+    { id: 'pm-q26-a', questionId: 'pm-q26', text: '只是工具，世界的存在不依赖于我们如何描述它', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q26-b', questionId: 'pm-q26', text: '语言影响我们的理解，但不完全决定现实', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q26-c', questionId: 'pm-q26', text: '深刻地塑造了我们所能认识的"现实"本身', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+  'pm-q27': [
+    { id: 'pm-q27-a', questionId: 'pm-q27', text: '可以是真实可靠的，有些知识确实反映了客观世界', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q27-b', questionId: 'pm-q27', text: '部分可靠，但认知者的视角总会有影响', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q27-c', questionId: 'pm-q27', text: '总是带有认知者的视角和建构成分', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+  'pm-q28': [
+    { id: 'pm-q28-a', questionId: 'pm-q28', text: '独立于人类信念存在的客观事实', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q28-b', questionId: 'pm-q28', text: '客观性是真理的目标，但认识总受主体影响', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q28-c', questionId: 'pm-q28', text: '共同体在特定框架内形成的合理共识', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+  'pm-q29': [
+    { id: 'pm-q29-a', questionId: 'pm-q29', text: '科学描述正在逐步接近真实世界', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q29-b', questionId: 'pm-q29', text: '科学模型有效但不一定完全对应现实', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q29-c', questionId: 'pm-q29', text: '科学是一套有用的建构框架，而非现实的镜像', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+  'pm-q30': [
+    { id: 'pm-q30-a', questionId: 'pm-q30', text: '一个真实存在的主体，尽管难以完全认识', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q30-b', questionId: 'pm-q30', text: '有真实基础，但也在不断地被经历塑造', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q30-c', questionId: 'pm-q30', text: '一种持续建构的叙事，而非固定的本质', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+  'pm-q31': [
+    { id: 'pm-q31-a', questionId: 'pm-q31', text: '对外在规律的发现，这些规律本就存在', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q31-b', questionId: 'pm-q31', text: '既有发现也有建构的成分', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q31-c', questionId: 'pm-q31', text: '人类认知框架与世界互动产生的建构', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+  'pm-q32': [
+    { id: 'pm-q32-a', questionId: 'pm-q32', text: '不同文化对同一现实有不同的描述方式', value: 2, dimensionScores: { 'pm-cr': -2 } },
+    { id: 'pm-q32-b', questionId: 'pm-q32', text: '有些文化差异是描述方式不同，有些则是真正的建构差异', value: 1, dimensionScores: { 'pm-cr': 0 } },
+    { id: 'pm-q32-c', questionId: 'pm-q32', text: '"现实"在不同文化框架中被建构成不同的样子', value: 0, dimensionScores: { 'pm-cr': 2 } },
+  ],
+};
+
+// PM16 type codes: R/E + D/I + U/C + C/R = 16 types
+export const pm16Results: TestResult[] = [
+  {
+    id: 'pm-rduc', testId: 'test-pm16', typeCode: 'RDUC',
+    typeName: '体系建构者',
+    summary: '以理性为源泉，演绎为武器，追求普遍真理的终极建构者',
+    description: '你是一个思想体系的构筑者。你相信理性本身就能抵达真理，擅长从第一原则出发演绎出庞大的体系。你坚信存在超越文化与情境的普遍道德法则，而现实本身也是被概念和语言所建构的结构。黑格尔、康德或许是你思想上的同路人。',
+    strengths: ['善于构建完整自洽的思想体系', '逻辑严密，论证有力', '追求思想的统一与连贯性', '有强烈的理性理想主义精神'],
+    weaknesses: ['可能过度抽象，脱离现实经验', '对不符合体系的反例缺乏包容', '有时忽视情境的复杂性'],
+    relationships: '你在关系中渴望思想上的深度碰撞。你欣赏能与你辩论又不失温度的人，但要注意不要用逻辑框架来套量他人的感受。',
+    career: '适合哲学研究、理论物理、系统设计、法学理论、神学或高层战略规划等需要宏观建构能力的领域。',
+    growth: '试着走出你的体系，让偶然的经验和例外打动你——它们往往是最深刻的老师。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-rdir', testId: 'test-pm16', typeCode: 'RDIR',
+    typeName: '理性实在论者',
+    summary: '用先天理性把握客观存在，相信思维与现实之间存在深刻对应',
+    description: '你坚信理性能够认识一个独立存在的客观世界。你从原则出发演绎结论，同时认为这些结论在指向真实的外部现实。笛卡尔和弗雷格是你的同路人——思维不是建构世界，而是在发现世界原本的样子。',
+    strengths: ['思维清晰，逻辑严密', '对客观真理有强烈信念', '善于将抽象原则应用于具体问题', '不轻易随波逐流'],
+    weaknesses: ['对"客观"的执念可能忽视认知的局限性', '有时对他人的主观视角缺乏耐心', '可能在细节中忽略整体的不确定性'],
+    relationships: '你是一个可靠、诚实的伴侣，因为你相信存在真实的对与错。但记得，人心的运作有时不遵循你所熟悉的逻辑。',
+    career: '适合数学、逻辑学、法律、分析哲学、计算机科学基础研究等追求精确与客观的领域。',
+    growth: '给自己一些空间去体验那些无法被逻辑捕获的事物——美、爱、偶然——它们也是真实的一部分。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-rdcc', testId: 'test-pm16', typeCode: 'RDCC',
+    typeName: '普遍道德建构者',
+    summary: '以理性之光演绎出跨越情境的道德法则，并相信道德框架本身是建构的产物',
+    description: '你相信存在可以理性推导出的普遍道德准则，同时认为我们对现实的认识是通过概念框架建构的。你是一个道德理想主义者，努力构建能够适用于所有人的伦理体系，但也承认认知的媒介性。',
+    strengths: ['道德立场坚定，不轻易妥协', '善于建立伦理论证体系', '思想深度与广度兼备', '对原则有强烈的承诺感'],
+    weaknesses: ['在道德判断上有时过于刚硬', '可能忽视情境细节对正确行动的影响', '与他人的分歧可能更多是原则性的'],
+    relationships: '你对关系有清晰的道德期待，你是忠诚而有原则的伴侣。但允许自己理解对方所处的情境，而不只用原则衡量。',
+    career: '适合伦理学研究、法律、政策设计、教育哲学或社会理论等涉及规范性问题的领域。',
+    growth: '有时候，最道德的事不是坚持原则，而是真正聆听眼前那个人的处境。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-rdicr', testId: 'test-pm16', typeCode: 'RDCR',
+    typeName: '自然法则探寻者',
+    summary: '相信可以通过纯粹理性演绎，触及客观存在的道德与自然法则',
+    description: '你是理性主义、演绎推理、道德情境主义与实在论的结合体，这是一个罕见的哲学组合。你从理性原则出发，但在道德判断上更看重实际情境而非抽象规则，同时相信你所认识的世界是真实存在的。',
+    strengths: ['灵活而有原则', '演绎能力强，但不教条', '对现实有清醒的认识', '善于在逻辑与实践间找到平衡'],
+    weaknesses: ['立场有时难以被他人完全理解', '在原则与情境之间的张力中容易感到矛盾', '思维方式较为个人化，不易被套用'],
+    relationships: '你能够用原则立场提供稳定感，同时用情境思维给予理解。这让你成为少见的既有原则又有温度的伴侣。',
+    career: '适合司法实践、伦理咨询、政策制定、社会科学研究或需要在规范与现实间斡旋的职业。',
+    growth: '你的内在张力是你思想深度的来源。不要急于统一，让矛盾成为你持续思考的动力。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-riuc', testId: 'test-pm16', typeCode: 'RIUC',
+    typeName: '理性普遍归纳者',
+    summary: '从内在理性出发，通过归纳建构跨越情境的普遍原则',
+    description: '你相信理性是认识的根基，但你倾向于通过观察和归纳来验证与发展理性原则。你追求普遍的道德准则，并认为现实世界在某种程度上是通过概念建构的。你介于笛卡尔与康德之间，兼具系统性与开放性。',
+    strengths: ['既有理性基础又对经验开放', '善于从案例中提炼普遍规律', '对道德原则的坚守不失灵活', '思维方式系统而不僵化'],
+    weaknesses: ['在原则与归纳间有时难以取舍', '建构性倾向可能导致对"客观性"的过度质疑', '思维过程较复杂，不易向他人解释'],
+    relationships: '你是一个思想上的探索者，在关系中你会不断反思和建构共同的意义。找一个愿意和你一起探索的人。',
+    career: '适合跨学科研究、人文科学、伦理学、认知科学或任何需要在理论与案例间往复的领域。',
+    growth: '你的优势在于连结理论与经验。记得偶尔停下来，不只是为了找到原则，也为了体验本身。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-riur', testId: 'test-pm16', typeCode: 'RIUR',
+    typeName: '理性普遍实在者',
+    summary: '通过理性与归纳共同把握客观存在的普遍真理',
+    description: '你相信理性是知识的核心来源，倾向于归纳推理，追求普遍道德真理，并相信这些真理指向一个真实存在的世界。你是一个将理性与经验综合的人，同时对普遍性与客观性保持信念。',
+    strengths: ['思维扎实且对经验开放', '对真理和道德的追求既有原则又有依据', '善于综合信息形成可靠判断', '不轻易被相对主义动摇'],
+    weaknesses: ['可能在归纳与演绎之间摇摆不定', '对普遍性的追求可能忽视文化差异的深层意义', '有时过于自信于"客观"立场'],
+    relationships: '你在关系中值得信赖，你的判断通常既有原则又有根据。学会保持好奇心，承认他人的经验可能带来你尚未遇见的真理。',
+    career: '适合自然科学、哲学、法律、政治理论或任何需要将原则与事实结合的领域。',
+    growth: '真理不只在推论中，也在感受里。试着让自己对无法被论证的事物保持温柔。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-ricc', testId: 'test-pm16', typeCode: 'RICC',
+    typeName: '理性情境建构者',
+    summary: '以理性为基础，在情境中归纳，并将世界理解为人类认知的建构',
+    description: '你是一个灵活的理性主义者：你相信理性是认识的核心，但你在道德上重视情境而非抽象原则，在本体上认为我们对世界的认识是一种建构。你可能喜欢福柯或晚期维特根斯坦。',
+    strengths: ['思维灵活，不教条', '善于理解复杂情境中的道德与意义', '理性与情境思维的结合使你具有深度', '对权力、语言与知识的关系有独特洞察'],
+    weaknesses: ['立场有时难以向他人清晰表达', '对普遍原则的抵触可能造成判断上的摇摆', '思维太过复杂有时导致行动迟疑'],
+    relationships: '你是深刻的倾听者，能够理解每一个独特的处境。你需要一个能够接受复杂性、不急于下结论的伴侣。',
+    career: '适合文化研究、批判理论、质性社会科学、临床心理学或艺术领域。',
+    growth: '你的洞察力是礼物。偶尔也允许自己站在某个立场上，清晰地表达和行动。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-ricr', testId: 'test-pm16', typeCode: 'RICR',
+    typeName: '理性情境实在者',
+    summary: '以理性认识一个真实存在的世界，在情境中寻求具体而真实的判断',
+    description: '你相信理性是认识的核心，通过归纳认识客观存在的世界，并在道德判断上重视情境而非普遍原则。你是一个务实的理性主义者：思维严谨，但不教条，在具体情境中寻求最真实的答案。',
+    strengths: ['思维严谨而不失灵活', '善于在具体情境中做出有依据的判断', '既尊重理性又不忽视情境细节', '务实而深刻'],
+    weaknesses: ['有时在普遍原则的缺失中感到不确定', '对主观建构主义倾向保持怀疑，可能错过某些洞见', '实用导向有时削弱了更宏观的哲学视野'],
+    relationships: '你是可靠、清醒且体贴的伴侣，能够在每一种情境中给予恰当的回应。注意不要因过于理性而忽视自己内心的感受。',
+    career: '适合应用科学、医学、心理治疗、法律实践或管理决策等将理性与实务结合的领域。',
+    growth: '有些真实不能被归纳，只能被感受。给自己的直觉多一点信任。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-educ', testId: 'test-pm16', typeCode: 'EDUC',
+    typeName: '经验普遍建构者',
+    summary: '从经验出发演绎普遍原则，相信世界是人类认知共同建构的',
+    description: '你相信知识来自经验，但你能够从经验中演绎出具有普遍意义的道德与认识框架。你认为世界在某种程度上是通过人类的认知框架建构起来的。你是一个深思熟虑的经验主义者，不满足于纯粹的描述，而是努力寻找经验背后的普遍结构。',
+    strengths: ['扎根经验又追求深度', '善于从生活经验中提炼普遍意义', '对认知的局限性有清醒认识', '思维兼具实用性与哲学深度'],
+    weaknesses: ['从经验演绎到普遍原则的跳跃可能过大', '建构主义倾向可能让你对"客观真理"保持过多距离', '有时难以平衡具体经验与普遍框架'],
+    relationships: '你能够从每一段真实经历中提炼意义，是善于反思的伴侣。找一个能够和你一起在生活中发现哲学的人。',
+    career: '适合社会学、人类学、教育学、现象学研究或任何在经验与理论之间工作的领域。',
+    growth: '你从经验出发的智慧是珍贵的。有时候允许自己不必立刻找到"意义"，只是存在也有它的价值。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-edur', testId: 'test-pm16', typeCode: 'EDUR',
+    typeName: '经验实在论者',
+    summary: '通过经验与演绎认识一个客观存在的普遍世界',
+    description: '你是一个扎根经验的思考者，相信感官观察是知识的起点，同时你能够从经验中演绎出指向客观现实的普遍结论。你可能欣赏洛克或早期的英国经验主义者——相信经验能够触及客观真实，道德也有其客观基础。',
+    strengths: ['思维扎实、有依据', '对经验保持尊重，不空谈理论', '能够从观察中提炼可靠结论', '对普遍真理的追求不失务实精神'],
+    weaknesses: ['从特殊经验到普遍结论的演绎可能存在逻辑跳跃', '对理论建构的不适可能限制更宏观的思考', '有时过于依赖已有经验，难以突破认知边界'],
+    relationships: '你是脚踏实地、真诚可靠的伴侣。你的爱是有质感的，体现在真实的陪伴与行动中。',
+    career: '适合自然科学、工程学、经济学、实证社会科学或任何以观察和数据为基础的领域。',
+    growth: '真实的世界比你已经见过的更大。保持对那些尚未被经验过的事物的好奇心。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-edcc', testId: 'test-pm16', typeCode: 'EDCC',
+    typeName: '经验情境建构者',
+    summary: '从具体经验出发，在情境中演绎，将世界理解为人类共同建构',
+    description: '你是一个关注具体情境的建构主义者。你相信知识来自经验，道德判断依赖于情境，而我们所认识的世界也是经由人类认知框架建构的。杜威的实用主义或某些后现代思想家可能与你产生共鸣。',
+    strengths: ['对情境高度敏感', '能够在具体经验中发现深刻意义', '不被抽象教条束缚', '对多元视角保持开放'],
+    weaknesses: ['可能缺乏跨情境的一致性立场', '建构主义有时导致判断上的相对主义', '在需要坚定立场时可能犹豫'],
+    relationships: '你是极为敏感和体贴的伴侣，能够真正理解对方所处的具体情境。你的挑战在于：有时也需要给出明确的立场。',
+    career: '适合设计、教育、咨询、社会工作、质性研究或任何需要深度情境理解的领域。',
+    growth: '情境固然重要，但偶尔从经验中抬起头来，也许你会发现某些事情无论在何种情境中都是真实的。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-edcr', testId: 'test-pm16', typeCode: 'EDCR',
+    typeName: '经验情境实在者',
+    summary: '在具体情境中通过经验认识一个真实存在的世界',
+    description: '你是一个务实的哲学者：知识来自经验，道德判断依赖情境，而你所认识的世界是真实客观存在的。你不喜欢抽象的理论体系，更信任亲历的经验和具体情境中的真实判断。亚里士多德的某些方面或许与你相近。',
+    strengths: ['极度务实，脚踏实地', '善于在具体情境中做出有依据的判断', '对现实保持清醒认识', '不被抽象理论所迷惑'],
+    weaknesses: ['可能对哲学抽象层面缺乏兴趣', '有时因过于务实而错失更宏观的视野', '在普遍原则的缺失中可能在跨情境判断上遇到挑战'],
+    relationships: '你是最真实的那种人：你用切实的行动和在场来表达关心，而不是言语。记得偶尔说出你内心所感受到的。',
+    career: '适合临床医学、法律实践、工程、管理、体力劳动中的技艺领域或任何需要直接面对现实的工作。',
+    growth: '经验是最好的老师，你深知这一点。偶尔也让自己思考一下"为什么"——不只是"怎么做"。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-eiuc', testId: 'test-pm16', typeCode: 'EIUC',
+    typeName: '经验归纳建构者',
+    summary: '从感官出发，归纳出普遍结构，并将认识理解为建构的过程',
+    description: '你相信经验是知识的基础，通过归纳方法寻找规律，追求跨越情境的普遍道德准则，同时认为我们的认识是通过概念框架建构的。你是一个现代认识论意义上的建构主义经验主义者，可能与皮亚杰或维果茨基有共鸣。',
+    strengths: ['善于从大量经验中提炼模式', '对认知过程有深刻理解', '追求普遍性而不失对经验的尊重', '善于跨领域建立连接'],
+    weaknesses: ['归纳的局限性（无法从有限案例确证普遍结论）', '建构主义倾向可能导致对客观性的持续质疑', '有时难以从具体经验中抽身看到整体'],
+    relationships: '你是善于观察和理解他人模式的伴侣，往往比对方更早看到关系的走向。注意不要把你的"归纳"当作绝对的预测。',
+    career: '适合发展心理学、教育研究、认知科学、质性社会研究或任何在经验与模式识别之间工作的领域。',
+    growth: '你已经很擅长理解"是什么"，试着多问问"应该是什么"——你内心其实有答案。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-eiur', testId: 'test-pm16', typeCode: 'EIUR',
+    typeName: '科学归纳实在者',
+    summary: '通过经验归纳认识一个客观存在的普遍世界',
+    description: '你代表了现代科学精神的核心：知识来自经验和观察，通过归纳方法形成理论，这些理论指向客观存在的普遍真理，而道德也有其客观基础。你可能是一个朴素的科学实在论者，相信科学正在接近真实的世界。',
+    strengths: ['思维严谨，基于证据', '对科学方法有深刻的认同', '既追求普遍真理又尊重观察事实', '不轻易被没有依据的论断说服'],
+    weaknesses: ['可能低估科学框架本身的建构性', '对无法被经验检验的命题持过度怀疑', '有时因强调客观而忽视主观体验的价值'],
+    relationships: '你是可靠、理性的伴侣，你做出的承诺通常有充分的依据。试着也给一些无法被"证明"的感受留出空间。',
+    career: '适合自然科学、工程学、数据科学、实证研究或任何以科学方法为核心的领域。',
+    growth: '科学给你提供了理解世界的有力工具。但有些最重要的事情不在数据里——它们在你自己心里。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-eicc', testId: 'test-pm16', typeCode: 'EICC',
+    typeName: '情境归纳建构者',
+    summary: '在经验与情境中归纳，相信现实是多元建构的',
+    description: '你是彻底的后现代或社会建构主义倾向者：知识来自经验，推理方式是归纳，道德判断依赖情境，而现实也是被社会与认知建构的。你可能与维特根斯坦的晚期思想、社会建构主义或后结构主义有共鸣。',
+    strengths: ['对多元视角有极强的开放性', '能够理解知识与权力的复杂关系', '在情境中的判断极为敏锐', '不被单一"真理"所束缚'],
+    weaknesses: ['极度相对主义可能导致难以做出明确判断', '在需要坚守立场时容易摇摆', '有时思维过于流动，缺乏稳定的锚点'],
+    relationships: '你是最开放、最不评判的伴侣之一，能够接受对方的任何状态。但你自己的需求和立场同样值得被尊重。',
+    career: '适合文化研究、批判理论、艺术、后殖民研究、质性社会科学或创意写作。',
+    growth: '开放性是你的天赋。但偶尔，给自己一个清晰的立场——它不会关上你的思维，反而会给你稳固的出发点。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pm-eicr', testId: 'test-pm16', typeCode: 'EICR',
+    typeName: '经验情境探寻者',
+    summary: '在真实经验与具体情境中归纳，触及客观存在的世界',
+    description: '你是一个真正扎根于现实的哲学者：你通过经验和归纳来认识世界，在情境中做出道德判断，同时相信你所经历的这个世界是真实客观存在的。你是最"务实"的哲学类型，但这种务实包含着深刻的诚实。',
+    strengths: ['极度脚踏实地', '在具体情境中的判断极为可靠', '不被抽象理论迷惑，始终回到现实', '有强烈的诚实感和真实感'],
+    weaknesses: ['可能对哲学抽象层面缺乏兴趣或耐心', '有时因太过务实而错过更大的意义框架', '在需要原则性立场时可能感到困难'],
+    relationships: '你是最真实的陪伴者。你在场的方式是踏实而真诚的，不需要华丽的语言。记得有时也分享你内心更深处的思考。',
+    career: '适合实践型的职业：工匠技艺、医疗、田野调查、社会工作、农业、运动或任何将双手和心智直接投入现实的领域。',
+    growth: '你已经活在最真实的地方了。偶尔抬起头，思考一下你正在触碰的这个世界的更大图景——它值得你的好奇。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+export function calculatePm16Result(answers: Record<string, string>): {
+  typeCode: string;
+  dimensionScores: Record<string, number>;
+  result: TestResult;
+} {
+  const dimScores: Record<string, number> = {
+    'pm-re': 0,
+    'pm-di': 0,
+    'pm-uc': 0,
+    'pm-cr': 0,
+  };
+
+  pm16Questions.forEach((q) => {
+    const optionId = answers[q.id];
+    if (!optionId) return;
+    const opts = pm16Options[q.id];
+    if (!opts) return;
+    const opt = opts.find(o => o.id === optionId);
+    if (!opt) return;
+    Object.entries(opt.dimensionScores).forEach(([dim, score]) => {
+      dimScores[dim] = (dimScores[dim] || 0) + (score as number);
+    });
+  });
+
+  const r = dimScores['pm-re'] > 0 ? 'R' : 'E';
+  const d = dimScores['pm-di'] > 0 ? 'D' : 'I';
+  const u = dimScores['pm-uc'] > 0 ? 'U' : 'C';
+  const c = dimScores['pm-cr'] > 0 ? 'C' : 'R';
+  const typeCode = `${r}${d}${u}${c}`;
+
+  const result = pm16Results.find(res => res.typeCode === typeCode) || pm16Results[0];
+  return { typeCode, dimensionScores: dimScores, result };
+}
+

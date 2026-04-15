@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult } from "@/lib/data";
+import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, pm16Questions, pm16Options, calculatePm16Result } from "@/lib/data";
 import { TestQuestion, TestOption } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +15,7 @@ interface QuizClientProps {
 function getTestQuestions(testId: string): TestQuestion[] {
   if (testId === "test-mbti") return mbtiQuestions;
   if (testId === "test-bigfive") return bigFiveQuestions;
+  if (testId === "test-pm16") return pm16Questions;
   return [];
 }
 
@@ -28,6 +29,9 @@ function getOptions(testId: string, questionId: string): TestOption[] {
       id: `${questionId}-${i + 1}`,
       questionId,
     }));
+  }
+  if (testId === "test-pm16") {
+    return pm16Options[questionId] || [];
   }
   return [];
 }
@@ -129,6 +133,10 @@ export function QuizClient({ slug }: QuizClientProps) {
 
     if (test.id === "test-mbti") {
       const calc = calculateMbtiResult(answers);
+      resultCode = calc.typeCode;
+      dimensionScores = calc.dimensionScores;
+    } else if (test.id === "test-pm16") {
+      const calc = calculatePm16Result(answers);
       resultCode = calc.typeCode;
       dimensionScores = calc.dimensionScores;
     }
