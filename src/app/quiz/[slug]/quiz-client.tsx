@@ -104,13 +104,7 @@ export function QuizClient({ slug }: QuizClientProps) {
     let dimensionScores = {};
 
     if (test.id === "test-mbti") {
-      const answerMap: Record<string, number> = {};
-      Object.entries(answers).forEach(([qId, optId]) => {
-        const opts = mbtiOptions[qId];
-        const opt = opts?.find(o => o.id === optId);
-        if (opt) answerMap[qId] = opt.value;
-      });
-      const calc = calculateMbtiResult(answerMap);
+      const calc = calculateMbtiResult(answers);
       resultCode = calc.typeCode;
       dimensionScores = calc.dimensionScores;
     }

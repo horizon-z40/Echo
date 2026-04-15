@@ -658,7 +658,7 @@ export function getTestData(testId: string) {
   }
 }
 
-export function calculateMbtiResult(answers: Record<string, number>): {
+export function calculateMbtiResult(answers: Record<string, string>): {
   typeCode: string;
   dimensionScores: Record<string, number>;
   result: TestResult;

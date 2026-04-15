@@ -34,8 +34,9 @@ function DimensionBar({ label, score, color, minLabel, maxLabel }: {
   minLabel: string;
   maxLabel: string;
 }) {
-  // Normalize score to 0-100
-  const normalized = Math.max(0, Math.min(100, ((score + 20) / 40) * 100));
+  // Normalize score to 0-100. MBTI: ~8 questions × ±2 pts = ±16 max
+  const MAX = 16;
+  const normalized = Math.max(0, Math.min(100, ((score + MAX) / (MAX * 2)) * 100));
   const isPositive = score >= 0;
 
   return (
@@ -111,7 +112,8 @@ export default function ResultPage() {
 
   const radarData = dimensions.map((dim) => {
     const score = resultData.dimensionScores[dim.id] || 0;
-    const normalized = Math.max(0, Math.min(100, ((score + 20) / 40) * 100));
+    const MAX = 16;
+    const normalized = Math.max(0, Math.min(100, ((score + MAX) / (MAX * 2)) * 100));
     return {
       subject: dim.name,
       value: Math.round(normalized),
