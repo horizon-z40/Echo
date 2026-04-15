@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
@@ -42,6 +42,13 @@ export function QuizClient({ slug }: QuizClientProps) {
   const [showExit, setShowExit] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Keep a ref of currentIndex for use inside setTimeout (avoids stale closure)
+  const currentIndexRef = useRef(currentIndex);
+  useEffect(() => { currentIndexRef.current = currentIndex; }, [currentIndex]);
+
+  // Track pending auto-advance timer so we can cancel it on fast clicks
+  const autoAdvanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const questions = test ? getTestQuestions(test.id) : [];
   const progress = ((currentIndex) / questions.length) * 100;
   const currentQuestion = questions[currentIndex];
@@ -67,21 +74,34 @@ export function QuizClient({ slug }: QuizClientProps) {
     localStorage.setItem(key, JSON.stringify({ answers, index: currentIndex }));
   }, [answers, currentIndex, test]);
 
-  const handleSelect = useCallback((optionId: string) => {
+  const handleSelect = (optionId: string) => {
     if (!currentQuestion) return;
-    const newAnswers = { ...answers, [currentQuestion.id]: optionId };
-    setAnswers(newAnswers);
 
-    // Auto-advance after short delay
-    setTimeout(() => {
-      if (currentIndex < questions.length - 1) {
+    // Record the answer using functional update (always has latest state)
+    setAnswers((prev) => ({ ...prev, [currentQuestion.id]: optionId }));
+
+    // Cancel any pending auto-advance from a previous click
+    if (autoAdvanceTimer.current) {
+      clearTimeout(autoAdvanceTimer.current);
+      autoAdvanceTimer.current = null;
+    }
+
+    // Auto-advance using ref so we always read the latest index
+    autoAdvanceTimer.current = setTimeout(() => {
+      const idx = currentIndexRef.current;
+      if (idx < questions.length - 1) {
         setDirection("forward");
-        setCurrentIndex((i) => i + 1);
+        setCurrentIndex(idx + 1);
       }
-    }, 400);
-  }, [currentQuestion, answers, currentIndex, questions.length]);
+      autoAdvanceTimer.current = null;
+    }, 350);
+  };
 
   const handlePrev = () => {
+    if (autoAdvanceTimer.current) {
+      clearTimeout(autoAdvanceTimer.current);
+      autoAdvanceTimer.current = null;
+    }
     if (currentIndex > 0) {
       setDirection("backward");
       setCurrentIndex((i) => i - 1);
@@ -89,6 +109,10 @@ export function QuizClient({ slug }: QuizClientProps) {
   };
 
   const handleNext = () => {
+    if (autoAdvanceTimer.current) {
+      clearTimeout(autoAdvanceTimer.current);
+      autoAdvanceTimer.current = null;
+    }
     if (currentIndex < questions.length - 1) {
       setDirection("forward");
       setCurrentIndex((i) => i + 1);
@@ -138,7 +162,10 @@ export function QuizClient({ slug }: QuizClientProps) {
 
   const answeredCount = Object.keys(answers).length;
   const isLastQuestion = currentIndex === questions.length - 1;
-  const canSubmit = answeredCount >= questions.length;
+  // Allow submit when on last question and it has been answered
+  // (some earlier questions may have been skipped by fast clicking, that's OK)
+  const lastQuestionAnswered = currentQuestion ? !!answers[currentQuestion.id] : false;
+  const canSubmit = isLastQuestion && lastQuestionAnswered;
   const currentAnswered = currentQuestion ? !!answers[currentQuestion.id] : false;
 
   return (
