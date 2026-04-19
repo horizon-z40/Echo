@@ -82,7 +82,7 @@ export default function HomePage() {
 
   const handleRandomExplore = () => {
     const randomTest = tests[Math.floor(Math.random() * tests.length)];
-    router.push(`/quiz/${randomTest.slug}`);
+    router.push(`/tests/${randomTest.slug}`);
   };
 
   return (
