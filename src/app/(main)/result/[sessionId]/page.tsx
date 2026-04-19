@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
-import { mbtiResults, mbtiDimensions, sbtiResults, tests, temperamentResults, temperamentDimensions, introversionResults, introversionDimensions, loveStyleResults, loveStyleDimensions, communicationResults, conflictResults, empathyResults, teamworkResults, leadershipResults, decisionResults, executionResults, emotionSensitivityResults, resilienceResults, securityResults, socialEnergyResults, boundaryResults, pleasingResults, hiddenPersonalityResults, animalPersonalityResults, loveBrainResults, friendTypeResults, groupRoleResults, expressionResults, trustResults } from "@/lib/data";
+import { mbtiResults, mbtiDimensions, sbtiResults, tests, temperamentResults, temperamentDimensions, introversionResults, introversionDimensions, loveStyleResults, loveStyleDimensions, communicationResults, conflictResults, empathyResults, teamworkResults, leadershipResults, decisionResults, executionResults, emotionSensitivityResults, resilienceResults, securityResults, socialEnergyResults, boundaryResults, pleasingResults, hiddenPersonalityResults, animalPersonalityResults, loveBrainResults, friendTypeResults, groupRoleResults, expressionResults, trustResults, attachmentResults, stressResults, emotionRecoveryResults } from "@/lib/data";
 import { TestResult, TestDimension } from "@/lib/types";
 import {
   RadarChart,
@@ -183,6 +183,18 @@ export default function ResultPage() {
     } else if (data.testId === "test-trust") {
       const r = trustResults.find((r) => r.typeCode === data.resultCode);
       setResult(r as unknown as import("@/lib/types").TestResult || trustResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-attachment") {
+      const r = attachmentResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || attachmentResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-stress") {
+      const r = stressResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || stressResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-emotion-recovery") {
+      const r = emotionRecoveryResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || emotionRecoveryResults[0]);
       setDimensions([]);
     } else {
       // Fallback - 创建一个通用结果
