@@ -60,6 +60,25 @@ export function TestDetailClient({ test, category, dimensions }: TestDetailClien
                 📝 {test.questionCount} 道题目
               </span>
             </div>
+
+            {/* CTA Button in Hero - more prominent */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="mt-8"
+            >
+              <Link
+                href={`/quiz/${test.slug}`}
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white text-violet-600 font-semibold text-lg hover:bg-white/90 transition-all duration-300 shadow-xl hover:-translate-y-0.5"
+              >
+                开始测试
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <p className="text-white/60 text-sm mt-3">
+                无需注册，立即开始
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </div>

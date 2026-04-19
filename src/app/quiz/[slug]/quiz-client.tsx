@@ -195,7 +195,7 @@ export function QuizClient({ slug }: QuizClientProps) {
         setCurrentIndex(idx + 1);
       }
       autoAdvanceTimer.current = null;
-    }, 350);
+    }, 200);
   };
 
   const handlePrev = () => {
@@ -333,7 +333,7 @@ export function QuizClient({ slug }: QuizClientProps) {
               className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-500"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             />
           </div>
         </div>
@@ -346,10 +346,10 @@ export function QuizClient({ slug }: QuizClientProps) {
             <motion.div
               key={currentIndex}
               custom={direction}
-              initial={{ opacity: 0, x: direction === "forward" ? 40 : -40 }}
+              initial={{ opacity: 0, x: direction === "forward" ? 30 : -30 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction === "forward" ? -40 : 40 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              exit={{ opacity: 0, x: direction === "forward" ? -30 : 40 }}
+              transition={{ duration: 0.15, ease: "easeInOut" }}
             >
               {/* Question number badge */}
               <div className="flex items-center gap-2 mb-6">
@@ -368,9 +368,9 @@ export function QuizClient({ slug }: QuizClientProps) {
                 {options.map((option, i) => (
                   <motion.button
                     key={option.id}
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.06 }}
+                    transition={{ delay: i * 0.03 }}
                     onClick={() => handleSelect(option.id)}
                     className={cn(
                       "w-full text-left p-5 rounded-2xl border-2 transition-all duration-200 group",
