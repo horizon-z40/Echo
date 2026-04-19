@@ -1,41 +1,64 @@
 import { TestCategory, Test, TestDimension, TestQuestion, TestOption, TestResult } from './types';
 
 export const testCategories: TestCategory[] = [
+  // 1. 自我认知类 - 帮助用户了解"我是什么样的人"
   {
     id: 'cat-1',
-    name: '人格类型',
-    slug: 'personality',
-    description: '探索你的人格特质与行为模式',
+    name: '自我认知',
+    slug: 'self-awareness',
+    description: '探索你的人格特质与行为模式，了解真实的自己',
     icon: '🧠',
     color: 'from-violet-500 to-purple-600',
   },
+  // 2. 情感关系类 - 了解自己在人际、亲密关系中的风格
   {
     id: 'cat-2',
     name: '情感关系',
     slug: 'relationship',
-    description: '了解你的爱情风格与关系模式',
-    icon: '💫',
+    description: '了解你在亲密关系中的风格，建立更健康的连结',
+    icon: '💕',
     color: 'from-pink-500 to-rose-600',
   },
+  // 3. 职业发展类 - 了解自己的工作方式和职业偏好
   {
     id: 'cat-3',
     name: '职业发展',
     slug: 'career',
-    description: '发现你的职业优势与潜在方向',
-    icon: '🌟',
+    description: '发现你的职业优势与潜在方向，规划职业成长',
+    icon: '🎯',
     color: 'from-blue-500 to-cyan-600',
   },
+  // 4. 情绪与压力类 - 了解情绪反应模式和压力应对方式
   {
     id: 'cat-4',
-    name: '情绪心理',
-    slug: 'emotion',
-    description: '认识你的情绪反应与心理模式',
+    name: '情绪与压力',
+    slug: 'emotion-stress',
+    description: '认识你的情绪反应模式，学会更好地应对压力',
     icon: '🌊',
     color: 'from-teal-500 to-emerald-600',
+  },
+  // 5. 社交互动类 - 了解自己在社交中的表现方式
+  {
+    id: 'cat-5',
+    name: '社交互动',
+    slug: 'social',
+    description: '了解你在社交中的表现方式，提升人际互动质量',
+    icon: '🤝',
+    color: 'from-amber-500 to-orange-600',
+  },
+  // 6. 趣味延伸类 - 轻量娱乐化，用于拉新和传播
+  {
+    id: 'cat-6',
+    name: '趣味延伸',
+    slug: 'fun',
+    description: '轻松有趣的个性测试，发现你的隐藏人格',
+    icon: '✨',
+    color: 'from-fuchsia-500 to-pink-600',
   },
 ];
 
 export const tests: Test[] = [
+  // ===== 1. 自我认知类 =====
   {
     id: 'test-mbti',
     title: '16型人格风格测试',
@@ -69,6 +92,138 @@ export const tests: Test[] = [
     createdAt: '2024-01-15',
   },
   {
+    id: 'test-enneagram',
+    title: '九型人格测试',
+    slug: 'enneagram',
+    description: '九型人格是一套古老而深刻的人格系统，揭示我们内心最深处的动机、恐惧与渴望，帮助我们走向真正的自我整合。',
+    shortDescription: '探索你的核心动机与内心渴望，发现真实的自我',
+    categoryId: 'cat-1',
+    questionCount: 36,
+    estimatedMinutes: 12,
+    tags: ['人格', '深度', '成长'],
+    completionCount: 38965,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-amber-500 via-orange-500 to-rose-600',
+    createdAt: '2024-03-15',
+  },
+  {
+    id: 'test-temperament',
+    title: '气质类型测试',
+    slug: 'temperament',
+    description: '气质是与生俱来的心理特征，决定了你情绪反应的速度、强度和灵活性。了解你的气质类型，能帮助你更好地理解自己。',
+    shortDescription: '发现你的天生气质：多血质、胆汁质、粘液质还是抑郁质？',
+    categoryId: 'cat-1',
+    questionCount: 20,
+    estimatedMinutes: 7,
+    tags: ['人格', '经典', '基础'],
+    completionCount: 45678,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-cyan-500 via-teal-500 to-emerald-600',
+    createdAt: '2024-02-20',
+  },
+  {
+    id: 'test-introversion',
+    title: '内向/外向倾向测试',
+    slug: 'introversion-extroversion',
+    description: '你从哪里获得能量？你更享受独处还是社交？这个测试帮你了解自己在内向-外向维度上的真实倾向。',
+    shortDescription: '深入了解你的能量来源与社交偏好',
+    categoryId: 'cat-1',
+    questionCount: 15,
+    estimatedMinutes: 5,
+    tags: ['人格', '社交', '入门'],
+    completionCount: 67890,
+    isPopular: true,
+    isFeatured: false,
+    coverGradient: 'from-purple-500 via-indigo-500 to-blue-600',
+    createdAt: '2024-04-01',
+  },
+
+  // ===== 2. 情感关系类 =====
+  {
+    id: 'test-attachment',
+    title: '依恋类型测试',
+    slug: 'attachment-style',
+    description: '探索你在亲密关系中的依恋模式——你是安全型、焦虑型还是回避型？了解你的关系风格，能帮助你建立更健康的连结。',
+    shortDescription: '了解你的依恋风格，让亲密关系更深入、更安全',
+    categoryId: 'cat-2',
+    questionCount: 20,
+    estimatedMinutes: 7,
+    tags: ['关系', '依恋', '情感'],
+    completionCount: 54327,
+    isPopular: true,
+    isFeatured: true,
+    coverGradient: 'from-rose-500 via-pink-500 to-purple-600',
+    createdAt: '2024-02-15',
+  },
+  {
+    id: 'test-love-style',
+    title: '恋爱风格测试',
+    slug: 'love-style',
+    description: '你在爱情中是什么风格？是热情奔放型、温柔体贴型，还是理性独立型？发现你的爱情表达方式，更好地理解自己在感情中的表现。',
+    shortDescription: '发现你在爱情中的独特风格与表达方式',
+    categoryId: 'cat-2',
+    questionCount: 18,
+    estimatedMinutes: 6,
+    tags: ['恋爱', '关系', '情感'],
+    completionCount: 34567,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-pink-400 via-rose-400 to-red-500',
+    createdAt: '2024-03-10',
+  },
+  {
+    id: 'test-communication',
+    title: '沟通风格测试',
+    slug: 'communication-style',
+    description: '你在沟通中是直接表达型、委婉暗示型，还是回避冲突型？了解你的沟通模式，让交流更顺畅。',
+    shortDescription: '了解你的沟通习惯，提升表达与倾听能力',
+    categoryId: 'cat-2',
+    questionCount: 18,
+    estimatedMinutes: 6,
+    tags: ['沟通', '关系', '成长'],
+    completionCount: 28945,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-sky-400 via-blue-400 to-indigo-500',
+    createdAt: '2024-04-05',
+  },
+  {
+    id: 'test-conflict',
+    title: '冲突处理风格测试',
+    slug: 'conflict-style',
+    description: '面对冲突时，你是直面问题、回避退让，还是寻求妥协？了解你的冲突处理模式，学会更建设性地化解分歧。',
+    shortDescription: '发现你在冲突中的应对模式与成长方向',
+    categoryId: 'cat-2',
+    questionCount: 16,
+    estimatedMinutes: 5,
+    tags: ['关系', '沟通', '成长'],
+    completionCount: 21345,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-orange-400 via-amber-400 to-yellow-500',
+    createdAt: '2024-04-10',
+  },
+  {
+    id: 'test-empathy',
+    title: '共情力测试',
+    slug: 'empathy',
+    description: '你能准确感知他人的情绪吗？你善于换位思考吗？这个测试帮你了解自己的共情能力水平。',
+    shortDescription: '测量你的情感理解与共鸣能力',
+    categoryId: 'cat-2',
+    questionCount: 15,
+    estimatedMinutes: 5,
+    tags: ['情感', '关系', '能力'],
+    completionCount: 32456,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-emerald-400 via-teal-400 to-cyan-500',
+    createdAt: '2024-04-15',
+  },
+
+  // ===== 3. 职业发展类 =====
+  {
     id: 'test-career',
     title: '职业倾向测试',
     slug: 'career-tendency',
@@ -85,21 +240,71 @@ export const tests: Test[] = [
     createdAt: '2024-02-01',
   },
   {
-    id: 'test-love',
-    title: '爱情依恋风格测试',
-    slug: 'attachment-style',
-    description: '探索你在亲密关系中的依恋模式——你是安全型、焦虑型还是回避型？了解你的关系风格，能帮助你建立更健康的连结。',
-    shortDescription: '了解你的依恋风格，让亲密关系更深入、更安全',
-    categoryId: 'cat-2',
+    id: 'test-teamwork',
+    title: '团队协作风格测试',
+    slug: 'teamwork-style',
+    description: '你在团队中扮演什么角色？是领导推动型、协调支持型，还是独立贡献型？发现你的团队协作优势。',
+    shortDescription: '了解你在团队中的角色定位与协作方式',
+    categoryId: 'cat-3',
+    questionCount: 18,
+    estimatedMinutes: 6,
+    tags: ['职场', '团队', '协作'],
+    completionCount: 29876,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-blue-500 via-cyan-500 to-teal-500',
+    createdAt: '2024-04-20',
+  },
+  {
+    id: 'test-leadership',
+    title: '领导力风格测试',
+    slug: 'leadership-style',
+    description: '你的领导风格是民主型、指令型，还是教练型？了解你的领导力特点，发挥优势、弥补不足。',
+    shortDescription: '发现你的领导风格与提升空间',
+    categoryId: 'cat-3',
     questionCount: 20,
     estimatedMinutes: 7,
-    tags: ['关系', '依恋', '情感'],
-    completionCount: 54327,
+    tags: ['职场', '领导力', '成长'],
+    completionCount: 25678,
     isPopular: false,
-    isFeatured: true,
-    coverGradient: 'from-rose-500 via-pink-500 to-purple-600',
-    createdAt: '2024-02-15',
+    isFeatured: false,
+    coverGradient: 'from-indigo-500 via-violet-500 to-purple-600',
+    createdAt: '2024-04-25',
   },
+  {
+    id: 'test-decision',
+    title: '决策风格测试',
+    slug: 'decision-style',
+    description: '做决定时，你更依赖直觉还是数据？你倾向于快速决断还是反复权衡？了解你的决策模式，提升决策效率。',
+    shortDescription: '了解你的决策习惯与优化方向',
+    categoryId: 'cat-3',
+    questionCount: 15,
+    estimatedMinutes: 5,
+    tags: ['职场', '能力', '成长'],
+    completionCount: 19876,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-slate-500 via-gray-500 to-zinc-600',
+    createdAt: '2024-05-01',
+  },
+  {
+    id: 'test-execution',
+    title: '执行力/规划力测试',
+    slug: 'execution-planning',
+    description: '你的执行力和规划能力处于什么水平？你更擅长制定计划还是落地执行？发现自己的行动力优势。',
+    shortDescription: '测量你的行动力与规划能力',
+    categoryId: 'cat-3',
+    questionCount: 18,
+    estimatedMinutes: 6,
+    tags: ['职场', '能力', '实用'],
+    completionCount: 23456,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-emerald-500 via-green-500 to-lime-500',
+    createdAt: '2024-05-05',
+  },
+
+  // ===== 4. 情绪与压力类 =====
   {
     id: 'test-stress',
     title: '压力应对风格测试',
@@ -117,28 +322,160 @@ export const tests: Test[] = [
     createdAt: '2024-03-01',
   },
   {
-    id: 'test-enneagram',
-    title: '九型人格测试',
-    slug: 'enneagram',
-    description: '九型人格是一套古老而深刻的人格系统，揭示我们内心最深处的动机、恐惧与渴望，帮助我们走向真正的自我整合。',
-    shortDescription: '探索你的核心动机与内心渴望，发现真实的自我',
-    categoryId: 'cat-1',
-    questionCount: 36,
-    estimatedMinutes: 12,
-    tags: ['人格', '深度', '成长'],
-    completionCount: 38965,
+    id: 'test-emotion-sensitivity',
+    title: '情绪敏感度测试',
+    slug: 'emotion-sensitivity',
+    description: '你对情绪的感知有多敏锐？你是否容易受他人情绪影响？了解自己的情绪敏感度，学会保护自己。',
+    shortDescription: '了解你对情绪的感知与反应敏感程度',
+    categoryId: 'cat-4',
+    questionCount: 18,
+    estimatedMinutes: 6,
+    tags: ['情绪', '心理', '成长'],
+    completionCount: 31234,
     isPopular: false,
     isFeatured: false,
-    coverGradient: 'from-amber-500 via-orange-500 to-rose-600',
-    createdAt: '2024-03-15',
+    coverGradient: 'from-violet-400 via-purple-400 to-fuchsia-500',
+    createdAt: '2024-05-10',
   },
+  {
+    id: 'test-resilience',
+    title: '抗压能力测试',
+    slug: 'resilience',
+    description: '面对逆境时，你能多快恢复？你的心理韧性有多强？这个测试帮你了解自己的抗压能力。',
+    shortDescription: '测量你的心理韧性与逆境恢复能力',
+    categoryId: 'cat-4',
+    questionCount: 18,
+    estimatedMinutes: 6,
+    tags: ['压力', '心理', '成长'],
+    completionCount: 28765,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-amber-500 via-yellow-500 to-orange-500',
+    createdAt: '2024-05-15',
+  },
+  {
+    id: 'test-emotion-recovery',
+    title: '情绪恢复力测试',
+    slug: 'emotion-recovery',
+    description: '经历负面情绪后，你需要多久才能恢复？你是否有有效的情绪调节策略？了解你的情绪恢复能力。',
+    shortDescription: '了解你从负面情绪中恢复的速度与方式',
+    categoryId: 'cat-4',
+    questionCount: 15,
+    estimatedMinutes: 5,
+    tags: ['情绪', '心理', '成长'],
+    completionCount: 19876,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-cyan-400 via-sky-400 to-blue-500',
+    createdAt: '2024-05-20',
+  },
+  {
+    id: 'test-security',
+    title: '安全感来源测试',
+    slug: 'security-source',
+    description: '你的安全感来自哪里？是外部认可、物质保障，还是内心笃定？了解自己的安全感来源，建立更稳定的内心。',
+    shortDescription: '发现你的安全感构建方式与提升方向',
+    categoryId: 'cat-4',
+    questionCount: 16,
+    estimatedMinutes: 5,
+    tags: ['心理', '情绪', '成长'],
+    completionCount: 24567,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-rose-400 via-pink-400 to-fuchsia-500',
+    createdAt: '2024-05-25',
+  },
+
+  // ===== 5. 社交互动类 =====
+  {
+    id: 'test-social-energy',
+    title: '社交能量测试',
+    slug: 'social-energy',
+    description: '社交对你来说是充电还是消耗？你能从社交中获得多少能量？了解你的社交能量特点，合理安排社交生活。',
+    shortDescription: '了解社交对你的能量影响与最佳社交模式',
+    categoryId: 'cat-5',
+    questionCount: 15,
+    estimatedMinutes: 5,
+    tags: ['社交', '人际', '能量'],
+    completionCount: 34567,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-orange-400 via-amber-400 to-yellow-500',
+    createdAt: '2024-06-01',
+  },
+  {
+    id: 'test-boundary',
+    title: '人际边界感测试',
+    slug: 'boundary',
+    description: '你的人际边界清晰吗？你能清楚区分自己与他人的责任吗？了解自己的边界感水平，建立健康的人际关系。',
+    shortDescription: '测量你的人际边界清晰度与健康程度',
+    categoryId: 'cat-5',
+    questionCount: 18,
+    estimatedMinutes: 6,
+    tags: ['社交', '人际', '成长'],
+    completionCount: 28765,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-lime-400 via-green-400 to-emerald-500',
+    createdAt: '2024-06-05',
+  },
+  {
+    id: 'test-expression',
+    title: '表达风格测试',
+    slug: 'expression-style',
+    description: '你在表达时是直抒胸臆还是委婉含蓄？你更擅长文字还是口语表达？了解自己的表达风格优势。',
+    shortDescription: '发现你的表达习惯与优化方向',
+    categoryId: 'cat-5',
+    questionCount: 15,
+    estimatedMinutes: 5,
+    tags: ['社交', '沟通', '能力'],
+    completionCount: 21345,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-sky-400 via-blue-400 to-indigo-500',
+    createdAt: '2024-06-10',
+  },
+  {
+    id: 'test-pleasing',
+    title: '讨好型/主见型倾向测试',
+    slug: 'pleasing-tendency',
+    description: '你是习惯讨好他人，还是坚持自己的主见？这个测试帮你了解自己在人际互动中的倾向，找到平衡点。',
+    shortDescription: '了解你在人际中的取悦与自主倾向',
+    categoryId: 'cat-5',
+    questionCount: 16,
+    estimatedMinutes: 5,
+    tags: ['社交', '人际', '成长'],
+    completionCount: 38976,
+    isPopular: true,
+    isFeatured: false,
+    coverGradient: 'from-fuchsia-400 via-pink-400 to-rose-500',
+    createdAt: '2024-06-15',
+  },
+  {
+    id: 'test-trust',
+    title: '信任模式测试',
+    slug: 'trust-pattern',
+    description: '你容易信任他人吗？你对人的信任是基于什么？了解自己的信任模式，建立更健康的人际判断。',
+    shortDescription: '了解你的信任建立方式与特点',
+    categoryId: 'cat-5',
+    questionCount: 15,
+    estimatedMinutes: 5,
+    tags: ['社交', '人际', '心理'],
+    completionCount: 17654,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-teal-400 via-cyan-400 to-sky-500',
+    createdAt: '2024-06-20',
+  },
+
+  // ===== 6. 趣味延伸类 =====
   {
     id: 'test-sbti',
     title: 'SBTI 人格测试',
     slug: 'sbti',
     description: '2026年4月爆火全网的神奇人格测试，全称"Silly Big Personality Test（傻乎乎的大人格测试）"。31道荒诞接地气的题目，测出你最真实的"阴暗面"与生存姿态。仅供娱乐，别当诊断。',
     shortDescription: '全网爆火的魔性测试，31道题揭秘你最真实的生存姿态',
-    categoryId: 'cat-1',
+    categoryId: 'cat-6',
     questionCount: 31,
     estimatedMinutes: 5,
     tags: ['爆火', '娱乐', '自嘲'],
@@ -147,6 +484,86 @@ export const tests: Test[] = [
     isFeatured: true,
     coverGradient: 'from-yellow-500 via-orange-500 to-red-600',
     createdAt: '2026-04-10',
+  },
+  {
+    id: 'test-hidden-personality',
+    title: '你的隐藏人格是什么',
+    slug: 'hidden-personality',
+    description: '表面之下，你还有一个不为人知的自己。这个轻量测试帮你发现那些被日常掩藏的性格面向。',
+    shortDescription: '发现那个不为人知的自己',
+    categoryId: 'cat-6',
+    questionCount: 12,
+    estimatedMinutes: 4,
+    tags: ['趣味', '发现', '轻松'],
+    completionCount: 156789,
+    isPopular: true,
+    isFeatured: false,
+    coverGradient: 'from-purple-500 via-violet-500 to-indigo-600',
+    createdAt: '2024-07-01',
+  },
+  {
+    id: 'test-animal-personality',
+    title: '你像哪种动物人格',
+    slug: 'animal-personality',
+    description: '如果用一种动物来形容你的人格，你会是什么？忠诚的狗狗、独立的猫咪、还是自由的鸟儿？',
+    shortDescription: '发现你的动物人格原型',
+    categoryId: 'cat-6',
+    questionCount: 10,
+    estimatedMinutes: 3,
+    tags: ['趣味', '动物', '轻松'],
+    completionCount: 234567,
+    isPopular: true,
+    isFeatured: false,
+    coverGradient: 'from-amber-400 via-orange-400 to-red-500',
+    createdAt: '2024-07-10',
+  },
+  {
+    id: 'test-love-brain',
+    title: '你的爱情脑类型',
+    slug: 'love-brain',
+    description: '你在爱情里是什么"脑型"？理性分析型、感性投入型，还是随缘佛系型？发现你的爱情思维模式。',
+    shortDescription: '了解你在爱情里的思维方式',
+    categoryId: 'cat-6',
+    questionCount: 12,
+    estimatedMinutes: 4,
+    tags: ['恋爱', '趣味', '轻松'],
+    completionCount: 178456,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-pink-400 via-rose-400 to-red-500',
+    createdAt: '2024-07-15',
+  },
+  {
+    id: 'test-friend-type',
+    title: '你是哪种朋友类型',
+    slug: 'friend-type',
+    description: '在朋友圈里，你是倾听者、组织者、开心果还是智囊团？发现你作为朋友的独特价值。',
+    shortDescription: '发现你在友情中的角色定位',
+    categoryId: 'cat-6',
+    questionCount: 12,
+    estimatedMinutes: 4,
+    tags: ['友情', '趣味', '轻松'],
+    completionCount: 145678,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-cyan-400 via-teal-400 to-emerald-500',
+    createdAt: '2024-07-20',
+  },
+  {
+    id: 'test-group-role',
+    title: '你在群体里扮演什么角色',
+    slug: 'group-role',
+    description: '每个群体都有自己的生态。你是领导者、协调者、执行者，还是那个独特的存在？',
+    shortDescription: '发现你在群体中的自然定位',
+    categoryId: 'cat-6',
+    questionCount: 10,
+    estimatedMinutes: 3,
+    tags: ['群体', '趣味', '轻松'],
+    completionCount: 98765,
+    isPopular: false,
+    isFeatured: false,
+    coverGradient: 'from-indigo-400 via-violet-400 to-purple-500',
+    createdAt: '2024-07-25',
   },
 ];
 
@@ -663,7 +1080,40 @@ export function getTestData(testId: string) {
         options: {},
         results: [],
       };
+    case 'test-temperament':
+      return {
+        test: tests.find(t => t.id === testId),
+        dimensions: temperamentDimensions,
+        questions: temperamentQuestions,
+        options: temperamentOptions,
+        results: temperamentResults,
+      };
+    case 'test-introversion':
+      return {
+        test: tests.find(t => t.id === testId),
+        dimensions: introversionDimensions,
+        questions: introversionQuestions,
+        options: introversionOptions,
+        results: introversionResults,
+      };
+    case 'test-love-style':
+      return {
+        test: tests.find(t => t.id === testId),
+        dimensions: loveStyleDimensions,
+        questions: loveStyleQuestions,
+        options: loveStyleOptions,
+        results: loveStyleResults,
+      };
+    case 'test-sbti':
+      return {
+        test: tests.find(t => t.id === testId),
+        dimensions: [],
+        questions: sbtiQuestions,
+        options: {},
+        results: sbtiResults,
+      };
     default:
+      // 对于其他测试，尝试找到对应的问题和结果
       return {
         test: tests.find(t => t.id === testId),
         dimensions: [],
@@ -1322,6 +1772,906 @@ export const sbtiResults = [
   },
 ];
 
+// ==== 职业发展类测试 ====
+
+// 团队协作风格测试
+export const teamworkQuestions = [
+  {
+    id: 'team-q1', testId: 'test-teamwork', order: 1,
+    text: '在团队项目中，你更倾向于...',
+    options: [
+      { id: 'team-q1-a', text: '主动分工，推动进度', scores: { LEADER: 3, DRIVER: 2 } },
+      { id: 'team-q1-b', text: '贡献想法，参与讨论', scores: { CONTRIBUTOR: 3, COLLABORATOR: 1 } },
+      { id: 'team-q1-c', text: '执行分配的任务', scores: { EXECUTOR: 3, SUPPORTER: 1 } },
+      { id: 'team-q1-d', text: '默默支持，随叫随到', scores: { SUPPORTER: 3 } },
+    ],
+  },
+  {
+    id: 'team-q2', testId: 'test-teamwork', order: 2,
+    text: '团队中有人意见不合时，你通常会...',
+    options: [
+      { id: 'team-q2-a', text: '站出来协调', scores: { LEADER: 2, MEDIATOR: 2 } },
+      { id: 'team-q2-b', text: '提出解决方案', scores: { DRIVER: 2, CONTRIBUTOR: 1 } },
+      { id: 'team-q2-c', text: '等待别人处理', scores: { SUPPORTER: 2, EXECUTOR: 1 } },
+      { id: 'team-q2-d', text: '居中调解矛盾', scores: { MEDIATOR: 3, COLLABORATOR: 1 } },
+    ],
+  },
+  {
+    id: 'team-q3', testId: 'test-teamwork', order: 3,
+    text: '你在团队中最大的价值是...',
+    options: [
+      { id: 'team-q3-a', text: '把控方向和节奏', scores: { LEADER: 3, DRIVER: 1 } },
+      { id: 'team-q3-b', text: '贡献专业想法', scores: { CONTRIBUTOR: 3 } },
+      { id: 'team-q3-c', text: '高效完成工作', scores: { EXECUTOR: 3, DRIVER: 1 } },
+      { id: 'team-q3-d', text: '维护团队和谐', scores: { MEDIATOR: 2, SUPPORTER: 2 } },
+    ],
+  },
+];
+
+export const teamworkResults = [
+  {
+    id: 'team-leader', testId: 'test-teamwork', typeCode: 'LEADER',
+    typeName: '领导者',
+    summary: '善于把控方向，带领团队前进',
+    description: '你在团队中是天生的领导者，能够把控方向、分配任务、推动进度。',
+    strengths: ['领导力强', '决策果断', '善于激励'],
+    weaknesses: ['可能过于强势', '有时忽视细节'],
+    relationships: '你是团队核心，需要学会倾听和授权。',
+    career: '管理岗位、项目负责人、创业者。',
+    growth: '更多信任团队成员，学会放权。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'team-contributor', testId: 'test-teamwork', typeCode: 'CONTRIBUTOR',
+    typeName: '贡献者',
+    summary: '善于提供专业想法和建议',
+    description: '你是团队中的智囊，善于提出想法、分析问题、贡献专业见解。',
+    strengths: ['创意丰富', '分析能力强', '专业深度'],
+    weaknesses: ['有时过于理想化', '可能不够行动导向'],
+    relationships: '你是团队的思考者，需要与执行者配合。',
+    career: '咨询、研发、策划、设计。',
+    growth: '把想法转化为可执行的计划。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'team-executor', testId: 'test-teamwork', typeCode: 'EXECUTOR',
+    typeName: '执行者',
+    summary: '高效完成分配的任务，可靠可信',
+    description: '你是团队中的执行力量，能够高效完成工作，是可靠的团队成员。',
+    strengths: ['执行力强', '认真负责', '结果导向'],
+    weaknesses: ['可能缺乏主动性', '有时缺乏全局观'],
+    relationships: '你是团队最可靠的存在，让想法落地。',
+    career: '运营、技术、财务、执行岗。',
+    growth: '尝试主动提出想法，不只是等待分配。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'team-mediator', testId: 'test-teamwork', typeCode: 'MEDIATOR',
+    typeName: '协调者',
+    summary: '善于调和矛盾，维护团队和谐',
+    description: '你是团队的润滑剂，善于化解矛盾、促进沟通、维护团队氛围。',
+    strengths: ['人际关系好', '善于沟通', '情商高'],
+    weaknesses: ['可能回避冲突', '有时难以做决定'],
+    relationships: '你是团队的粘合剂，让合作更顺畅。',
+    career: '人力资源、客户服务、项目管理。',
+    growth: '学会在和谐中坚持原则。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 领导力风格测试
+export const leadershipQuestions = [
+  {
+    id: 'lead-q1', testId: 'test-leadership', order: 1,
+    text: '你更倾向于哪种领导方式？',
+    options: [
+      { id: 'lead-q1-a', text: '明确指示，期望成员执行', scores: { DIRECTIVE: 3 } },
+      { id: 'lead-q1-b', text: '给予方向，鼓励自主发挥', scores: { COACHING: 2, SUPPORTIVE: 1 } },
+      { id: 'lead-q1-c', text: '关心成员，创造良好氛围', scores: { SUPPORTIVE: 3 } },
+      { id: 'lead-q1-d', text: '激发思考，引导找到答案', scores: { COACHING: 3 } },
+    ],
+  },
+  {
+    id: 'lead-q2', testId: 'test-leadership', order: 2,
+    text: '面对成员的错误，你会...',
+    options: [
+      { id: 'lead-q2-a', text: '指出问题，要求立即改正', scores: { DIRECTIVE: 2, ACHIEVEMENT: 1 } },
+      { id: 'lead-q2-b', text: '了解原因，一起讨论改进', scores: { COACHING: 2, SUPPORTIVE: 1 } },
+      { id: 'lead-q2-c', text: '给予鼓励，帮助TA建立信心', scores: { SUPPORTIVE: 3 } },
+      { id: 'lead-q2-d', text: '设定标准，期待下次达标', scores: { ACHIEVEMENT: 3 } },
+    ],
+  },
+];
+
+export const leadershipResults = [
+  {
+    id: 'lead-directive', testId: 'test-leadership', typeCode: 'DIRECTIVE',
+    typeName: '指令型领导',
+    summary: '明确指示，高效执行',
+    description: '你善于给出明确方向和指令，追求效率和结果，适合带领需要明确指导的团队。',
+    strengths: ['决策果断', '目标明确', '执行高效'],
+    weaknesses: ['可能缺乏灵活性', '有时显得过于强硬'],
+    growth: '学习倾听成员的想法，增加参与感。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'lead-coaching', testId: 'test-leadership', typeCode: 'COACHING',
+    typeName: '教练型领导',
+    summary: '引导成长，激发潜能',
+    description: '你善于通过提问引导成员找到答案，帮助他们成长，适合培养人才。',
+    strengths: ['善于培养人才', '激发潜能', '长期价值'],
+    weaknesses: ['需要较长时间', '有时不够直接'],
+    growth: '在紧急情况下也可以更直接一些。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'lead-supportive', testId: 'test-leadership', typeCode: 'SUPPORTIVE',
+    typeName: '支持型领导',
+    summary: '关心成员，营造氛围',
+    description: '你关心成员的需求和感受，善于创造支持性的团队环境，适合需要协作的团队。',
+    strengths: ['团队关系好', '氛围和谐', '成员满意度高'],
+    weaknesses: ['有时难以推动业绩', '可能过于迁就'],
+    growth: '在关心的同时也坚持目标。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'lead-achievement', testId: 'test-leadership', typeCode: 'ACHIEVEMENT',
+    typeName: '成就导向型领导',
+    summary: '设定高标准，追求卓越',
+    description: '你设定高标准，追求卓越成果，激励团队不断超越自己。',
+    strengths: ['结果导向', '激励性强', '追求卓越'],
+    weaknesses: ['可能给成员过大压力', '有时不够包容'],
+    growth: '学会庆祝过程，而不只是结果。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 决策风格测试
+export const decisionQuestions = [
+  {
+    id: 'dec-q1', testId: 'test-decision', order: 1,
+    text: '做重要决定时，你更依赖...',
+    options: [
+      { id: 'dec-q1-a', text: '直觉和感觉', scores: { INTUITIVE: 3 } },
+      { id: 'dec-q1-b', text: '数据和分析', scores: { ANALYTICAL: 3 } },
+      { id: 'dec-q1-c', text: '他人建议', scores: { CONSULTATIVE: 2, DEPENDENT: 1 } },
+      { id: 'dec-q1-d', text: '尽量避免决定', scores: { AVOIDANT: 3 } },
+    ],
+  },
+  {
+    id: 'dec-q2', testId: 'test-decision', order: 2,
+    text: '面对信息不完整的情况，你会...',
+    options: [
+      { id: 'dec-q2-a', text: '凭感觉先行动', scores: { INTUITIVE: 2, SPONTANEOUS: 1 } },
+      { id: 'dec-q2-b', text: '尽可能收集更多信息', scores: { ANALYTICAL: 2, DELIBERATE: 1 } },
+      { id: 'dec-q2-c', text: '征求多方意见', scores: { CONSULTATIVE: 3 } },
+      { id: 'dec-q2-d', text: '能不做就不做', scores: { AVOIDANT: 3 } },
+    ],
+  },
+];
+
+export const decisionResults = [
+  {
+    id: 'dec-intuitive', testId: 'test-decision', typeCode: 'INTUITIVE',
+    typeName: '直觉型',
+    summary: '相信直觉，快速决策',
+    description: '你相信自己的直觉，能在信息不足时快速做出决定，行动力强。',
+    strengths: ['决策快速', '适应变化', '把握机会'],
+    weaknesses: ['可能过于冲动', '有时忽略数据'],
+    growth: '在做重大决定时，也看看数据支持。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'dec-analytical', testId: 'test-decision', typeCode: 'ANALYTICAL',
+    typeName: '分析型',
+    summary: '基于数据，深思熟虑',
+    description: '你依赖数据和逻辑分析，追求最优解，决策质量高。',
+    strengths: ['决策质量高', '逻辑清晰', '减少错误'],
+    weaknesses: ['决策时间较长', '可能过度分析'],
+    growth: '有时接受"足够好"的决定。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'dec-consultative', testId: 'test-decision', typeCode: 'CONSULTATIVE',
+    typeName: '咨询型',
+    summary: '征求意见，集体决策',
+    description: '你善于听取多方意见，通过讨论达成决策，建立共识。',
+    strengths: ['决策有支持', '考虑全面', '关系维护好'],
+    weaknesses: ['可能效率低', '有时难以整合不同意见'],
+    growth: '有时也需要独立做出决定。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'dec-avoidant', testId: 'test-decision', typeCode: 'AVOIDANT',
+    typeName: '回避型',
+    summary: '拖延决策，避免责任',
+    description: '你倾向于推迟或回避做决定，担心做错选择。',
+    strengths: ['避免错误', '给自己更多时间'],
+    weaknesses: ['错失机会', '积累压力', '问题拖延'],
+    growth: '从小决定开始练习，建立决策信心。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 执行力测试
+export const executionQuestions = [
+  {
+    id: 'exec-q1', testId: 'test-execution', order: 1,
+    text: '有了计划后，你通常会...',
+    options: [
+      { id: 'exec-q1-a', text: '立即开始行动', scores: { ACTION: 3, FOCUS: 1 } },
+      { id: 'exec-q1-b', text: '先做充分准备', scores: { PLANNING: 2, DISCIPLINE: 1 } },
+      { id: 'exec-q1-c', text: '等等看，再决定', scores: { LOW: 2, DISTRACTED: 1 } },
+      { id: 'exec-q1-d', text: '可能拖到最后一刻', scores: { LOW: 3 } },
+    ],
+  },
+  {
+    id: 'exec-q2', testId: 'test-execution', order: 2,
+    text: '面对长期任务，你...',
+    options: [
+      { id: 'exec-q2-a', text: '制定详细计划，持续推进', scores: { DISCIPLINE: 3, PLANNING: 1 } },
+      { id: 'exec-q2-b', text: '设定里程碑，阶段性完成', scores: { FOCUS: 2, DISCIPLINE: 1 } },
+      { id: 'exec-q2-c', text: '有热情时做，没有时放', scores: { DISTRACTED: 2, LOW: 1 } },
+      { id: 'exec-q2-d', text: '很难坚持到完成', scores: { LOW: 3, DISTRACTED: 1 } },
+    ],
+  },
+];
+
+export const executionResults = [
+  {
+    id: 'exec-high', testId: 'test-execution', typeCode: 'HIGH',
+    typeName: '高执行力',
+    summary: '说到做到，持续行动',
+    description: '你有很强的执行力，能够将计划转化为行动并坚持完成。',
+    strengths: ['行动力强', '目标达成', '可靠可信'],
+    weaknesses: ['可能过于匆忙', '有时忽略调整'],
+    growth: '保持行动力，同时给自己反思的时间。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'exec-moderate', testId: 'test-execution', typeCode: 'MODERATE',
+    typeName: '中等执行力',
+    summary: '有计划有行动，偶有波动',
+    description: '你有一定的执行力，大部分时间能按计划推进，偶尔会拖延。',
+    strengths: ['能完成任务', '有一定自律'],
+    weaknesses: ['有时效率不高', '可能拖延'],
+    growth: '建立习惯和提醒系统，提升稳定性。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'exec-low', testId: 'test-execution', typeCode: 'LOW',
+    typeName: '待提升执行力',
+    summary: '计划多行动少，需要改变',
+    description: '你的执行力有待提升，常常停留在计划阶段，难以持续行动。',
+    strengths: ['可能有创意想法', '有时能爆发完成'],
+    weaknesses: ['容易拖延', '难以坚持', '错失机会'],
+    growth: '从最小行动开始，每次只做一个微小的步骤。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// ==== 情绪与压力类测试 ====
+
+// 情绪敏感度测试
+export const emotionSensitivityQuestions = [
+  {
+    id: 'es-q1', testId: 'test-emotion-sensitivity', order: 1,
+    text: '你能感知到微小的情绪变化吗？',
+    options: [
+      { id: 'es-q1-a', text: '非常敏锐，细微变化都能感知', scores: { HIGH: 3 } },
+      { id: 'es-q1-b', text: '较敏感，能感知明显变化', scores: { MODERATE: 2 } },
+      { id: 'es-q1-c', text: '一般，需要比较明显', scores: { LOW: 2 } },
+      { id: 'es-q1-d', text: '不太敏感，常常察觉不到', scores: { LOW: 3 } },
+    ],
+  },
+  {
+    id: 'es-q2', testId: 'test-emotion-sensitivity', order: 2,
+    text: '别人的情绪容易影响你吗？',
+    options: [
+      { id: 'es-q2-a', text: '很容易，我会被深深影响', scores: { HIGH: 3, ABSORBENT: 2 } },
+      { id: 'es-q2-b', text: '会受影响，但能保持一定距离', scores: { MODERATE: 2, BALANCED: 1 } },
+      { id: 'es-q2-c', text: '影响有限，能保持独立', scores: { LOW: 1, PROTECTED: 2 } },
+      { id: 'es-q2-d', text: '基本不会被影响', scores: { LOW: 3, PROTECTED: 2 } },
+    ],
+  },
+];
+
+export const emotionSensitivityResults = [
+  {
+    id: 'es-high', testId: 'test-emotion-sensitivity', typeCode: 'HIGH',
+    typeName: '高敏感型',
+    summary: '情绪感知敏锐，容易被影响',
+    description: '你对情绪变化非常敏感，能感知细微的氛围变化。这是一种天赋，但也需要保护自己。',
+    strengths: ['深度共情', '察言观色', '细腻感受'],
+    weaknesses: ['容易情绪疲劳', '可能过度承担', '需要更多独处'],
+    growth: '建立情绪边界，学会保护自己的能量。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'es-moderate', testId: 'test-emotion-sensitivity', typeCode: 'MODERATE',
+    typeName: '中度敏感型',
+    summary: '有一定敏感度，平衡感受',
+    description: '你对情绪有一定的敏感度，能感知重要变化，也能保持一定距离。',
+    strengths: ['适度共情', '平衡感受', '适应性'],
+    growth: '保持这种平衡，在需要时可以更深入。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'es-low', testId: 'test-emotion-sensitivity', typeCode: 'LOW',
+    typeName: '低敏感型',
+    summary: '情绪感知较钝，不易被影响',
+    description: '你对情绪变化的感知相对较弱，不太容易被他人情绪影响。这让你稳定，但也可能错过一些信号。',
+    strengths: ['情绪稳定', '不受干扰', '理性行动'],
+    weaknesses: ['可能错过情感信号', '有时显得不够敏感'],
+    growth: '尝试更主动地关注他人的情绪需求。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 抗压能力测试
+export const resilienceQuestions = [
+  {
+    id: 'res-q1', testId: 'test-resilience', order: 1,
+    text: '遇到挫折时，你多久能恢复？',
+    options: [
+      { id: 'res-q1-a', text: '很快，转眼就能调整', scores: { HIGH: 3 } },
+      { id: 'res-q1-b', text: '需要一些时间，但能恢复', scores: { MODERATE: 2 } },
+      { id: 'res-q1-c', text: '需要较长时间', scores: { LOW: 2 } },
+      { id: 'res-q1-d', text: '很难从挫折中恢复', scores: { LOW: 3 } },
+    ],
+  },
+  {
+    id: 'res-q2', testId: 'test-resilience', order: 2,
+    text: '面对压力，你的应对方式是...',
+    options: [
+      { id: 'res-q2-a', text: '把它当成挑战，积极应对', scores: { HIGH: 3, GROWTH: 2 } },
+      { id: 'res-q2-b', text: '分析问题，寻找方法', scores: { MODERATE: 2, PROBLEM: 1 } },
+      { id: 'res-q2-c', text: '感到焦虑，但会硬撑', scores: { LOW: 1, AVOID: 1 } },
+      { id: 'res-q2-d', text: '想要逃避或崩溃', scores: { LOW: 3, AVOID: 2 } },
+    ],
+  },
+];
+
+export const resilienceResults = [
+  {
+    id: 'res-high', testId: 'test-resilience', typeCode: 'HIGH',
+    typeName: '高韧性',
+    summary: '快速恢复，积极应对',
+    description: '你有很强的心理韧性，能在逆境中快速恢复并积极应对挑战。',
+    strengths: ['恢复力强', '乐观积极', '成长型思维'],
+    growth: '保持这种韧性，同时学会适时求助。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'res-moderate', testId: 'test-resilience', typeCode: 'MODERATE',
+    typeName: '中等韧性',
+    summary: '有恢复力，需要时间',
+    description: '你有一定的心理韧性，能在挫折中恢复，但需要一些时间和支持。',
+    strengths: ['能逐步恢复', '有一定应对能力'],
+    growth: '建立更积极的自我对话，加速恢复过程。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'res-low', testId: 'test-resilience', typeCode: 'LOW',
+    typeName: '韧性待提升',
+    summary: '恢复较慢，需要支持',
+    description: '你的心理韧性有待提升，面对挫折时需要更多时间和支持来恢复。',
+    strengths: ['可能更谨慎', '会在安全后恢复'],
+    growth: '学习正念和自我关怀，建立恢复的习惯。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 安全感来源测试
+export const securityQuestions = [
+  {
+    id: 'sec-q1', testId: 'test-security', order: 1,
+    text: '你的安全感主要来自哪里？',
+    options: [
+      { id: 'sec-q1-a', text: '他人的认可和陪伴', scores: { EXTERNAL: 2, RELATIONAL: 3 } },
+      { id: 'sec-q1-b', text: '物质保障和稳定收入', scores: { EXTERNAL: 3, MATERIAL: 2 } },
+      { id: 'sec-q1-c', text: '自己的能力和成长', scores: { INTERNAL: 2, COMPETENCE: 2 } },
+      { id: 'sec-q1-d', text: '内心的平静和自我接纳', scores: { INTERNAL: 3, SELF: 2 } },
+    ],
+  },
+  {
+    id: 'sec-q2', testId: 'test-security', order: 2,
+    text: '当感到不安时，你会...',
+    options: [
+      { id: 'sec-q2-a', text: '寻求他人的安慰和陪伴', scores: { RELATIONAL: 3, EXTERNAL: 1 } },
+      { id: 'sec-q2-b', text: '努力工作赚更多钱', scores: { MATERIAL: 2, EXTERNAL: 1 } },
+      { id: 'sec-q2-c', text: '学习和提升自己', scores: { COMPETENCE: 2, INTERNAL: 1 } },
+      { id: 'sec-q2-d', text: '冥想、独处或自我对话', scores: { SELF: 3, INTERNAL: 2 } },
+    ],
+  },
+];
+
+export const securityResults = [
+  {
+    id: 'sec-external', testId: 'test-security', typeCode: 'EXTERNAL',
+    typeName: '外部依赖型',
+    summary: '安全感来自外部条件',
+    description: '你的安全感很大程度上依赖外部因素，如他人、金钱或地位。这很正常，但也容易受这些因素影响。',
+    growth: '同时培养内在的安全感，让自己更稳定。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'sec-internal', testId: 'test-security', typeCode: 'INTERNAL',
+    typeName: '内在稳定型',
+    summary: '安全感来自内心',
+    description: '你的安全感主要来自内在，相对稳定，不太受外部因素影响。',
+    growth: '保持内在稳定的同时，也可以接纳外在的支持。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'sec-relational', testId: 'test-security', typeCode: 'RELATIONAL',
+    typeName: '关系依赖型',
+    summary: '安全感来自关系',
+    description: '你的安全感主要来自重要关系的稳定和亲密。',
+    growth: '在关系中培养信任的同时，也建立自己的内在力量。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'sec-self', testId: 'test-security', typeCode: 'SELF',
+    typeName: '自我接纳型',
+    summary: '安全感来自自我接纳',
+    description: '你的安全感来自对自己的接纳和内心的平静。',
+    growth: '这是最稳定的安全感来源，继续保持。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// ==== 社交互动类测试 ====
+
+// 社交能量测试
+export const socialEnergyQuestions = [
+  {
+    id: 'se-q1', testId: 'test-social-energy', order: 1,
+    text: '社交活动对你来说...',
+    options: [
+      { id: 'se-q1-a', text: '充满能量，越社交越有活力', scores: { HIGH: 3 } },
+      { id: 'se-q1-b', text: '还好，适度社交没问题', scores: { MODERATE: 2 } },
+      { id: 'se-q1-c', text: '消耗能量，需要时间恢复', scores: { LOW: 2, INTROVERT: 1 } },
+      { id: 'se-q1-d', text: '非常疲惫，尽量避免', scores: { LOW: 3, INTROVERT: 2 } },
+    ],
+  },
+  {
+    id: 'se-q2', testId: 'test-social-energy', order: 2,
+    text: '你理想的社交频率是...',
+    options: [
+      { id: 'se-q2-a', text: '每天都想见朋友', scores: { HIGH: 3, EXTROVERT: 2 } },
+      { id: 'se-q2-b', text: '每周几次社交活动', scores: { MODERATE: 2, BALANCED: 1 } },
+      { id: 'se-q2-c', text: '偶尔见见朋友就好', scores: { LOW: 2 } },
+      { id: 'se-q2-d', text: '尽量减少社交', scores: { LOW: 3, INTROVERT: 2 } },
+    ],
+  },
+];
+
+export const socialEnergyResults = [
+  {
+    id: 'se-high', testId: 'test-social-energy', typeCode: 'HIGH',
+    typeName: '高社交能量',
+    summary: '从社交中获得能量，喜欢人际互动',
+    description: '你有很高的社交能量，从与人互动中获得满足和活力。',
+    strengths: ['人脉广', '沟通能力强', '适应性'],
+    growth: '记得给自己独处的时间来沉淀。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'se-moderate', testId: 'test-social-energy', typeCode: 'MODERATE',
+    typeName: '中等社交能量',
+    summary: '适度社交，平衡内外',
+    description: '你能在社交和独处之间保持平衡，适应不同场合。',
+    growth: '保持这种平衡感。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'se-low', testId: 'test-social-energy', typeCode: 'LOW',
+    typeName: '低社交能量',
+    summary: '社交消耗能量，需要独处恢复',
+    description: '你的社交能量有限，需要独处来恢复。',
+    strengths: ['深度思考', '独立性', '专注力'],
+    growth: '安排适合自己能量水平的社交，不强求。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 人际边界感测试
+export const boundaryQuestions = [
+  {
+    id: 'bnd-q1', testId: 'test-boundary', order: 1,
+    text: '当别人要求你帮忙时，你...',
+    options: [
+      { id: 'bnd-q1-a', text: '很难拒绝，几乎都会答应', scores: { POROUS: 3, PEOPLE_PLEASER: 2 } },
+      { id: 'bnd-q1-b', text: '会考虑自己的情况再决定', scores: { BALANCED: 3 } },
+      { id: 'bnd-q1-c', text: '明确判断后再回应', scores: { FIRM: 2, BALANCED: 1 } },
+      { id: 'bnd-q1-d', text: '经常拒绝，保护自己的时间', scores: { FIRM: 3, RIGID: 1 } },
+    ],
+  },
+  {
+    id: 'bnd-q2', testId: 'test-boundary', order: 2,
+    text: '对于他人的情绪和问题...',
+    options: [
+      { id: 'bnd-q2-a', text: '经常感到自己也卷入其中', scores: { POROUS: 3, EMPATH: 2 } },
+      { id: 'bnd-q2-b', text: '能关心但保持一定距离', scores: { BALANCED: 3 } },
+      { id: 'bnd-q2-c', text: '给出建议但不会太投入', scores: { FIRM: 2, BALANCED: 1 } },
+      { id: 'bnd-q2-d', text: '尽量保持距离，不想卷入', scores: { RIGID: 2, FIRM: 1 } },
+    ],
+  },
+];
+
+export const boundaryResults = [
+  {
+    id: 'bnd-porous', testId: 'test-boundary', typeCode: 'POROUS',
+    typeName: '边界渗透型',
+    summary: '边界较模糊，容易卷入他人',
+    description: '你的人际边界相对模糊，容易被他人的情绪和需求影响。',
+    strengths: ['高度共情', '善解人意', '乐于助人'],
+    weaknesses: ['可能过度付出', '难以保护自己', '容易疲劳'],
+    growth: '学会说"不"，你的边界保护你也保护关系。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'bnd-balanced', testId: 'test-boundary', typeCode: 'BALANCED',
+    typeName: '边界健康型',
+    summary: '边界清晰适度，关系健康',
+    description: '你有清晰但适度的人际边界，既能关心他人也能保护自己。',
+    growth: '保持这种健康的边界感。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'bnd-firm', testId: 'test-boundary', typeCode: 'FIRM',
+    typeName: '边界坚固型',
+    summary: '边界明确，保护自己',
+    description: '你有很明确的人际边界，善于保护自己的时间和空间。',
+    strengths: ['独立性', '自我保护', '界限清晰'],
+    weaknesses: ['可能显得疏离', '有时错过深度连接'],
+    growth: '在保护自己的同时，也尝试更开放一些。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 讨好型倾向测试
+export const pleasingQuestions = [
+  {
+    id: 'pls-q1', testId: 'test-pleasing', order: 1,
+    text: '当别人对你不满意时，你会...',
+    options: [
+      { id: 'pls-q1-a', text: '非常焦虑，想要马上解决', scores: { HIGH: 3 } },
+      { id: 'pls-q1-b', text: '有点在意，但能接受', scores: { MODERATE: 2 } },
+      { id: 'pls-q1-c', text: '会思考是否自己的问题', scores: { MODERATE: 2, REFLECTIVE: 1 } },
+      { id: 'pls-q1-d', text: '不太在意，做好自己就行', scores: { LOW: 3, ASSERTIVE: 1 } },
+    ],
+  },
+  {
+    id: 'pls-q2', testId: 'test-pleasing', order: 2,
+    text: '你在关系中更像是...',
+    options: [
+      { id: 'pls-q2-a', text: '总是先满足对方需求', scores: { HIGH: 3, CARETAKER: 2 } },
+      { id: 'pls-q2-b', text: '会平衡双方的需求', scores: { MODERATE: 2, BALANCED: 1 } },
+      { id: 'pls-q2-c', text: '有时坚持自己，有时迁就', scores: { MODERATE: 2 } },
+      { id: 'pls-q2-d', text: '更多关注自己的需求', scores: { LOW: 2, ASSERTIVE: 2 } },
+    ],
+  },
+];
+
+export const pleasingResults = [
+  {
+    id: 'pls-high', testId: 'test-pleasing', typeCode: 'HIGH',
+    typeName: '讨好型倾向强',
+    summary: '习惯性优先考虑他人',
+    description: '你有较强的讨好型倾向，习惯性地优先考虑他人，忽视自己的需求。',
+    strengths: ['善解人意', '考虑周到', '人缘好'],
+    weaknesses: ['难以表达需求', '容易委屈自己', '关系不平等'],
+    growth: '你的需求同样重要。学会表达真实的自己。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pls-moderate', testId: 'test-pleasing', typeCode: 'MODERATE',
+    typeName: '讨好型倾向中等',
+    summary: '有时迁就，有时坚持',
+    description: '你有中等的讨好型倾向，有时会迁就他人，有时也能坚持自己。',
+    growth: '练习更多自我表达，找到平衡。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'pls-low', testId: 'test-pleasing', typeCode: 'LOW',
+    typeName: '讨好型倾向低',
+    summary: '善于表达自己的需求',
+    description: '你的讨好型倾向较低，能较好地表达和坚持自己的需求。',
+    strengths: ['自我表达', '边界清晰', '需求明确'],
+    growth: '在坚持自己的同时，也保持对他人的关注。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// ==== 趣味延伸类测试 ====
+
+// 隐藏人格测试
+export const hiddenPersonalityQuestions = [
+  {
+    id: 'hp-q1', testId: 'test-hidden-personality', order: 1,
+    text: '朋友最可能用什么词形容你？',
+    options: [
+      { id: 'hp-q1-a', text: '搞笑幽默', scores: { JOKER: 3, ENTERTAINER: 1 } },
+      { id: 'hp-q1-b', text: '安静深沉', scores: { THINKER: 3, MYSTERY: 1 } },
+      { id: 'hp-q1-c', text: '温暖可靠', scores: { CARETAKER: 2, GUARDIAN: 2 } },
+      { id: 'hp-q1-d', text: '有主见独立', scores: { REBEL: 2, LEADER: 2 } },
+    ],
+  },
+  {
+    id: 'hp-q2', testId: 'test-hidden-personality', order: 2,
+    text: '一个人的时候，你更可能...',
+    options: [
+      { id: 'hp-q2-a', text: '刷手机、看剧、追综艺', scores: { ESCAPIST: 2, ENTERTAINER: 1 } },
+      { id: 'hp-q2-b', text: '看书、写作、思考人生', scores: { THINKER: 2, PHILOSOPHER: 1 } },
+      { id: 'hp-q2-c', text: '整理房间、规划未来', scores: { ORGANIZER: 2, PLANNER: 1 } },
+      { id: 'hp-q2-d', text: '发呆、睡大觉', scores: { DREAMER: 2, LAZY: 1 } },
+    ],
+  },
+];
+
+export const hiddenPersonalityResults = [
+  {
+    id: 'hp-joker', testId: 'test-hidden-personality', typeCode: 'JOKER',
+    typeName: '幽默小丑型',
+    summary: '用幽默掩饰孤独',
+    description: '你的隐藏人格是"小丑"——外表总是能让别人笑，内心却有一个安静的角落。你用幽默保护自己，同时也给世界带来快乐。',
+    growth: '偶尔也让别人看到不搞笑的那个你。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'hp-thinker', testId: 'test-hidden-personality', typeCode: 'THINKER',
+    typeName: '深度思考型',
+    summary: '表面平静，内心风暴',
+    description: '你的隐藏人格是"思想家"——外表安静，内心世界丰富。你总是在思考，在感受，在创造。',
+    growth: '把内心的世界分享给值得信任的人。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'hp-caretaker', testId: 'test-hidden-personality', typeCode: 'CARETAKER',
+    typeName: '默默守护型',
+    summary: '总是在照顾别人',
+    description: '你的隐藏人格是"守护者"——总是默默付出，让周围的人感到温暖。但别忘了，你也需要被守护。',
+    growth: '学会让也被守护。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'hp-rebel', testId: 'test-hidden-personality', typeCode: 'REBEL',
+    typeName: '叛逆自由型',
+    summary: '表面随和，内心叛逆',
+    description: '你的隐藏人格是"叛逆者"——表面可能很配合规则，内心却在悄悄挑战一切。',
+    growth: '找到健康的叛逆出口。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 动物人格测试
+export const animalPersonalityQuestions = [
+  {
+    id: 'ap-q1', testId: 'test-animal-personality', order: 1,
+    text: '在群体中，你更像是...',
+    options: [
+      { id: 'ap-q1-a', text: '领导者，带领大家前进', scores: { LION: 3, WOLF: 1 } },
+      { id: 'ap-q1-b', text: '协作者，默默贡献', scores: { DOG: 2, ELEPHANT: 2 } },
+      { id: 'ap-q1-c', text: '独立行动，按自己节奏', scores: { CAT: 3, OWL: 1 } },
+      { id: 'ap-q1-d', text: '观察者，静静旁观', scores: { OWL: 3, CAT: 1 } },
+    ],
+  },
+  {
+    id: 'ap-q2', testId: 'test-animal-personality', order: 2,
+    text: '遇到困难时，你倾向于...',
+    options: [
+      { id: 'ap-q2-a', text: '正面迎战，保护自己人', scores: { LION: 3, WOLF: 1 } },
+      { id: 'ap-q2-b', text: '寻求帮助，依靠团队', scores: { WOLF: 2, DOG: 2 } },
+      { id: 'ap-q2-c', text: '独立解决，默默处理', scores: { CAT: 3, OWL: 1 } },
+      { id: 'ap-q2-d', text: '冷静观察，寻找最佳时机', scores: { OWL: 3, CAT: 1 } },
+    ],
+  },
+];
+
+export const animalPersonalityResults = [
+  {
+    id: 'ap-lion', testId: 'test-animal-personality', typeCode: 'LION',
+    typeName: '狮子',
+    summary: '勇敢果决，天生的领导者',
+    description: '你的动物人格是狮子！你勇敢、果决、有天生的领导力。你保护自己在乎的人，勇于面对挑战。',
+    strengths: ['领导力', '勇气', '保护欲'],
+    growth: '偶尔也学会柔软和倾听。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'ap-dog', testId: 'test-animal-personality', typeCode: 'DOG',
+    typeName: '狗狗',
+    summary: '忠诚可靠，最好的朋友',
+    description: '你的动物人格是狗狗！你忠诚、可靠、永远支持朋友。你是最值得信赖的存在。',
+    strengths: ['忠诚', '可靠', '热心'],
+    growth: '记得也照顾好自己。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'ap-cat', testId: 'test-animal-personality', typeCode: 'CAT',
+    typeName: '猫咪',
+    summary: '独立优雅，神秘的独行者',
+    description: '你的动物人格是猫咪！你独立、优雅、有自己的节奏。你有自己的世界，但也懂得给爱的人温暖。',
+    strengths: ['独立', '直觉', '自由'],
+    growth: '偶尔也让别人进入你的世界。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'ap-owl', testId: 'test-animal-personality', typeCode: 'OWL',
+    typeName: '猫头鹰',
+    summary: '智慧深邃，安静的观察者',
+    description: '你的动物人格是猫头鹰！你智慧、深邃、善于观察。你用冷静的眼睛看待世界，给人深刻见解。',
+    strengths: ['智慧', '观察力', '深度'],
+    growth: '有时候也要把智慧分享出来。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 爱情脑类型测试
+export const loveBrainQuestions = [
+  {
+    id: 'lb-q1', testId: 'test-love-brain', order: 1,
+    text: '爱上一个人后，你的状态是...',
+    options: [
+      { id: 'lb-q1-a', text: '全心投入，对方就是全世界', scores: { ROMANTIC: 3, DEVOTED: 1 } },
+      { id: 'lb-q1-b', text: '保持理性，爱也要有边界', scores: { RATIONAL: 3, INDEPENDENT: 1 } },
+      { id: 'lb-q1-c', text: '患得患失，常常胡思乱想', scores: { ANXIOUS: 3, SENSITIVE: 1 } },
+      { id: 'lb-q1-d', text: '佛系对待，随缘就好', scores: { CASUAL: 3, CHILL: 1 } },
+    ],
+  },
+  {
+    id: 'lb-q2', testId: 'test-love-brain', order: 2,
+    text: '关于爱情，你更相信...',
+    options: [
+      { id: 'lb-q2-a', text: '真爱可以战胜一切', scores: { ROMANTIC: 3, IDEALIST: 1 } },
+      { id: 'lb-q2-b', text: '爱情需要经营和智慧', scores: { RATIONAL: 2, PRACTICAL: 2 } },
+      { id: 'lb-q2-c', text: '爱情总是让人患得患失', scores: { ANXIOUS: 2, SENSITIVE: 2 } },
+      { id: 'lb-q2-d', text: '缘分到了自然就来了', scores: { CASUAL: 3, CHILL: 1 } },
+    ],
+  },
+];
+
+export const loveBrainResults = [
+  {
+    id: 'lb-romantic', testId: 'test-love-brain', typeCode: 'ROMANTIC',
+    typeName: '浪漫理想型',
+    summary: '相信爱情，全身心投入',
+    description: '你的爱情脑是浪漫理想型！你相信爱情，愿意为爱付出，追求浪漫的感情体验。',
+    growth: '保持浪漫的同时，也要脚踏实地。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'lb-rational', testId: 'test-love-brain', typeCode: 'RATIONAL',
+    typeName: '理性分析型',
+    summary: '理性看待爱情，保持清醒',
+    description: '你的爱情脑是理性分析型！你用智慧经营感情，保持自我，追求平等关系。',
+    growth: '偶尔也允许自己感性一些。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'lb-anxious', testId: 'test-love-brain', typeCode: 'ANXIOUS',
+    typeName: '焦虑敏感型',
+    summary: '容易患得患失，需要安全感',
+    description: '你的爱情脑是焦虑敏感型！你对感情非常在意，容易胡思乱想，需要更多安全感。',
+    growth: '建立内在的安全感，相信自己也相信对方。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'lb-casual', testId: 'test-love-brain', typeCode: 'CASUAL',
+    typeName: '佛系随缘型',
+    summary: '对爱情持开放态度，不急不躁',
+    description: '你的爱情脑是佛系随缘型！你对爱情的态度比较轻松，不急不躁，顺其自然。',
+    growth: '遇到对的人时，也可以更主动一些。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 朋友类型测试
+export const friendTypeQuestions = [
+  {
+    id: 'ft-q1', testId: 'test-friend-type', order: 1,
+    text: '在朋友圈里，你更像是...',
+    options: [
+      { id: 'ft-q1-a', text: '倾听者，大家都来找你聊天', scores: { LISTENER: 3, THERAPIST: 1 } },
+      { id: 'ft-q1-b', text: '开心果，总能活跃气氛', scores: { ENTERTAINER: 3, JOY: 1 } },
+      { id: 'ft-q1-c', text: '智囊团，大家有问题找你', scores: { ADVISOR: 3, WISE: 1 } },
+      { id: 'ft-q1-d', text: '组织者，总是约大家出来', scores: { ORGANIZER: 3, LEADER: 1 } },
+    ],
+  },
+  {
+    id: 'ft-q2', testId: 'test-friend-type', order: 2,
+    text: '当朋友遇到问题时，你通常会...',
+    options: [
+      { id: 'ft-q2-a', text: '安静陪伴，给情感支持', scores: { LISTENER: 2, SUPPORTER: 2 } },
+      { id: 'ft-q2-b', text: '讲笑话，让气氛轻松下来', scores: { ENTERTAINER: 3, JOY: 1 } },
+      { id: 'ft-q2-c', text: '分析问题，给具体建议', scores: { ADVISOR: 3, PROBLEM_SOLVER: 1 } },
+      { id: 'ft-q2-d', text: '召集大家，一起帮忙', scores: { ORGANIZER: 2, LEADER: 2 } },
+    ],
+  },
+];
+
+export const friendTypeResults = [
+  {
+    id: 'ft-listener', testId: 'test-friend-type', typeCode: 'LISTENER',
+    typeName: '倾听者',
+    summary: '最好的树洞，永远愿意听',
+    description: '你是朋友圈的倾听者！大家都愿意向你倾诉，因为你知道如何让一个人感到被理解。',
+    growth: '也记得分享你自己的感受。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'ft-entertainer', testId: 'test-friend-type', typeCode: 'ENTERTAINER',
+    typeName: '开心果',
+    summary: '永远的气氛担当',
+    description: '你是朋友圈的开心果！哪里有你在，哪里就有笑声。',
+    growth: '偶尔也展现深沉的一面。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'ft-advisor', testId: 'test-friend-type', typeCode: 'ADVISOR',
+    typeName: '智囊团',
+    summary: '有问题就找你',
+    description: '你是朋友圈的智囊团！大家都来找你寻求建议，你的见解总是很有价值。',
+    growth: '有时候倾听比建议更重要。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'ft-organizer', testId: 'test-friend-type', typeCode: 'ORGANIZER',
+    typeName: '组织者',
+    summary: '永远的活动发起人',
+    description: '你是朋友圈的组织者！每次聚会都是你发起的，你是让朋友圈运转的人。',
+    growth: '有时候也可以让别人来组织。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// 群体角色测试
+export const groupRoleQuestions = [
+  {
+    id: 'gr-q1', testId: 'test-group-role', order: 1,
+    text: '在群体中，你更倾向于...',
+    options: [
+      { id: 'gr-q1-a', text: '提出想法，引导方向', scores: { LEADER: 3, INITIATOR: 1 } },
+      { id: 'gr-q1-b', text: '支持他人的想法', scores: { SUPPORTER: 3, COLLABORATOR: 1 } },
+      { id: 'gr-q1-c', text: '默默观察和贡献', scores: { OBSERVER: 3, CONTRIBUTOR: 1 } },
+      { id: 'gr-q1-d', text: '调和矛盾，维持和谐', scores: { MEDIATOR: 3, HARMONIZER: 1 } },
+    ],
+  },
+];
+
+export const groupRoleResults = [
+  {
+    id: 'gr-leader', testId: 'test-group-role', typeCode: 'LEADER',
+    typeName: '领导者',
+    summary: '善于把控方向',
+    description: '你在群体中是天然的领导者，能够提出方向、整合资源、推动前进。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'gr-supporter', testId: 'test-group-role', typeCode: 'SUPPORTER',
+    typeName: '支持者',
+    summary: '总是支持团队',
+    description: '你是群体中最可靠的支持者，让想法能够落地。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'gr-observer', testId: 'test-group-role', typeCode: 'OBSERVER',
+    typeName: '观察者',
+    summary: '善于观察分析',
+    description: '你是群体中的观察者，能看到别人忽略的细节。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'gr-mediator', testId: 'test-group-role', typeCode: 'MEDIATOR',
+    typeName: '协调者',
+    summary: '善于调和矛盾',
+    description: '你是群体中的协调者，让每个人都能被听到。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
 export function calculateSbtiResult(answers: Record<string, string>): {
   typeCode: string;
   dimensionScores: Record<string, number>;
@@ -1352,3 +2702,1023 @@ export function calculateSbtiResult(answers: Record<string, string>): {
   const result = sbtiResults.find(r => r.typeCode === topType) || sbtiResults[0];
   return { typeCode: topType, dimensionScores: scores, result };
 }
+
+// ==== 气质类型测试 ====
+export const temperamentDimensions: TestDimension[] = [
+  { id: 'temp-s', testId: 'test-temperament', name: '稳定性', description: '情绪的稳定与波动程度', minLabel: '稳定', maxLabel: '波动', color: '#8b5cf6' },
+  { id: 'temp-a', testId: 'test-temperament', name: '活动性', description: '行为的活跃与安静程度', minLabel: '安静', maxLabel: '活跃', color: '#06b6d4' },
+];
+
+export const temperamentQuestions: TestQuestion[] = [
+  { id: 'temp-q1', testId: 'test-temperament', text: '面对突发事件时，你通常会...', order: 1 },
+  { id: 'temp-q2', testId: 'test-temperament', text: '在社交场合，你的表现是...', order: 2 },
+  { id: 'temp-q3', testId: 'test-temperament', text: '当你感到不开心时，情绪会...', order: 3 },
+  { id: 'temp-q4', testId: 'test-temperament', text: '对于新环境或新任务，你倾向于...', order: 4 },
+  { id: 'temp-q5', testId: 'test-temperament', text: '别人通常觉得你是一个...', order: 5 },
+  { id: 'temp-q6', testId: 'test-temperament', text: '在做决定时，你更...', order: 6 },
+  { id: 'temp-q7', testId: 'test-temperament', text: '遇到困难时，你的第一反应是...', order: 7 },
+  { id: 'temp-q8', testId: 'test-temperament', text: '你的日常说话速度通常是...', order: 8 },
+  { id: 'temp-q9', testId: 'test-temperament', text: '面对批评时，你会...', order: 9 },
+  { id: 'temp-q10', testId: 'test-temperament', text: '当你生气时，你会...', order: 10 },
+  { id: 'temp-q11', testId: 'test-temperament', text: '在团队工作中，你更像是...', order: 11 },
+  { id: 'temp-q12', testId: 'test-temperament', text: '对于计划和变化，你的态度是...', order: 12 },
+  { id: 'temp-q13', testId: 'test-temperament', text: '你更容易对以下哪种情况产生反应...', order: 13 },
+  { id: 'temp-q14', testId: 'test-temperament', text: '在压力下，你倾向于...', order: 14 },
+  { id: 'temp-q15', testId: 'test-temperament', text: '你的注意力通常...', order: 15 },
+  { id: 'temp-q16', testId: 'test-temperament', text: '对于重复性的工作，你的感受是...', order: 16 },
+  { id: 'temp-q17', testId: 'test-temperament', text: '当需要表达观点时，你...', order: 17 },
+  { id: 'temp-q18', testId: 'test-temperament', text: '你更倾向于相信...', order: 18 },
+  { id: 'temp-q19', testId: 'test-temperament', text: '在冲突中，你更可能...', order: 19 },
+  { id: 'temp-q20', testId: 'test-temperament', text: '总的来说，你认为自己是...', order: 20 },
+];
+
+export const temperamentOptions: OptionsMap = {
+  'temp-q1': [
+    { id: 'temp-q1-a', questionId: 'temp-q1', text: '迅速做出反应，立即行动', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q1-b', questionId: 'temp-q1', text: '冷静分析后再行动', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q1-c', questionId: 'temp-q1', text: '有些慌张，需要时间调整', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+    { id: 'temp-q1-d', questionId: 'temp-q1', text: '保持冷静，按部就班', value: -1, dimensionScores: { 'temp-s': -2, 'temp-a': -1 } },
+  ],
+  'temp-q2': [
+    { id: 'temp-q2-a', questionId: 'temp-q2', text: '非常活跃，主动与人交流', value: 2, dimensionScores: { 'temp-s': 0, 'temp-a': 2 } },
+    { id: 'temp-q2-b', questionId: 'temp-q2', text: '适度参与，表现自然', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 1 } },
+    { id: 'temp-q2-c', questionId: 'temp-q2', text: '安静观察，较少主动', value: 0, dimensionScores: { 'temp-s': -1, 'temp-a': -1 } },
+    { id: 'temp-q2-d', questionId: 'temp-q2', text: '容易紧张，想尽快离开', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q3': [
+    { id: 'temp-q3-a', questionId: 'temp-q3', text: '很快过去，转眼就忘了', value: 2, dimensionScores: { 'temp-s': -2, 'temp-a': 1 } },
+    { id: 'temp-q3-b', questionId: 'temp-q3', text: '持续一阵子，但能自我调节', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q3-c', questionId: 'temp-q3', text: '会持续较长时间', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+    { id: 'temp-q3-d', questionId: 'temp-q3', text: '容易陷入情绪，难以自拔', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q4': [
+    { id: 'temp-q4-a', questionId: 'temp-q4', text: '充满热情，立刻投入', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q4-b', questionId: 'temp-q4', text: '有兴趣，但会先了解', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 1 } },
+    { id: 'temp-q4-c', questionId: 'temp-q4', text: '需要时间适应和准备', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q4-d', questionId: 'temp-q4', text: '有些抗拒，想要逃避', value: -1, dimensionScores: { 'temp-s': 1, 'temp-a': -2 } },
+  ],
+  'temp-q5': [
+    { id: 'temp-q5-a', questionId: 'temp-q5', text: '开朗外向，充满活力', value: 2, dimensionScores: { 'temp-s': -1, 'temp-a': 2 } },
+    { id: 'temp-q5-b', questionId: 'temp-q5', text: '稳重踏实，可靠可信', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q5-c', questionId: 'temp-q5', text: '温和细致，有耐心', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q5-d', questionId: 'temp-q5', text: '敏感细腻，容易情绪化', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q6': [
+    { id: 'temp-q6-a', questionId: 'temp-q6', text: '快速决定，不喜欢拖延', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q6-b', questionId: 'temp-q6', text: '权衡利弊后理性决定', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q6-c', questionId: 'temp-q6', text: '考虑他人感受', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+    { id: 'temp-q6-d', questionId: 'temp-q6', text: '反复犹豫，难以抉择', value: -1, dimensionScores: { 'temp-s': 1, 'temp-a': -2 } },
+  ],
+  'temp-q7': [
+    { id: 'temp-q7-a', questionId: 'temp-q7', text: '立刻采取行动解决', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q7-b', questionId: 'temp-q7', text: '冷静思考对策', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q7-c', questionId: 'temp-q7', text: '寻求他人帮助', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q7-d', questionId: 'temp-q7', text: '感到沮丧，想退缩', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q8': [
+    { id: 'temp-q8-a', questionId: 'temp-q8', text: '语速快，话多', value: 2, dimensionScores: { 'temp-s': 0, 'temp-a': 2 } },
+    { id: 'temp-q8-b', questionId: 'temp-q8', text: '语速适中，表达清晰', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 1 } },
+    { id: 'temp-q8-c', questionId: 'temp-q8', text: '语速较慢，说话少', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q8-d', questionId: 'temp-q8', text: '有时语无伦次', value: -1, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+  ],
+  'temp-q9': [
+    { id: 'temp-q9-a', questionId: 'temp-q9', text: '坦然接受，有则改之', value: 2, dimensionScores: { 'temp-s': -2, 'temp-a': 1 } },
+    { id: 'temp-q9-b', questionId: 'temp-q9', text: '冷静反思，理性对待', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q9-c', questionId: 'temp-q9', text: '会辩解或解释', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': 1 } },
+    { id: 'temp-q9-d', questionId: 'temp-q9', text: '内心受伤，难以释怀', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q10': [
+    { id: 'temp-q10-a', questionId: 'temp-q10', text: '直接表达，很快过去', value: 2, dimensionScores: { 'temp-s': -1, 'temp-a': 2 } },
+    { id: 'temp-q10-b', questionId: 'temp-q10', text: '控制情绪，冷静处理', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q10-c', questionId: 'temp-q10', text: '压抑情绪，不表现出来', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+    { id: 'temp-q10-d', questionId: 'temp-q10', text: '情绪波动大，难以控制', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -1 } },
+  ],
+  'temp-q11': [
+    { id: 'temp-q11-a', questionId: 'temp-q11', text: '领导者或组织者', value: 2, dimensionScores: { 'temp-s': 0, 'temp-a': 2 } },
+    { id: 'temp-q11-b', questionId: 'temp-q11', text: '执行者，可靠完成任务', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q11-c', questionId: 'temp-q11', text: '协调者，促进和谐', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+    { id: 'temp-q11-d', questionId: 'temp-q11', text: '创意贡献者，但不喜欢出头', value: -1, dimensionScores: { 'temp-s': 1, 'temp-a': -2 } },
+  ],
+  'temp-q12': [
+    { id: 'temp-q12-a', questionId: 'temp-q12', text: '喜欢变化，灵活调整', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q12-b', questionId: 'temp-q12', text: '有计划，但接受合理变化', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q12-c', questionId: 'temp-q12', text: '按计划行事，变化让我不安', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q12-d', questionId: 'temp-q12', text: '计划变化都让我焦虑', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q13': [
+    { id: 'temp-q13-a', questionId: 'temp-q13', text: '新鲜有趣的事物', value: 2, dimensionScores: { 'temp-s': 0, 'temp-a': 2 } },
+    { id: 'temp-q13-b', questionId: 'temp-q13', text: '逻辑和分析', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q13-c', questionId: 'temp-q13', text: '他人的情绪和态度', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+    { id: 'temp-q13-d', questionId: 'temp-q13', text: '潜在的负面后果', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q14': [
+    { id: 'temp-q14-a', questionId: 'temp-q14', text: '更加活跃，高效应对', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q14-b', questionId: 'temp-q14', text: '保持冷静，系统解决', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q14-c', questionId: 'temp-q14', text: '变得沉默，独自承受', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -2 } },
+    { id: 'temp-q14-d', questionId: 'temp-q14', text: '容易崩溃，难以应付', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -1 } },
+  ],
+  'temp-q15': [
+    { id: 'temp-q15-a', questionId: 'temp-q15', text: '容易转移，对新事物感兴趣', value: 2, dimensionScores: { 'temp-s': -1, 'temp-a': 2 } },
+    { id: 'temp-q15-b', questionId: 'temp-q15', text: '能够集中，适时调整', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q15-c', questionId: 'temp-q15', text: '相对稳定，变化较慢', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q15-d', questionId: 'temp-q15', text: '容易钻牛角尖', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -1 } },
+  ],
+  'temp-q16': [
+    { id: 'temp-q16-a', questionId: 'temp-q16', text: '很快感到无聊', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q16-b', questionId: 'temp-q16', text: '能专注完成', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q16-c', questionId: 'temp-q16', text: '慢慢完成，细致认真', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q16-d', questionId: 'temp-q16', text: '容易烦躁出错', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -1 } },
+  ],
+  'temp-q17': [
+    { id: 'temp-q17-a', questionId: 'temp-q17', text: '直截了当，毫不犹豫', value: 2, dimensionScores: { 'temp-s': 0, 'temp-a': 2 } },
+    { id: 'temp-q17-b', questionId: 'temp-q17', text: '考虑周全，有理有据', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q17-c', questionId: 'temp-q17', text: '委婉表达，顾全大局', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q17-d', questionId: 'temp-q17', text: '犹豫不决，担心后果', value: -1, dimensionScores: { 'temp-s': 1, 'temp-a': -2 } },
+  ],
+  'temp-q18': [
+    { id: 'temp-q18-a', questionId: 'temp-q18', text: '直觉和经验', value: 2, dimensionScores: { 'temp-s': 0, 'temp-a': 1 } },
+    { id: 'temp-q18-b', questionId: 'temp-q18', text: '事实和逻辑', value: 1, dimensionScores: { 'temp-s': -1, 'temp-a': 0 } },
+    { id: 'temp-q18-c', questionId: 'temp-q18', text: '多数人的意见', value: 0, dimensionScores: { 'temp-s': 1, 'temp-a': -1 } },
+    { id: 'temp-q18-d', questionId: 'temp-q18', text: '内心的担忧', value: -1, dimensionScores: { 'temp-s': 2, 'temp-a': -2 } },
+  ],
+  'temp-q19': [
+    { id: 'temp-q19-a', questionId: 'temp-q19', text: '据理力争', value: 2, dimensionScores: { 'temp-s': 1, 'temp-a': 2 } },
+    { id: 'temp-q19-b', questionId: 'temp-q19', text: '冷静讲理', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q19-c', questionId: 'temp-q19', text: '退让妥协', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q19-d', questionId: 'temp-q19', text: '回避退缩', value: -1, dimensionScores: { 'temp-s': 1, 'temp-a': -2 } },
+  ],
+  'temp-q20': [
+    { id: 'temp-q20-a', questionId: 'temp-q20', text: '外向开朗的人', value: 2, dimensionScores: { 'temp-s': -1, 'temp-a': 2 } },
+    { id: 'temp-q20-b', questionId: 'temp-q20', text: '稳重可靠的人', value: 1, dimensionScores: { 'temp-s': -2, 'temp-a': 0 } },
+    { id: 'temp-q20-c', questionId: 'temp-q20', text: '温和稳重的人', value: 0, dimensionScores: { 'temp-s': 0, 'temp-a': -1 } },
+    { id: 'temp-q20-d', questionId: 'temp-q20', text: '敏感细腻的人', value: -1, dimensionScores: { 'temp-s': 1, 'temp-a': -2 } },
+  ],
+};
+
+export const temperamentResults: TestResult[] = [
+  {
+    id: 'temp-sanguine',
+    testId: 'test-temperament',
+    typeCode: 'SANGUINE',
+    typeName: '多血质',
+    summary: '活泼开朗，善于交际，适应性强，情绪外露',
+    description: '你是典型的多血质气质。你热情活泼，反应迅速，善于与人交往。你喜欢新鲜事物，适应能力强，但可能缺乏耐心，兴趣容易转移。',
+    strengths: ['热情开朗，人缘好', '反应敏捷，适应力强', '善于表达和沟通', '乐观积极，充满活力'],
+    weaknesses: ['注意力容易分散', '做事可能缺乏恒心', '情绪波动较大', '有时过于浮躁'],
+    relationships: '你在关系中轻松愉快，善于活跃气氛。需要注意的是，有时候会显得不够深入或稳定。',
+    career: '适合需要人际交往的工作：销售、公关、主持、教育、市场推广等。',
+    growth: '培养专注力和坚持力。选择一件重要的事，设定目标，持续深入地完成它。',
+    minScore: 0,
+    maxScore: 100,
+    dimensionRanges: { 'temp-s': [-20, 0], 'temp-a': [0, 40] },
+  },
+  {
+    id: 'temp-choleric',
+    testId: 'test-temperament',
+    typeCode: 'CHOLERIC',
+    typeName: '胆汁质',
+    summary: '精力充沛，行动力强，意志坚定，情绪强烈',
+    description: '你是典型的胆汁质气质。你精力充沛，行动力强，具有领导才能。你意志坚定，目标明确，但可能过于强势，情绪反应强烈。',
+    strengths: ['意志坚强，目标明确', '行动力强，执行力高', '领导能力强', '直率坦诚'],
+    weaknesses: ['可能过于强势', '情绪反应强烈', '有时缺乏耐心', '容易冲动'],
+    relationships: '你在关系中是主导者，需要学会倾听和包容。找一个能和你互补的伴侣会更好。',
+    career: '适合需要决断和领导的工作：管理、创业、法律、军事、项目管理等。',
+    growth: '学会放慢节奏，倾听他人。控制情绪，在行动前多思考一步。',
+    minScore: 0,
+    maxScore: 100,
+    dimensionRanges: { 'temp-s': [0, 20], 'temp-a': [0, 40] },
+  },
+  {
+    id: 'temp-phlegmatic',
+    testId: 'test-temperament',
+    typeCode: 'PHLEGMATIC',
+    typeName: '粘液质',
+    summary: '沉稳冷静，耐心细致，情绪稳定，节奏较慢',
+    description: '你是典型的粘液质气质。你沉稳冷静，耐心细致，情绪非常稳定。你做事有条不紊，但可能反应较慢，不够灵活。',
+    strengths: ['情绪稳定，心态平和', '做事有条理，细致耐心', '可靠稳定', '善于倾听'],
+    weaknesses: ['反应相对较慢', '可能缺乏主动性', '不喜欢变化', '有时显得冷淡'],
+    relationships: '你在关系中是稳定的存在。你需要一个能理解你节奏，同时也能带动你更积极的伴侣。',
+    career: '适合需要稳定和细致的工作：财务、行政、科研、技术、医疗等。',
+    growth: '尝试主动一些。定期给自己设定小挑战，逐步走出舒适区。',
+    minScore: 0,
+    maxScore: 100,
+    dimensionRanges: { 'temp-s': [-40, -10], 'temp-a': [-40, 0] },
+  },
+  {
+    id: 'temp-melancholic',
+    testId: 'test-temperament',
+    typeCode: 'MELANCHOLIC',
+    typeName: '抑郁质',
+    summary: '敏感细腻，感受深刻，内向稳重，容易多虑',
+    description: '你是典型的抑郁质气质。你敏感细腻，感受力强，内心世界丰富。你做事认真，责任心强，但可能容易焦虑，情绪波动大。',
+    strengths: ['感受力强，敏感细腻', '责任心强，做事认真', '内心丰富，有深度', '善于观察和理解'],
+    weaknesses: ['容易过度担忧', '情绪容易低落', '可能过于敏感', '有时缺乏自信'],
+    relationships: '你在关系中深情而敏感。你需要一个能给你安全感，同时也理解你情绪波动的伴侣。',
+    career: '适合需要深度和细致的工作：艺术、写作、心理咨询、研究、设计等。',
+    growth: '学会自我关怀，建立内在的安全感。记录每天的小成就，培养自我肯定的习惯。',
+    minScore: 0,
+    maxScore: 100,
+    dimensionRanges: { 'temp-s': [10, 40], 'temp-a': [-40, 0] },
+  },
+];
+
+// 气质类型计算函数
+export function calculateTemperamentResult(answers: Record<string, string>): {
+  typeCode: string;
+  dimensionScores: Record<string, number>;
+  result: TestResult;
+} {
+  const dimScores: Record<string, number> = {
+    'temp-s': 0,
+    'temp-a': 0,
+  };
+
+  temperamentQuestions.forEach((q) => {
+    const answeredOptionId = answers[q.id];
+    if (!answeredOptionId) return;
+    const opts = temperamentOptions[q.id];
+    if (!opts) return;
+    const opt = opts.find(o => o.id === String(answeredOptionId));
+    if (!opt) return;
+    Object.entries(opt.dimensionScores).forEach(([dim, score]) => {
+      dimScores[dim] = (dimScores[dim] || 0) + score;
+    });
+  });
+
+  // 根据维度分数判断气质类型
+  const stability = dimScores['temp-s'];
+  const activity = dimScores['temp-a'];
+
+  let typeCode = 'SANGUINE';
+  if (stability < 0 && activity > 0) {
+    typeCode = 'SANGUINE'; // 多血质：稳定、活跃
+  } else if (stability >= 0 && activity > 0) {
+    typeCode = 'CHOLERIC'; // 胆汁质：不稳定、活跃
+  } else if (stability < 0 && activity <= 0) {
+    typeCode = 'PHLEGMATIC'; // 粘液质：稳定、不活跃
+  } else if (stability >= 0 && activity <= 0) {
+    typeCode = 'MELANCHOLIC'; // 抑郁质：不稳定、不活跃
+  }
+
+  const result = temperamentResults.find(r => r.typeCode === typeCode) || temperamentResults[0];
+  return { typeCode, dimensionScores: dimScores, result };
+}
+
+// ==== 内向/外向倾向测试 ====
+export const introversionDimensions: TestDimension[] = [
+  { id: 'intro-ie', testId: 'test-introversion', name: '能量来源', description: '你从哪里获得能量', minLabel: '内向', maxLabel: '外向', color: '#8b5cf6' },
+];
+
+export const introversionQuestions: TestQuestion[] = [
+  { id: 'intro-q1', testId: 'test-introversion', text: '在繁忙的社交聚会后，你通常感觉如何？', order: 1 },
+  { id: 'intro-q2', testId: 'test-introversion', text: '周末时，你更倾向于...', order: 2 },
+  { id: 'intro-q3', testId: 'test-introversion', text: '当你需要思考重要问题时，你更喜欢...', order: 3 },
+  { id: 'intro-q4', testId: 'test-introversion', text: '在小组讨论中，你通常...', order: 4 },
+  { id: 'intro-q5', testId: 'test-introversion', text: '你更喜欢哪种沟通方式？', order: 5 },
+  { id: 'intro-q6', testId: 'test-introversion', text: '对于陌生的新环境，你的反应是...', order: 6 },
+  { id: 'intro-q7', testId: 'test-introversion', text: '你觉得怎样的周末最理想？', order: 7 },
+  { id: 'intro-q8', testId: 'test-introversion', text: '遇到问题需要解决时，你更可能...', order: 8 },
+  { id: 'intro-q9', testId: 'test-introversion', text: '在人群中，你通常...', order: 9 },
+  { id: 'intro-q10', testId: 'test-introversion', text: '你对"社交"这个概念的感受是...', order: 10 },
+  { id: 'intro-q11', testId: 'test-introversion', text: '如果可以自由选择工作环境...', order: 11 },
+  { id: 'intro-q12', testId: 'test-introversion', text: '面对冲突时，你更可能...', order: 12 },
+  { id: 'intro-q13', testId: 'test-introversion', text: '你更喜欢的休息方式是...', order: 13 },
+  { id: 'intro-q14', testId: 'test-introversion', text: '当朋友想介绍新朋友给你认识...', order: 14 },
+  { id: 'intro-q15', testId: 'test-introversion', text: '总体上，你认为自己...', order: 15 },
+];
+
+export const introversionOptions: OptionsMap = {
+  'intro-q1': [
+    { id: 'intro-q1-a', questionId: 'intro-q1', text: '精力充沛，想要更多', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q1-b', questionId: 'intro-q1', text: '还好，但需要休息', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q1-c', questionId: 'intro-q1', text: '有些疲惫，需要独处充电', value: 0, dimensionScores: { 'intro-ie': -2 } },
+    { id: 'intro-q1-d', questionId: 'intro-q1', text: '非常疲惫，想一个人待着', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q2': [
+    { id: 'intro-q2-a', questionId: 'intro-q2', text: '约朋友出门活动', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q2-b', questionId: 'intro-q2', text: '可能出门也可能待在家', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q2-c', questionId: 'intro-q2', text: '在家看书或追剧', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q2-d', questionId: 'intro-q2', text: '一个人做自己喜欢的事', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q3': [
+    { id: 'intro-q3-a', questionId: 'intro-q3', text: '边走边和他人讨论', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q3-b', questionId: 'intro-q3', text: '先简单讨论再自己思考', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q3-c', questionId: 'intro-q3', text: '先独自思考', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q3-d', questionId: 'intro-q3', text: '完全独自思考', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q4': [
+    { id: 'intro-q4-a', questionId: 'intro-q4', text: '积极发言，主导讨论', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q4-b', questionId: 'intro-q4', text: '适时发言，参与讨论', value: 1, dimensionScores: { 'intro-ie': 1 } },
+    { id: 'intro-q4-c', questionId: 'intro-q4', text: '倾听为主，偶尔发言', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q4-d', questionId: 'intro-q4', text: '很少发言，默默观察', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q5': [
+    { id: 'intro-q5-a', questionId: 'intro-q5', text: '面对面或电话交谈', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q5-b', questionId: 'intro-q5', text: '根据情况选择', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q5-c', questionId: 'intro-q5', text: '短信或文字消息', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q5-d', questionId: 'intro-q5', text: '能不发消息就不发', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q6': [
+    { id: 'intro-q6-a', questionId: 'intro-q6', text: '兴奋好奇，主动探索', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q6-b', questionId: 'intro-q6', text: '有些期待，逐渐适应', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q6-c', questionId: 'intro-q6', text: '有点紧张，谨慎观察', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q6-d', questionId: 'intro-q6', text: '很不自在，想离开', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q7': [
+    { id: 'intro-q7-a', questionId: 'intro-q7', text: '和朋友一起活动', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q7-b', questionId: 'intro-q7', text: '视情况而定', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q7-c', questionId: 'intro-q7', text: '和少数好友安静相处', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q7-d', questionId: 'intro-q7', text: '一个人独处放松', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q8': [
+    { id: 'intro-q8-a', questionId: 'intro-q8', text: '直接找人商量', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q8-b', questionId: 'intro-q8', text: '先查资料再讨论', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q8-c', questionId: 'intro-q8', text: '先自己思考', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q8-d', questionId: 'intro-q8', text: '完全独立解决', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q9': [
+    { id: 'intro-q9-a', questionId: 'intro-q9', text: '感到充满能量', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q9-b', questionId: 'intro-q9', text: '相对自在', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q9-c', questionId: 'intro-q9', text: '有点消耗能量', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q9-d', questionId: 'intro-q9', text: '非常疲惫', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q10': [
+    { id: 'intro-q10-a', questionId: 'intro-q10', text: '喜欢，是能量的来源', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q10-b', questionId: 'intro-q10', text: '还行，看具体情况', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q10-c', questionId: 'intro-q10', text: '有点累但能应付', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q10-d', questionId: 'intro-q10', text: '尽量减少社交', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q11': [
+    { id: 'intro-q11-a', questionId: 'intro-q11', text: '开放式办公室或共享空间', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q11-b', questionId: 'intro-q11', text: '两者都可以', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q11-c', questionId: 'intro-q11', text: '小隔间或安静角落', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q11-d', questionId: 'intro-q11', text: '独立的私人办公室', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q12': [
+    { id: 'intro-q12-a', questionId: 'intro-q12', text: '直接表达观点', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q12-b', questionId: 'intro-q12', text: '适度表达', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q12-c', questionId: 'intro-q12', text: '内心有想法但不说', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q12-d', questionId: 'intro-q12', text: '避免冲突，退让', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q13': [
+    { id: 'intro-q13-a', questionId: 'intro-q13', text: '和朋友聚会聊天', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q13-b', questionId: 'intro-q13', text: '外出散步或运动', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q13-c', questionId: 'intro-q13', text: '看书或追剧', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q13-d', questionId: 'intro-q13', text: '独自安静发呆或思考', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q14': [
+    { id: 'intro-q14-a', questionId: 'intro-q14', text: '很期待，喜欢认识新朋友', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q14-b', questionId: 'intro-q14', text: '看心情决定', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q14-c', questionId: 'intro-q14', text: '有点压力', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q14-d', questionId: 'intro-q14', text: '不太想认识新人', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+  'intro-q15': [
+    { id: 'intro-q15-a', questionId: 'intro-q15', text: '外向，喜欢社交', value: 3, dimensionScores: { 'intro-ie': 3 } },
+    { id: 'intro-q15-b', questionId: 'intro-q15', text: '比较外向，适应性好', value: 2, dimensionScores: { 'intro-ie': 1 } },
+    { id: 'intro-q15-c', questionId: 'intro-q15', text: '内向和外向之间', value: 1, dimensionScores: { 'intro-ie': 0 } },
+    { id: 'intro-q15-d', questionId: 'intro-q15', text: '比较内向，喜欢独处', value: 0, dimensionScores: { 'intro-ie': -1 } },
+    { id: 'intro-q15-e', questionId: 'intro-q15', text: '内向，需要大量独处时间', value: -1, dimensionScores: { 'intro-ie': -3 } },
+  ],
+};
+
+export const introversionResults: TestResult[] = [
+  {
+    id: 'intro-extrovert',
+    testId: 'test-introversion',
+    typeCode: 'EXTROVERT',
+    typeName: '外向型',
+    summary: '从社交中获得能量，喜欢与人互动',
+    description: '你是典型的外向型人格。你从社交互动中获得能量，喜欢与人交流。你在人群中如鱼得水，独处时间过长会让你感到无聊和焦虑。',
+    strengths: ['善于社交，人缘好', '表达能力强', '适应力强，反应快', '乐观积极，充满活力'],
+    weaknesses: ['可能过于依赖外界反馈', '独处时会感到不安', '有时缺乏深度思考', '可能过于冲动'],
+    relationships: '你在关系中是活跃的参与者，能快速建立联系。需要注意给内向伴侣空间。',
+    career: '适合需要人际互动的工作：销售、公关、管理、主持、教育等。',
+    growth: '尝试培养独处的能力，学会在安静中获得能量。',
+    minScore: 15,
+    maxScore: 45,
+  },
+  {
+    id: 'intro-moderate-extro',
+    testId: 'test-introversion',
+    typeCode: 'MODERATE_EXTRO',
+    typeName: '偏外向型',
+    summary: '总体外向，但也享受适度独处',
+    description: '你偏向外向，但也能享受独处时光。你从社交中获得能量，但也需要一定的独处来平衡。你能适应不同的社交场合。',
+    strengths: ['社交能力强', '有良好的平衡感', '适应不同场合', '既能社交也能独处'],
+    weaknesses: ['有时难以确定真正需求', '可能在两者间摇摆', '能量管理需要觉察'],
+    relationships: '你在关系中灵活有度，既能参与社交也能给予空间。',
+    career: '适合需要适度社交的工作：项目管理、协调类、中高交互岗位。',
+    growth: '更清晰地觉察自己的能量需求，在社交与独处间找到最佳平衡。',
+    minScore: 5,
+    maxScore: 14,
+  },
+  {
+    id: 'intro-ambivert',
+    testId: 'test-introversion',
+    typeCode: 'AMBIVERT',
+    typeName: '中间型',
+    summary: '内外向平衡，能适应不同情境',
+    description: '你是典型的中间型（双重型）人格。你在外向和内向之间保持平衡，能根据情境调整自己的状态。你既有社交能力，也有独处的深度。',
+    strengths: ['适应性强', '理解内外向两种需求', '灵活调整', '既有深度又有广度'],
+    weaknesses: ['有时难以确定自己的倾向', '可能在选择时犹豫', '需要更多自我觉察'],
+    relationships: '你能理解不同类型的人，在关系中灵活应对。',
+    career: '适合需要灵活性的工作：咨询、项目管理、创意类工作。',
+    growth: '接纳自己的灵活性，这是优势而非矛盾。',
+    minScore: -4,
+    maxScore: 4,
+  },
+  {
+    id: 'intro-moderate-intro',
+    testId: 'test-introversion',
+    typeCode: 'MODERATE_INTRO',
+    typeName: '偏内向型',
+    summary: '总体内向，但具备必要社交能力',
+    description: '你偏内向，但也具备必要的社交能力。你需要独处来充电，但不会完全回避社交。你在熟悉的环境中表现自然。',
+    strengths: ['有深度思考能力', '独立自主', '善于倾听和观察', '做事专注认真'],
+    weaknesses: ['可能错过一些社交机会', '有时过度回避社交', '需要管理社交能量'],
+    relationships: '你在关系中是温暖的倾听者，建立深度连接后非常真诚。',
+    career: '适合需要深度的工作：研究、写作、技术、设计、财务等。',
+    growth: '有意识地走出舒适区，同时保护自己的独处时间。',
+    minScore: -14,
+    maxScore: -5,
+  },
+  {
+    id: 'intro-introvert',
+    testId: 'test-introversion',
+    typeCode: 'INTROVERT',
+    typeName: '内向型',
+    summary: '从独处中获得能量，深度思考型',
+    description: '你是典型的内向型人格。你从独处中获得能量，深度思考是你的优势。你更喜欢小范围、深度的互动，大型社交场合会消耗你的能量。',
+    strengths: ['深度思考能力强', '独立自主，不依赖外界', '专注力强', '感受力敏锐'],
+    weaknesses: ['社交能量有限', '可能过于内向', '有时错失社交机会', '可能显得疏离'],
+    relationships: '你建立关系慢但深。一旦信任某人，是非常忠诚和真诚的伴侣或朋友。',
+    career: '适合独立工作的岗位：研究、写作、编程、设计、数据分析等。',
+    growth: '逐步扩大社交舒适区，同时接纳自己的内向特质——这是优势而非弱点。',
+    minScore: -45,
+    maxScore: -15,
+  },
+];
+
+// 内向/外向计算函数
+export function calculateIntroversionResult(answers: Record<string, string>): {
+  typeCode: string;
+  dimensionScores: Record<string, number>;
+  result: TestResult;
+} {
+  const dimScores: Record<string, number> = {
+    'intro-ie': 0,
+  };
+
+  introversionQuestions.forEach((q) => {
+    const answeredOptionId = answers[q.id];
+    if (!answeredOptionId) return;
+    const opts = introversionOptions[q.id];
+    if (!opts) return;
+    const opt = opts.find(o => o.id === String(answeredOptionId));
+    if (!opt) return;
+    Object.entries(opt.dimensionScores).forEach(([dim, score]) => {
+      dimScores[dim] = (dimScores[dim] || 0) + score;
+    });
+  });
+
+  const score = dimScores['intro-ie'];
+  const result = introversionResults.find(r => score >= r.minScore && score <= r.maxScore) || introversionResults[2];
+  return { typeCode: result.typeCode, dimensionScores: dimScores, result };
+}
+
+// ==== 恋爱风格测试 ====
+export const loveStyleDimensions: TestDimension[] = [
+  { id: 'love-p', testId: 'test-love-style', name: '激情型', description: '热情奔放的爱', minLabel: '低', maxLabel: '高', color: '#ef4444' },
+  { id: 'love-c', testId: 'test-love-style', name: '关怀型', description: '温柔体贴的爱', minLabel: '低', maxLabel: '高', color: '#ec4899' },
+  { id: 'love-r', testId: 'test-love-style', name: '理性型', description: '冷静理性的爱', minLabel: '低', maxLabel: '高', color: '#8b5cf6' },
+  { id: 'love-i', testId: 'test-love-style', name: '独立型', description: '保持自我的爱', minLabel: '低', maxLabel: '高', color: '#06b6d4' },
+];
+
+export const loveStyleQuestions: TestQuestion[] = [
+  { id: 'love-q1', testId: 'test-love-style', text: '当遇到心仪的人时，你倾向于...', order: 1 },
+  { id: 'love-q2', testId: 'test-love-style', text: '你认为爱情中最重要的是...', order: 2 },
+  { id: 'love-q3', testId: 'test-love-style', text: '在恋爱中，你更看重...', order: 3 },
+  { id: 'love-q4', testId: 'test-love-style', text: '对于"浪漫"，你的态度是...', order: 4 },
+  { id: 'love-q5', testId: 'test-love-style', text: '当伴侣需要安慰时，你会...', order: 5 },
+  { id: 'love-q6', testId: 'test-love-style', text: '关于"为爱情付出"，你觉得...', order: 6 },
+  { id: 'love-q7', testId: 'test-love-style', text: '在感情中，你更像是...', order: 7 },
+  { id: 'love-q8', testId: 'test-love-style', text: '对于伴侣的缺点，你会...', order: 8 },
+  { id: 'love-q9', testId: 'test-love-style', text: '关于"一起度过时间"，你觉得...', order: 9 },
+  { id: 'love-q10', testId: 'test-love-style', text: '当感情出现问题时，你更可能...', order: 10 },
+  { id: 'love-q11', testId: 'test-love-style', text: '对于伴侣的社交活动，你的态度是...', order: 11 },
+  { id: 'love-q12', testId: 'test-love-style', text: '在表达爱意时，你更倾向于...', order: 12 },
+  { id: 'love-q13', testId: 'test-love-style', text: '对于未来的规划，你认为...', order: 13 },
+  { id: 'love-q14', testId: 'test-love-style', text: '当伴侣做了让你不开心的事...', order: 14 },
+  { id: 'love-q15', testId: 'test-love-style', text: '关于"个人空间"，你觉得...', order: 15 },
+  { id: 'love-q16', testId: 'test-love-style', text: '在关系中，你更在意...', order: 16 },
+  { id: 'love-q17', testId: 'test-love-style', text: '面对感情的选择，你更可能...', order: 17 },
+  { id: 'love-q18', testId: 'test-love-style', text: '总的来说，你的爱情观是...', order: 18 },
+];
+
+export const loveStyleOptions: OptionsMap = {
+  'love-q1': [
+    { id: 'love-q1-a', questionId: 'love-q1', text: '主动接近，表达好感', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 0, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q1-b', questionId: 'love-q1', text: '默默关心，等待时机', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': 1 } },
+    { id: 'love-q1-c', questionId: 'love-q1', text: '先观察分析再行动', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 0 } },
+    { id: 'love-q1-d', questionId: 'love-q1', text: '保持距离，顺其自然', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 0, 'love-i': 2 } },
+  ],
+  'love-q2': [
+    { id: 'love-q2-a', questionId: 'love-q2', text: '激情和心动的感觉', value: 2, dimensionScores: { 'love-p': 2, 'love-c': -1, 'love-r': -1, 'love-i': 0 } },
+    { id: 'love-q2-b', questionId: 'love-q2', text: '彼此关心和照顾', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': -1 } },
+    { id: 'love-q2-c', questionId: 'love-q2', text: '三观一致，目标相同', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q2-d', questionId: 'love-q2', text: '保持自我，互相尊重', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 1, 'love-r': 0, 'love-i': 2 } },
+  ],
+  'love-q3': [
+    { id: 'love-q3-a', questionId: 'love-q3', text: '浪漫和激情', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 0, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q3-b', questionId: 'love-q3', text: '陪伴和照顾', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': -1 } },
+    { id: 'love-q3-c', questionId: 'love-q3', text: '沟通和理解', value: 0, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 2, 'love-i': 0 } },
+    { id: 'love-q3-d', questionId: 'love-q3', text: '信任和独立空间', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q4': [
+    { id: 'love-q4-a', questionId: 'love-q4', text: '非常重要，爱情必须有浪漫', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 1, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q4-b', questionId: 'love-q4', text: '重要，但更重要的是日常生活', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 1, 'love-i': 0 } },
+    { id: 'love-q4-c', questionId: 'love-q4', text: '适度就好，不需要太刻意', value: 0, dimensionScores: { 'love-p': 0, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q4-d', questionId: 'love-q4', text: '可有可无，真实的相处更重要', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q5': [
+    { id: 'love-q5-a', questionId: 'love-q5', text: '给一个大大的拥抱，说"有我在"', value: 2, dimensionScores: { 'love-p': 1, 'love-c': 2, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q5-b', questionId: 'love-q5', text: '安静陪伴，递纸递水', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': 0 } },
+    { id: 'love-q5-c', questionId: 'love-q5', text: '问清楚发生了什么，一起分析', value: 0, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 2, 'love-i': 0 } },
+    { id: 'love-q5-d', questionId: 'love-q5', text: '表示理解，但不过度干涉', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 1, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q6': [
+    { id: 'love-q6-a', questionId: 'love-q6', text: '愿意付出一切', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 2, 'love-r': -2, 'love-i': -2 } },
+    { id: 'love-q6-b', questionId: 'love-q6', text: '愿意适度付出', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 1, 'love-i': 0 } },
+    { id: 'love-q6-c', questionId: 'love-q6', text: '付出和回报要平衡', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q6-d', questionId: 'love-q6', text: '不能为了爱情失去自我', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 0, 'love-i': 2 } },
+  ],
+  'love-q7': [
+    { id: 'love-q7-a', questionId: 'love-q7', text: '情感的主动表达者', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 1, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q7-b', questionId: 'love-q7', text: '默默付出的守护者', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': 0 } },
+    { id: 'love-q7-c', questionId: 'love-q7', text: '理性沟通的协商者', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 1, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q7-d', questionId: 'love-q7', text: '保持边界的陪伴者', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 1, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q8': [
+    { id: 'love-q8-a', questionId: 'love-q8', text: '觉得可爱，这是TA的一部分', value: 2, dimensionScores: { 'love-p': 1, 'love-c': 2, 'love-r': 0, 'love-i': 0 } },
+    { id: 'love-q8-b', questionId: 'love-q8', text: '尝试理解背后的原因', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 2, 'love-i': 0 } },
+    { id: 'love-q8-c', questionId: 'love-q8', text: '坦诚沟通，讨论如何改善', value: 0, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q8-d', questionId: 'love-q8', text: '尊重TA的个性，只要不越界', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q9': [
+    { id: 'love-q9-a', questionId: 'love-q9', text: '越多越好，恨不得24小时在一起', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 1, 'love-r': -1, 'love-i': -2 } },
+    { id: 'love-q9-b', questionId: 'love-q9', text: '高质量的陪伴最重要', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 1, 'love-i': 0 } },
+    { id: 'love-q9-c', questionId: 'love-q9', text: '需要平衡个人时间和二人世界', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q9-d', questionId: 'love-q9', text: '各自独立也很重要', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q10': [
+    { id: 'love-q10-a', questionId: 'love-q10', text: '情绪化地表达不满', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 0, 'love-r': -2, 'love-i': -1 } },
+    { id: 'love-q10-b', questionId: 'love-q10', text: '担心失去对方，先道歉', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q10-c', questionId: 'love-q10', text: '冷静沟通，找出问题根源', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 1, 'love-r': 2, 'love-i': 0 } },
+    { id: 'love-q10-d', questionId: 'love-q10', text: '给彼此空间，等情绪稳定再说', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q11': [
+    { id: 'love-q11-a', questionId: 'love-q11', text: '支持并一起参与', value: 2, dimensionScores: { 'love-p': 1, 'love-c': 2, 'love-r': 0, 'love-i': -1 } },
+    { id: 'love-q11-b', questionId: 'love-q11', text: '表示理解和支持', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 1, 'love-i': 0 } },
+    { id: 'love-q11-c', questionId: 'love-q11', text: '确认不会影响两人的关系', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q11-d', questionId: 'love-q11', text: '很高兴TA有自己的圈子', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 0, 'love-i': 2 } },
+  ],
+  'love-q12': [
+    { id: 'love-q12-a', questionId: 'love-q12', text: '经常说"我爱你"，制造惊喜', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 1, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q12-b', questionId: 'love-q12', text: '用行动照顾，关心日常', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 1, 'love-i': 0 } },
+    { id: 'love-q12-c', questionId: 'love-q12', text: '分享想法，进行深度对话', value: 0, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q12-d', questionId: 'love-q12', text: '尊重边界，给予自由', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q13': [
+    { id: 'love-q13-a', questionId: 'love-q13', text: '两个人的未来要一起规划', value: 2, dimensionScores: { 'love-p': 1, 'love-c': 2, 'love-r': 1, 'love-i': -1 } },
+    { id: 'love-q13-b', questionId: 'love-q13', text: '可以讨论，但不用太具体', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 1, 'love-i': 1 } },
+    { id: 'love-q13-c', questionId: 'love-q13', text: '有共同方向即可，细节各自规划', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q13-d', questionId: 'love-q13', text: '各自规划，相互支持', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 0, 'love-i': 2 } },
+  ],
+  'love-q14': [
+    { id: 'love-q14-a', questionId: 'love-q14', text: '直接表达不开心', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 0, 'love-r': 0, 'love-i': 0 } },
+    { id: 'love-q14-b', questionId: 'love-q14', text: '有些受伤，但选择理解', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': -1 } },
+    { id: 'love-q14-c', questionId: 'love-q14', text: '等合适时机沟通', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 1, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q14-d', questionId: 'love-q14', text: '自己消化，不想计较', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 1, 'love-r': 0, 'love-i': 2 } },
+  ],
+  'love-q15': [
+    { id: 'love-q15-a', questionId: 'love-q15', text: '可以适当有，但不能太多', value: 2, dimensionScores: { 'love-p': 1, 'love-c': 1, 'love-r': 0, 'love-i': -1 } },
+    { id: 'love-q15-b', questionId: 'love-q15', text: '需要一定的相处时间', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 1, 'love-i': 0 } },
+    { id: 'love-q15-c', questionId: 'love-q15', text: '非常必要，这样才能保持健康', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 2 } },
+    { id: 'love-q15-d', questionId: 'love-q15', text: '必须有足够的个人空间', value: -1, dimensionScores: { 'love-p': -2, 'love-c': 0, 'love-r': 0, 'love-i': 2 } },
+  ],
+  'love-q16': [
+    { id: 'love-q16-a', questionId: 'love-q16', text: '激情和心动的感觉', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 0, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q16-b', questionId: 'love-q16', text: '对方开心我就开心', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': -1 } },
+    { id: 'love-q16-c', questionId: 'love-q16', text: '彼此理解和成长', value: 0, dimensionScores: { 'love-p': 0, 'love-c': 1, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q16-d', questionId: 'love-q16', text: '保持独立但互相支持', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q17': [
+    { id: 'love-q17-a', questionId: 'love-q17', text: '跟着感觉走', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 1, 'love-r': -2, 'love-i': -1 } },
+    { id: 'love-q17-b', questionId: 'love-q17', text: '考虑对方的感受', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 0, 'love-i': 0 } },
+    { id: 'love-q17-c', questionId: 'love-q17', text: '权衡利弊后决定', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q17-d', questionId: 'love-q17', text: '尊重自己的内心', value: -1, dimensionScores: { 'love-p': 0, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+  'love-q18': [
+    { id: 'love-q18-a', questionId: 'love-q18', text: '爱就要热烈，不留遗憾', value: 2, dimensionScores: { 'love-p': 2, 'love-c': 1, 'love-r': -1, 'love-i': -1 } },
+    { id: 'love-q18-b', questionId: 'love-q18', text: '爱是细水长流的陪伴', value: 1, dimensionScores: { 'love-p': 0, 'love-c': 2, 'love-r': 1, 'love-i': 0 } },
+    { id: 'love-q18-c', questionId: 'love-q18', text: '爱需要理性经营', value: 0, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 2, 'love-i': 1 } },
+    { id: 'love-q18-d', questionId: 'love-q18', text: '爱是在一起也要做最好的自己', value: -1, dimensionScores: { 'love-p': -1, 'love-c': 0, 'love-r': 1, 'love-i': 2 } },
+  ],
+};
+
+export const loveStyleResults: TestResult[] = [
+  {
+    id: 'love-passionate',
+    testId: 'test-love-style',
+    typeCode: 'PASSIONATE',
+    typeName: '热情奔放型',
+    summary: '爱就要轰轰烈烈，全身心投入',
+    description: '你在爱情中充满激情，敢于表达，追求热烈的感情体验。你享受心动的感觉，愿意为爱付出，但有时可能过于情绪化。',
+    strengths: ['表达直接热情', '敢爱敢恨', '让对方感受到强烈的爱意', '善于制造浪漫'],
+    weaknesses: ['可能过于冲动', '情绪波动较大', '有时忽略理性考量', '容易受伤'],
+    relationships: '你需要一个能回应你热情的伴侣，同时也需要学会在激情中保持一些理性。',
+    career: '适合需要热情和创意的领域：艺术、表演、营销等。',
+    growth: '学会在激情中保持一点冷静，给感情成长的时间。',
+    minScore: 0,
+    maxScore: 100,
+  },
+  {
+    id: 'love-caring',
+    testId: 'test-love-style',
+    typeCode: 'CARING',
+    typeName: '温柔体贴型',
+    summary: '爱是细水长流的陪伴和照顾',
+    description: '你在爱情中温柔体贴，善于照顾对方。你的爱体现在日常的细节中，是细水长流式的深情。',
+    strengths: ['细心体贴', '善于照顾他人', '感情稳定持久', '让对方有安全感'],
+    weaknesses: ['有时过度付出', '可能忽略自己的需求', '不够表达自己的感受', '容易委屈自己'],
+    relationships: '你是理想伴侣的人选，但需要找一个也能照顾你的人。',
+    career: '适合需要关怀和耐心的领域：教育、医疗、社工等。',
+    growth: '学会表达自己的需求，你的感受同样重要。',
+    minScore: 0,
+    maxScore: 100,
+  },
+  {
+    id: 'love-rational',
+    testId: 'test-love-style',
+    typeCode: 'RATIONAL',
+    typeName: '理性冷静型',
+    summary: '爱需要智慧经营，保持平衡',
+    description: '你在爱情中保持理性，善于沟通和解决问题。你追求平等、互相尊重的关系，能够冷静处理感情问题。',
+    strengths: ['善于沟通', '处理问题理性', '尊重边界', '保持平衡'],
+    weaknesses: ['可能显得不够浪漫', '有时过度分析', '情感表达可能不够热烈', '显得有些疏离'],
+    relationships: '你需要一个能和你进行深度交流、理解你的理性方式的伴侣。',
+    career: '适合需要分析和沟通的领域：咨询、管理、法律等。',
+    growth: '允许自己偶尔感性一些，浪漫不等于不理性。',
+    minScore: 0,
+    maxScore: 100,
+  },
+  {
+    id: 'love-independent',
+    testId: 'test-love-style',
+    typeCode: 'INDEPENDENT',
+    typeName: '独立自主型',
+    summary: '爱是两个独立的人选择在一起',
+    description: '你在爱情中保持独立，重视个人空间。你认为最好的爱情是两个人各自完整，选择在一起而不是因为需要。',
+    strengths: ['保持自我', '尊重边界', '不依赖对方', '关系健康平衡'],
+    weaknesses: ['可能显得不够亲密', '有时让对方感到距离感', '情感表达不够', '需要更多连接感'],
+    relationships: '你需要一个同样独立、理解个人空间重要性的伴侣。',
+    career: '适合需要独立性的领域：创业、自由职业、研究等。',
+    growth: '学会在保持独立的同时，更深入地连接和表达爱。',
+    minScore: 0,
+    maxScore: 100,
+  },
+];
+
+// 恋爱风格计算函数
+export function calculateLoveStyleResult(answers: Record<string, string>): {
+  typeCode: string;
+  dimensionScores: Record<string, number>;
+  result: TestResult;
+} {
+  const dimScores: Record<string, number> = {
+    'love-p': 0,
+    'love-c': 0,
+    'love-r': 0,
+    'love-i': 0,
+  };
+
+  loveStyleQuestions.forEach((q) => {
+    const answeredOptionId = answers[q.id];
+    if (!answeredOptionId) return;
+    const opts = loveStyleOptions[q.id];
+    if (!opts) return;
+    const opt = opts.find(o => o.id === String(answeredOptionId));
+    if (!opt) return;
+    Object.entries(opt.dimensionScores).forEach(([dim, score]) => {
+      dimScores[dim] = (dimScores[dim] || 0) + score;
+    });
+  });
+
+  // 找出得分最高的风格
+  let topType = 'PASSIONATE';
+  let topScore = dimScores['love-p'];
+  if (dimScores['love-c'] > topScore) {
+    topScore = dimScores['love-c'];
+    topType = 'CARING';
+  }
+  if (dimScores['love-r'] > topScore) {
+    topScore = dimScores['love-r'];
+    topType = 'RATIONAL';
+  }
+  if (dimScores['love-i'] > topScore) {
+    topType = 'INDEPENDENT';
+  }
+
+  const result = loveStyleResults.find(r => r.typeCode === topType) || loveStyleResults[0];
+  return { typeCode: topType, dimensionScores: dimScores, result };
+}
+
+// ==== 沟通风格测试 ====
+export const communicationQuestions = [
+  {
+    id: 'comm-q1', testId: 'test-communication', order: 1,
+    text: '当你有不同意见时，你倾向于...',
+    options: [
+      { id: 'comm-q1-a', text: '直接说出来，不留情面', scores: { DIRECT: 3, ASSERTIVE: 2 } },
+      { id: 'comm-q1-b', text: '委婉表达，顾及感受', scores: { GENTLE: 3, INDIRECT: 1 } },
+      { id: 'comm-q1-c', text: '先听对方说完', scores: { GENTLE: 1, PASSIVE: 2 } },
+      { id: 'comm-q1-d', text: '不说，自己消化', scores: { PASSIVE: 3, INDIRECT: 2 } },
+    ],
+  },
+  {
+    id: 'comm-q2', testId: 'test-communication', order: 2,
+    text: '别人说话时，你通常会...',
+    options: [
+      { id: 'comm-q2-a', text: '积极回应，保持互动', scores: { DIRECT: 2, ASSERTIVE: 1 } },
+      { id: 'comm-q2-b', text: '认真倾听，适时插话', scores: { GENTLE: 2, INDIRECT: 0 } },
+      { id: 'comm-q2-c', text: '听的同时思考自己要说什么', scores: { INDIRECT: 2, DIRECT: 1 } },
+      { id: 'comm-q2-d', text: '容易走神或不知如何回应', scores: { PASSIVE: 2, GENTLE: 0 } },
+    ],
+  },
+  {
+    id: 'comm-q3', testId: 'test-communication', order: 3,
+    text: '面对冲突时，你的沟通方式是...',
+    options: [
+      { id: 'comm-q3-a', text: '直面问题，说清楚', scores: { DIRECT: 3, ASSERTIVE: 2 } },
+      { id: 'comm-q3-b', text: '先缓和情绪，再谈问题', scores: { GENTLE: 3, INDIRECT: 1 } },
+      { id: 'comm-q3-c', text: '选择性表达', scores: { INDIRECT: 2, PASSIVE: 1 } },
+      { id: 'comm-q3-d', text: '回避或沉默', scores: { PASSIVE: 3, GENTLE: 1 } },
+    ],
+  },
+  {
+    id: 'comm-q4', testId: 'test-communication', order: 4,
+    text: '你需要拒绝别人时，你会...',
+    options: [
+      { id: 'comm-q4-a', text: '直接说"不"，给明确理由', scores: { DIRECT: 3, ASSERTIVE: 2 } },
+      { id: 'comm-q4-b', text: '委婉拒绝，尽量不伤感情', scores: { GENTLE: 2, INDIRECT: 2 } },
+      { id: 'comm-q4-c', text: '找借口推脱', scores: { INDIRECT: 3, PASSIVE: 1 } },
+      { id: 'comm-q4-d', text: '很难拒绝，最后可能答应', scores: { PASSIVE: 3, GENTLE: 2 } },
+    ],
+  },
+  {
+    id: 'comm-q5', testId: 'test-communication', order: 5,
+    text: '你更喜欢哪种沟通环境？',
+    options: [
+      { id: 'comm-q5-a', text: '可以直言不讳的环境', scores: { DIRECT: 2, ASSERTIVE: 2 } },
+      { id: 'comm-q5-b', text: '大家互相尊重的氛围', scores: { GENTLE: 2, ASSERTIVE: 1 } },
+      { id: 'comm-q5-c', text: '不用直接面对的情境', scores: { INDIRECT: 2, PASSIVE: 1 } },
+      { id: 'comm-q5-d', text: '不用主动发言的环境', scores: { PASSIVE: 2, INDIRECT: 1 } },
+    ],
+  },
+];
+
+export const communicationResults = [
+  {
+    id: 'comm-direct', testId: 'test-communication', typeCode: 'DIRECT',
+    typeName: '直接表达型',
+    summary: '说话直截了当，不喜欢绕弯子',
+    description: '你的沟通风格直接明确，喜欢有话直说。你重视效率和真实性，但有时可能让对方感到被冒犯。',
+    strengths: ['表达清晰', '效率高', '不会让人猜', '问题解决快'],
+    weaknesses: ['可能显得不够圆滑', '有时语气过硬', '可能忽略对方感受'],
+    relationships: '你需要一个能接受直接沟通的伴侣，同时可以学习稍微柔和的表达方式。',
+    career: '适合需要明确表达的岗位：项目管理、技术负责、法务等。',
+    growth: '在直截了当的同时，加入一点点温度，效果会更好。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'comm-gentle', testId: 'test-communication', typeCode: 'GENTLE',
+    typeName: '温和体贴型',
+    summary: '善于照顾他人感受，表达委婉',
+    description: '你的沟通风格温和体贴，善于在表达自我的同时顾及他人感受。你创造和谐的沟通氛围。',
+    strengths: ['善于照顾感受', '人际和谐', '有同理心', '让人舒服'],
+    weaknesses: ['有时不够明确', '可能过于顾虑', '有时难以表达真实想法'],
+    relationships: '你是很好的倾听者，但也需要练习表达自己的真实需求。',
+    career: '适合需要人际协调的岗位：人力资源、客户服务、心理咨询等。',
+    growth: '在照顾他人感受的同时，记得自己的需求也值得表达。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'comm-indirect', testId: 'test-communication', typeCode: 'INDIRECT',
+    typeName: '委婉暗示型',
+    summary: '习惯暗示和间接表达',
+    description: '你习惯用委婉和暗示的方式表达，担心直接表达会伤害关系。你内心有很多想法，但表达出来时会加工。',
+    strengths: ['细腻敏感', '考虑周全', '不轻易冒犯', '善于察言观色'],
+    weaknesses: ['表达不够明确', '可能被误解', '自己想法难以传达', '容易累积情绪'],
+    relationships: '在关系中你可能期待对方读懂你的暗示，但这会让沟通变复杂。',
+    career: '适合需要敏感性理解的工作：创意、策划、人际关系密集型岗位。',
+    growth: '尝试更直接表达一次，你会发现事情往往没有想象的那么糟。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'comm-passive', testId: 'test-communication', typeCode: 'PASSIVE',
+    typeName: '回避沉默型',
+    summary: '倾向于回避或沉默，不主动表达',
+    description: '你在沟通中倾向于回避或沉默，害怕表达会带来冲突或被拒绝。你内心有很多话，但很难说出口。',
+    strengths: ['不轻易伤害他人', '善于倾听', '内心感受深刻'],
+    weaknesses: ['需求难以被满足', '可能积累怨恨', '关系中的沉默者', '容易被动接受'],
+    relationships: '你在关系中是安静的观察者，但沉默也会让对方感到隔阂。',
+    career: '适合不需要太多表达的岗位：研究、数据分析、后台支持等。',
+    growth: '从小事开始表达，每一次开口都是对自己的信任。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// ==== 冲突处理测试 ====
+export const conflictQuestions = [
+  {
+    id: 'conf-q1', testId: 'test-conflict', order: 1,
+    text: '当冲突发生时，你的第一反应是...',
+    options: [
+      { id: 'conf-q1-a', text: '直接面对，必须说清楚', scores: { COMPETE: 3, COLLABORATE: 1 } },
+      { id: 'conf-q1-b', text: '寻求双方都能接受的方案', scores: { COLLABORATE: 3, COMPROMISE: 1 } },
+      { id: 'conf-q1-c', text: '各让一步', scores: { COMPROMISE: 3, ACCOMMODATE: 1 } },
+      { id: 'conf-q1-d', text: '退一步，维持和平', scores: { ACCOMMODATE: 2, AVOID: 2 } },
+      { id: 'conf-q1-e', text: '暂时离开，等冷静再说', scores: { AVOID: 3 } },
+    ],
+  },
+  {
+    id: 'conf-q2', testId: 'test-conflict', order: 2,
+    text: '你更在意冲突中的...',
+    options: [
+      { id: 'conf-q2-a', text: '自己的立场被理解', scores: { COMPETE: 2, COLLABORATE: 1 } },
+      { id: 'conf-q2-b', text: '双方都满意', scores: { COLLABORATE: 2, COMPROMISE: 1 } },
+      { id: 'conf-q2-c', text: '快速结束冲突', scores: { COMPROMISE: 2, AVOID: 1 } },
+      { id: 'conf-q2-d', text: '对方开心就好', scores: { ACCOMMODATE: 3 } },
+      { id: 'conf-q2-e', text: '不发生正面冲突', scores: { AVOID: 3 } },
+    ],
+  },
+  {
+    id: 'conf-q3', testId: 'test-conflict', order: 3,
+    text: '冲突后，你通常会...',
+    options: [
+      { id: 'conf-q3-a', text: '反思自己哪里做得不好', scores: { ACCOMMODATE: 2, COLLABORATE: 1 } },
+      { id: 'conf-q3-b', text: '思考双方的问题', scores: { COLLABORATE: 2, COMPROMISE: 1 } },
+      { id: 'conf-q3-c', text: '分析自己的得失', scores: { COMPETE: 2, COMPROMISE: 1 } },
+      { id: 'conf-q3-d', text: '想快点翻篇', scores: { AVOID: 2, ACCOMMODATE: 1 } },
+      { id: 'conf-q3-e', text: '假装没发生过', scores: { AVOID: 3 } },
+    ],
+  },
+];
+
+export const conflictResults = [
+  {
+    id: 'conf-compete', testId: 'test-conflict', typeCode: 'COMPETE',
+    typeName: '竞争型',
+    summary: '追求自己的目标，强调立场',
+    description: '你在冲突中追求自己的目标，强调自己的立场。你相信直接面对是解决问题的最好方式。',
+    strengths: ['立场明确', '目标坚定', '行动果断'],
+    weaknesses: ['可能显得过于强势', '忽略他人感受', '关系受损'],
+    relationships: '需要学习在冲突中保持对关系的在意，胜利不等于失去连接。',
+    career: '适合需要决断力的岗位：领导、销售、谈判。',
+    growth: '有时退一步，关系比胜负更重要。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'conf-collaborate', testId: 'test-conflict', typeCode: 'COLLABORATE',
+    typeName: '协作型',
+    summary: '寻求双方都满意的方案',
+    description: '你在冲突中追求双赢，相信通过深度沟通可以找到双方都满意的解决方案。',
+    strengths: ['寻求共赢', '深度沟通', '关系维护好'],
+    weaknesses: ['耗时较多', '有时难以实现', '可能过度理想化'],
+    relationships: '你是理想的关系维护者，但也需要接受不是所有冲突都能完美解决。',
+    career: '适合需要协调多方利益的岗位：项目管理、咨询、HR。',
+    growth: '有时接受不完美也是一种智慧。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'conf-compromise', testId: 'test-conflict', typeCode: 'COMPROMISE',
+    typeName: '妥协型',
+    summary: '各让一步，快速解决',
+    description: '你在冲突中愿意各让一步，追求快速解决问题的中间方案。',
+    strengths: ['效率高', '实用主义', '灵活性'],
+    weaknesses: ['可能双方都不完全满意', '有时牺牲过多'],
+    relationships: '你是务实的冲突处理者，关系能快速恢复。',
+    career: '适合需要快速决策的岗位：运营、执行、协调。',
+    growth: '有时候值得花更多时间追求更好的解决方案。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'conf-accommodate', testId: 'test-conflict', typeCode: 'ACCOMMODATE',
+    typeName: '迁就型',
+    summary: '为关系让步，维持和谐',
+    description: '你在冲突中愿意让步，优先考虑关系和对方的感受。',
+    strengths: ['关系导向', '善解人意', '维护和谐'],
+    weaknesses: ['自己的需求被忽略', '可能积累委屈'],
+    relationships: '你是温和的伴侣，但也需要练习表达自己的真实想法。',
+    career: '适合服务导向的岗位：客服、支持、行政。',
+    growth: '你的需求同样重要，学会平衡。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'conf-avoid', testId: 'test-conflict', typeCode: 'AVOID',
+    typeName: '回避型',
+    summary: '暂时或永久回避冲突',
+    description: '你倾向于回避冲突，通过推迟、转移或完全回避来处理矛盾。',
+    strengths: ['避免冲突升级', '给自己时间冷静', '有时确实有用'],
+    weaknesses: ['问题可能积累', '关系中的沉默者', '可能错过解决机会'],
+    relationships: '回避可以暂时保护你，但长期会让关系疏离。',
+    career: '适合不需要频繁应对冲突的岗位。',
+    growth: '有些事情不解决会一直存在，尝试面对一次。',
+    minScore: 0, maxScore: 100,
+  },
+];
+
+// ==== 共情力测试 ====
+export const empathyQuestions = [
+  {
+    id: 'emp-q1', testId: 'test-empathy', order: 1,
+    text: '当朋友情绪低落时，你能准确感受到TA的感受吗？',
+    options: [
+      { id: 'emp-q1-a', text: '能，甚至会被情绪感染', scores: { AFFECTIVE: 3, COGNITIVE: 1 } },
+      { id: 'emp-q1-b', text: '能理解，但不会被影响', scores: { COGNITIVE: 3, AFFECTIVE: 0 } },
+      { id: 'emp-q1-c', text: '有时能，有时不能', scores: { BALANCED: 2 } },
+      { id: 'emp-q1-d', text: '较难感知', scores: { LOW: 2 } },
+    ],
+  },
+  {
+    id: 'emp-q2', testId: 'test-empathy', order: 2,
+    text: '在群体中，你能快速识别出谁的情绪不太对吗？',
+    options: [
+      { id: 'emp-q2-a', text: '很快就能发现', scores: { AFFECTIVE: 2, COGNITIVE: 1 } },
+      { id: 'emp-q2-b', text: '需要一些观察', scores: { COGNITIVE: 2, BALANCED: 1 } },
+      { id: 'emp-q2-c', text: '需要明显信号才能发现', scores: { BALANCED: 1, LOW: 1 } },
+      { id: 'emp-q2-d', text: '往往发现不了', scores: { LOW: 2 } },
+    ],
+  },
+  {
+    id: 'emp-q3', testId: 'test-empathy', order: 3,
+    text: '当看到电影中的角色哭泣时，你会...',
+    options: [
+      { id: 'emp-q3-a', text: '跟着难过，甚至也会哭', scores: { AFFECTIVE: 3 } },
+      { id: 'emp-q3-b', text: '理解TA的处境和情绪', scores: { COGNITIVE: 2, BALANCED: 1 } },
+      { id: 'emp-q3-c', text: '被触动，但不会持续', scores: { BALANCED: 2 } },
+      { id: 'emp-q3-d', text: '只是看剧情，不太会被影响', scores: { LOW: 2 } },
+    ],
+  },
+];
+
+export const empathyResults = [
+  {
+    id: 'emp-affective', testId: 'test-empathy', typeCode: 'AFFECTIVE',
+    typeName: '情感共鸣型',
+    summary: '能深度感受到他人的情绪',
+    description: '你有很强的情感共鸣能力，能直接感受到他人的情绪。这是一种天赋，但也可能让你在情绪上容易疲惫。',
+    strengths: ['深度共情', '让他人感到被理解', '真诚的关怀'],
+    weaknesses: ['容易情绪疲劳', '边界可能模糊', '可能过度承担'],
+    relationships: '你是最好的倾听者，但也需要保护自己的能量。',
+    career: '适合需要深度关怀的岗位：心理咨询、医疗、社工。',
+    growth: '建立情绪边界，共情不等于承担。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'emp-cognitive', testId: 'test-empathy', typeCode: 'COGNITIVE',
+    typeName: '认知理解型',
+    summary: '善于理解他人的处境和想法',
+    description: '你通过理解他人的处境和想法来共情，能够保持一定的情感距离，同时给予适当的关怀。',
+    strengths: ['理性共情', '不被情绪淹没', '有效帮助'],
+    weaknesses: ['可能显得不够热情', '有时被误解为冷淡'],
+    relationships: '你能提供稳定的支持，同时也需要让对方感受到你的关心。',
+    career: '适合需要理性理解的岗位：咨询、管理、教育。',
+    growth: '偶尔表达一些情感温度，会让关系更紧密。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'emp-balanced', testId: 'test-empathy', typeCode: 'BALANCED',
+    typeName: '平衡型',
+    summary: '在情感和理性之间保持平衡',
+    description: '你能在情感共鸣和理性理解之间保持平衡，能共情但不会被淹没。',
+    strengths: ['平衡共情', '适应性强', '灵活应对'],
+    weaknesses: ['有时难以确定自己的风格'],
+    relationships: '你是灵活的倾听者，能根据情况调整共情方式。',
+    career: '适合需要多面共情的岗位。',
+    growth: '继续保持这种平衡。',
+    minScore: 0, maxScore: 100,
+  },
+  {
+    id: 'emp-low', testId: 'test-empathy', typeCode: 'LOW',
+    typeName: '共情待提升型',
+    summary: '共情能力有提升空间',
+    description: '你可能不太容易感知他人的情绪，但这不意味着你不在乎。共情是可以练习的能力。',
+    strengths: ['理性独立', '不容易被情绪影响'],
+    weaknesses: ['可能误解他人', '关系中的疏离感'],
+    relationships: '可以尝试更多主动询问对方的感受。',
+    career: '适合需要理性判断的岗位：技术、分析、逻辑密集型。',
+    growth: '尝试每周练习一次"站在对方角度思考"。',
+    minScore: 0, maxScore: 100,
+  },
+];
