@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
-import { mbtiResults, mbtiDimensions, sbtiResults, tests } from "@/lib/data";
+import { mbtiResults, mbtiDimensions, sbtiResults, tests, temperamentResults, temperamentDimensions, introversionResults, introversionDimensions, loveStyleResults, loveStyleDimensions, communicationResults, conflictResults, empathyResults, teamworkResults, leadershipResults, decisionResults, executionResults, emotionSensitivityResults, resilienceResults, securityResults, socialEnergyResults, boundaryResults, pleasingResults, hiddenPersonalityResults, animalPersonalityResults, loveBrainResults, friendTypeResults, groupRoleResults, expressionResults, trustResults } from "@/lib/data";
 import { TestResult, TestDimension } from "@/lib/types";
 import {
   RadarChart,
@@ -90,8 +90,117 @@ export default function ResultPage() {
       setDimensions(mbtiDimensions);
     } else if (data.testId === "test-sbti") {
       const r = sbtiResults.find((r) => r.typeCode === data.resultCode);
-      // sbtiResults entries have the same shape as TestResult for display purposes
       setResult(r as unknown as import("@/lib/types").TestResult || mbtiResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-temperament") {
+      const r = temperamentResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r || temperamentResults[0]);
+      setDimensions(temperamentDimensions);
+    } else if (data.testId === "test-introversion") {
+      const r = introversionResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r || introversionResults[0]);
+      setDimensions(introversionDimensions);
+    } else if (data.testId === "test-love-style") {
+      const r = loveStyleResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r || loveStyleResults[0]);
+      setDimensions(loveStyleDimensions);
+    } else if (data.testId === "test-communication") {
+      const r = communicationResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || communicationResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-conflict") {
+      const r = conflictResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || conflictResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-empathy") {
+      const r = empathyResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || empathyResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-teamwork") {
+      const r = teamworkResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || teamworkResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-leadership") {
+      const r = leadershipResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || leadershipResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-decision") {
+      const r = decisionResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || decisionResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-execution") {
+      const r = executionResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || executionResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-emotion-sensitivity") {
+      const r = emotionSensitivityResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || emotionSensitivityResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-resilience") {
+      const r = resilienceResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || resilienceResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-security") {
+      const r = securityResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || securityResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-social-energy") {
+      const r = socialEnergyResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || socialEnergyResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-boundary") {
+      const r = boundaryResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || boundaryResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-pleasing") {
+      const r = pleasingResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || pleasingResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-hidden-personality") {
+      const r = hiddenPersonalityResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || hiddenPersonalityResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-animal-personality") {
+      const r = animalPersonalityResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || animalPersonalityResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-love-brain") {
+      const r = loveBrainResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || loveBrainResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-friend-type") {
+      const r = friendTypeResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || friendTypeResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-group-role") {
+      const r = groupRoleResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || groupRoleResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-expression") {
+      const r = expressionResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || expressionResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-trust") {
+      const r = trustResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || trustResults[0]);
+      setDimensions([]);
+    } else {
+      // Fallback - 创建一个通用结果
+      setResult({
+        id: `${data.testId}-result`,
+        testId: data.testId,
+        typeCode: data.resultCode,
+        typeName: data.resultCode,
+        summary: '测试完成',
+        description: '感谢完成测试！',
+        strengths: [],
+        weaknesses: [],
+        relationships: '',
+        career: '',
+        growth: '',
+        minScore: 0,
+        maxScore: 100,
+      });
       setDimensions([]);
     }
   }, [sessionId, router]);
