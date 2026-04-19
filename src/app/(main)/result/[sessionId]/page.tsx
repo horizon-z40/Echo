@@ -64,6 +64,45 @@ function DimensionBar({ label, score, color, minLabel, maxLabel }: {
   );
 }
 
+// 获取指定测试的所有可能结果
+function getAllResultsForTest(testId: string): TestResult[] {
+  const resultMap: Record<string, TestResult[]> = {
+    'test-mbti': mbtiResults,
+    'test-bigfive': [], // BigFive 没有预定义结果
+    'test-enneagram': enneagramResults,
+    'test-temperament': temperamentResults,
+    'test-introversion': introversionResults,
+    'test-love-style': loveStyleResults,
+    'test-communication': communicationResults,
+    'test-conflict': conflictResults,
+    'test-empathy': empathyResults,
+    'test-teamwork': teamworkResults,
+    'test-leadership': leadershipResults,
+    'test-decision': decisionResults,
+    'test-execution': executionResults,
+    'test-emotion-sensitivity': emotionSensitivityResults,
+    'test-resilience': resilienceResults,
+    'test-emotion-recovery': emotionRecoveryResults,
+    'test-security': securityResults,
+    'test-social-energy': socialEnergyResults,
+    'test-boundary': boundaryResults,
+    'test-pleasing': pleasingResults,
+    'test-hidden-personality': hiddenPersonalityResults,
+    'test-animal-personality': animalPersonalityResults,
+    'test-love-brain': loveBrainResults,
+    'test-friend-type': friendTypeResults,
+    'test-group-role': groupRoleResults,
+    'test-expression': expressionResults,
+    'test-trust': trustResults,
+    'test-attachment': attachmentResults,
+    'test-stress': stressResults,
+    'test-sbti': sbtiResults as unknown as TestResult[],
+    'test-career': careerResults,
+    'test-philosophy-personality': philosophyResults,
+  };
+  return resultMap[testId] || [];
+}
+
 export default function ResultPage() {
   const params = useParams();
   const router = useRouter();
@@ -465,6 +504,50 @@ export default function ResultPage() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* All Possible Results */}
+        {(() => {
+          const allResults = resultData ? getAllResultsForTest(resultData.testId) : [];
+          if (allResults.length === 0) return null;
+          return (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-6"
+            >
+              <h2 className="text-lg font-semibold mb-2">全部可能结果</h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                该测试共有 {allResults.length} 种可能结果，以下是所有类型的详细解读
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {allResults.map((r) => (
+                  <div
+                    key={r.id}
+                    className={`p-4 rounded-xl border transition-all ${
+                      r.typeCode === result?.typeCode
+                        ? 'border-primary/50 bg-primary/5 ring-1 ring-primary/20'
+                        : 'border-border/50 hover:border-border/80 hover:bg-muted/20'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`text-lg font-bold ${r.typeCode === result?.typeCode ? 'text-primary' : ''}`}>
+                        {r.typeCode}
+                      </span>
+                      {r.typeCode === result?.typeCode && (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                          你的结果
+                        </span>
+                      )}
+                    </div>
+                    <div className="font-medium text-sm mb-1">{r.typeName}</div>
+                    <div className="text-xs text-muted-foreground line-clamp-2">{r.summary}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })()}
 
         {/* Next steps */}
         <motion.div
