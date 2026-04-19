@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Clock, Users, ChevronRight, Star, Sparkles, Brain, Heart, Briefcase, Waves } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowRight, Clock, Users, ChevronRight, Star, Sparkles, Brain, Heart, Briefcase, Waves, Shuffle } from "lucide-react";
 import { tests, testCategories } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -75,8 +76,14 @@ const features = [
 ];
 
 export default function HomePage() {
+  const router = useRouter();
   const featuredTests = tests.filter((t) => t.isFeatured);
   const popularTests = tests.filter((t) => t.isPopular);
+
+  const handleRandomExplore = () => {
+    const randomTest = tests[Math.floor(Math.random() * tests.length)];
+    router.push(`/quiz/${randomTest.slug}`);
+  };
 
   return (
     <div className="relative overflow-hidden">
@@ -126,15 +133,16 @@ export default function HomePage() {
               href="/tests"
               className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-xl shadow-violet-500/25 hover:shadow-violet-500/40 hover:-translate-y-0.5"
             >
-              开始探索
+              开始测试
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link
-              href="/tests#featured"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm text-foreground font-medium text-lg hover:bg-card/80 transition-all duration-300 hover:-translate-y-0.5"
+            <button
+              onClick={handleRandomExplore}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm text-foreground font-medium text-lg hover:bg-card/80 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
-              浏览测试
-            </Link>
+              <Shuffle className="w-5 h-5" />
+              随机探索
+            </button>
           </motion.div>
 
           {/* Stats */}
