@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, sbtiQuestions, calculateSbtiResult, temperamentQuestions, temperamentOptions, calculateTemperamentResult, introversionQuestions, introversionOptions, calculateIntroversionResult, loveStyleQuestions, loveStyleOptions, calculateLoveStyleResult, communicationQuestions, conflictQuestions, empathyQuestions, teamworkQuestions, leadershipQuestions, decisionQuestions, executionQuestions, emotionSensitivityQuestions, resilienceQuestions, securityQuestions, socialEnergyQuestions, boundaryQuestions, pleasingQuestions, hiddenPersonalityQuestions, animalPersonalityQuestions, loveBrainQuestions, friendTypeQuestions, groupRoleQuestions } from "@/lib/data";
+import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, sbtiQuestions, calculateSbtiResult, temperamentQuestions, temperamentOptions, calculateTemperamentResult, introversionQuestions, introversionOptions, calculateIntroversionResult, loveStyleQuestions, loveStyleOptions, calculateLoveStyleResult, communicationQuestions, conflictQuestions, empathyQuestions, teamworkQuestions, leadershipQuestions, decisionQuestions, executionQuestions, emotionSensitivityQuestions, resilienceQuestions, securityQuestions, socialEnergyQuestions, boundaryQuestions, pleasingQuestions, hiddenPersonalityQuestions, animalPersonalityQuestions, loveBrainQuestions, friendTypeQuestions, groupRoleQuestions, expressionQuestions, trustQuestions } from "@/lib/data";
 import { TestQuestion, TestOption } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -19,12 +19,12 @@ function getTestQuestions(testId: string): TestQuestion[] {
   if (testId === "test-sbti") {
     return sbtiQuestions.map(q => ({ id: q.id, testId: q.testId, text: q.text, order: q.order }));
   }
-  // 新增测试
+  // 新增测试 - 分离选项的测试
   if (testId === "test-temperament") return temperamentQuestions;
   if (testId === "test-introversion") return introversionQuestions;
   if (testId === "test-love-style") return loveStyleQuestions;
   
-  // 内联选项的测试
+  // 内联选项的测试 - 使用正确的映射
   const inlineTests: Record<string, any[]> = {
     "test-communication": communicationQuestions,
     "test-conflict": conflictQuestions,
@@ -44,6 +44,8 @@ function getTestQuestions(testId: string): TestQuestion[] {
     "test-love-brain": loveBrainQuestions,
     "test-friend-type": friendTypeQuestions,
     "test-group-role": groupRoleQuestions,
+    "test-expression": expressionQuestions,
+    "test-trust": trustQuestions,
   };
   
   if (inlineTests[testId]) {
@@ -82,7 +84,7 @@ function getOptions(testId: string, questionId: string): TestOption[] {
     return loveStyleOptions[questionId] || [];
   }
   
-  // 内联选项的测试
+  // 内联选项的测试 - 使用正确的映射
   const inlineTests: Record<string, any[]> = {
     "test-communication": communicationQuestions,
     "test-conflict": conflictQuestions,
@@ -102,6 +104,8 @@ function getOptions(testId: string, questionId: string): TestOption[] {
     "test-love-brain": loveBrainQuestions,
     "test-friend-type": friendTypeQuestions,
     "test-group-role": groupRoleQuestions,
+    "test-expression": expressionQuestions,
+    "test-trust": trustQuestions,
   };
   
   if (inlineTests[testId]) {
