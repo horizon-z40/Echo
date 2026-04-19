@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, sbtiQuestions, calculateSbtiResult } from "@/lib/data";
+import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, sbtiQuestions, calculateSbtiResult, temperamentQuestions, temperamentOptions, calculateTemperamentResult, introversionQuestions, introversionOptions, calculateIntroversionResult, loveStyleQuestions, loveStyleOptions, calculateLoveStyleResult, communicationQuestions, conflictQuestions, empathyQuestions, teamworkQuestions, leadershipQuestions, decisionQuestions, executionQuestions, emotionSensitivityQuestions, resilienceQuestions, securityQuestions, socialEnergyQuestions, boundaryQuestions, pleasingQuestions, hiddenPersonalityQuestions, animalPersonalityQuestions, loveBrainQuestions, friendTypeQuestions, groupRoleQuestions } from "@/lib/data";
 import { TestQuestion, TestOption } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -13,15 +13,48 @@ interface QuizClientProps {
 }
 
 function getTestQuestions(testId: string): TestQuestion[] {
+  // 现有测试
   if (testId === "test-mbti") return mbtiQuestions;
   if (testId === "test-bigfive") return bigFiveQuestions;
   if (testId === "test-sbti") {
     return sbtiQuestions.map(q => ({ id: q.id, testId: q.testId, text: q.text, order: q.order }));
   }
+  // 新增测试
+  if (testId === "test-temperament") return temperamentQuestions;
+  if (testId === "test-introversion") return introversionQuestions;
+  if (testId === "test-love-style") return loveStyleQuestions;
+  
+  // 内联选项的测试
+  const inlineTests: Record<string, any[]> = {
+    "test-communication": communicationQuestions,
+    "test-conflict": conflictQuestions,
+    "test-empathy": empathyQuestions,
+    "test-teamwork": teamworkQuestions,
+    "test-leadership": leadershipQuestions,
+    "test-decision": decisionQuestions,
+    "test-execution": executionQuestions,
+    "test-emotion-sensitivity": emotionSensitivityQuestions,
+    "test-resilience": resilienceQuestions,
+    "test-security": securityQuestions,
+    "test-social-energy": socialEnergyQuestions,
+    "test-boundary": boundaryQuestions,
+    "test-pleasing": pleasingQuestions,
+    "test-hidden-personality": hiddenPersonalityQuestions,
+    "test-animal-personality": animalPersonalityQuestions,
+    "test-love-brain": loveBrainQuestions,
+    "test-friend-type": friendTypeQuestions,
+    "test-group-role": groupRoleQuestions,
+  };
+  
+  if (inlineTests[testId]) {
+    return inlineTests[testId].map(q => ({ id: q.id, testId: q.testId, text: q.text, order: q.order }));
+  }
+  
   return [];
 }
 
 function getOptions(testId: string, questionId: string): TestOption[] {
+  // 现有测试
   if (testId === "test-mbti") {
     return mbtiOptions[questionId] || [];
   }
@@ -37,6 +70,52 @@ function getOptions(testId: string, questionId: string): TestOption[] {
     if (!q) return [];
     return q.options.map(o => ({ id: o.id, questionId, text: o.text, value: 0, dimensionScores: o.scores as unknown as Record<string, number> }));
   }
+  
+  // 新增测试 - 分离选项的测试
+  if (testId === "test-temperament") {
+    return temperamentOptions[questionId] || [];
+  }
+  if (testId === "test-introversion") {
+    return introversionOptions[questionId] || [];
+  }
+  if (testId === "test-love-style") {
+    return loveStyleOptions[questionId] || [];
+  }
+  
+  // 内联选项的测试
+  const inlineTests: Record<string, any[]> = {
+    "test-communication": communicationQuestions,
+    "test-conflict": conflictQuestions,
+    "test-empathy": empathyQuestions,
+    "test-teamwork": teamworkQuestions,
+    "test-leadership": leadershipQuestions,
+    "test-decision": decisionQuestions,
+    "test-execution": executionQuestions,
+    "test-emotion-sensitivity": emotionSensitivityQuestions,
+    "test-resilience": resilienceQuestions,
+    "test-security": securityQuestions,
+    "test-social-energy": socialEnergyQuestions,
+    "test-boundary": boundaryQuestions,
+    "test-pleasing": pleasingQuestions,
+    "test-hidden-personality": hiddenPersonalityQuestions,
+    "test-animal-personality": animalPersonalityQuestions,
+    "test-love-brain": loveBrainQuestions,
+    "test-friend-type": friendTypeQuestions,
+    "test-group-role": groupRoleQuestions,
+  };
+  
+  if (inlineTests[testId]) {
+    const q = inlineTests[testId].find(q => q.id === questionId);
+    if (!q || !q.options) return [];
+    return q.options.map((o: any) => ({ 
+      id: o.id, 
+      questionId, 
+      text: o.text, 
+      value: o.value || 0, 
+      dimensionScores: o.scores as unknown as Record<string, number> || {} 
+    }));
+  }
+  
   return [];
 }
 
@@ -143,6 +222,41 @@ export function QuizClient({ slug }: QuizClientProps) {
       const calc = calculateSbtiResult(answers);
       resultCode = calc.typeCode;
       dimensionScores = calc.dimensionScores;
+    } else if (test.id === "test-temperament") {
+      const calc = calculateTemperamentResult(answers);
+      resultCode = calc.typeCode;
+      dimensionScores = calc.dimensionScores;
+    } else if (test.id === "test-introversion") {
+      const calc = calculateIntroversionResult(answers);
+      resultCode = calc.typeCode;
+      dimensionScores = calc.dimensionScores;
+    } else if (test.id === "test-love-style") {
+      const calc = calculateLoveStyleResult(answers);
+      resultCode = calc.typeCode;
+      dimensionScores = calc.dimensionScores;
+    } else {
+      // 其他测试，从答案中计算
+      // 收集所有维度分数
+      const scores: Record<string, number> = {};
+      Object.entries(answers).forEach(([qid, oid]) => {
+        const opts = getOptions(test.id, qid);
+        const opt = opts.find(o => o.id === oid);
+        if (opt && opt.dimensionScores) {
+          Object.entries(opt.dimensionScores).forEach(([dim, score]) => {
+            scores[dim] = (scores[dim] || 0) + (score as number);
+          });
+        }
+      });
+      
+      // 找出最高分的维度作为结果
+      let maxScore = -Infinity;
+      Object.entries(scores).forEach(([dim, score]) => {
+        if (score > maxScore) {
+          maxScore = score;
+          resultCode = dim;
+        }
+      });
+      dimensionScores = scores;
     }
 
     // Save result to localStorage

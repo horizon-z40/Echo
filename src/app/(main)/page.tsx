@@ -26,6 +26,8 @@ const categoryIcons: Record<string, React.ElementType> = {
   "cat-2": Heart,
   "cat-3": Briefcase,
   "cat-4": Waves,
+  "cat-5": Users,
+  "cat-6": Sparkles,
 };
 
 const testimonials = [
@@ -96,7 +98,7 @@ export default function HomePage() {
           <motion.div variants={fadeUp} className="mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium border border-violet-500/30 bg-violet-500/10 text-violet-400">
               <Sparkles className="w-3.5 h-3.5" />
-              现在已有 6 套测试可供探索
+              现在已有 {tests.length} 套测试可供探索
             </span>
           </motion.div>
 
@@ -141,8 +143,8 @@ export default function HomePage() {
             className="mt-16 grid grid-cols-3 gap-6 max-w-sm mx-auto"
           >
             {[
-              { label: "可用测试", value: "6+" },
-              { label: "完成次数", value: "41万+" },
+              { label: "可用测试", value: String(tests.length) },
+              { label: "完成次数", value: formatCount(tests.reduce((sum, t) => sum + t.completionCount, 0)) + "+" },
               { label: "测试维度", value: "20+" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
