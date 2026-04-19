@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
-import { mbtiResults, mbtiDimensions, sbtiResults, tests, temperamentResults, temperamentDimensions, introversionResults, introversionDimensions, loveStyleResults, loveStyleDimensions, communicationResults, conflictResults, empathyResults, teamworkResults, leadershipResults, decisionResults, executionResults, emotionSensitivityResults, resilienceResults, securityResults, socialEnergyResults, boundaryResults, pleasingResults, hiddenPersonalityResults, animalPersonalityResults, loveBrainResults, friendTypeResults, groupRoleResults, expressionResults, trustResults, attachmentResults, stressResults, emotionRecoveryResults, enneagramResults, careerResults } from "@/lib/data";
+import { mbtiResults, mbtiDimensions, sbtiResults, tests, temperamentResults, temperamentDimensions, introversionResults, introversionDimensions, loveStyleResults, loveStyleDimensions, communicationResults, conflictResults, empathyResults, teamworkResults, leadershipResults, decisionResults, executionResults, emotionSensitivityResults, resilienceResults, securityResults, socialEnergyResults, boundaryResults, pleasingResults, hiddenPersonalityResults, animalPersonalityResults, loveBrainResults, friendTypeResults, groupRoleResults, expressionResults, trustResults, attachmentResults, stressResults, emotionRecoveryResults, enneagramResults, careerResults, philosophyResults } from "@/lib/data";
 import { TestResult, TestDimension } from "@/lib/types";
 import {
   RadarChart,
@@ -203,6 +203,10 @@ export default function ResultPage() {
     } else if (data.testId === "test-career") {
       const r = careerResults.find((r) => r.typeCode === data.resultCode);
       setResult(r as unknown as import("@/lib/types").TestResult || careerResults[0]);
+      setDimensions([]);
+    } else if (data.testId === "test-philosophy-personality") {
+      const r = philosophyResults.find((r) => r.typeCode === data.resultCode);
+      setResult(r as unknown as import("@/lib/types").TestResult || philosophyResults[0]);
       setDimensions([]);
     } else {
       // Fallback - 创建一个通用结果

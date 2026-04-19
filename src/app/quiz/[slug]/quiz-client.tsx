@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, sbtiQuestions, calculateSbtiResult, temperamentQuestions, temperamentOptions, calculateTemperamentResult, introversionQuestions, introversionOptions, calculateIntroversionResult, loveStyleQuestions, loveStyleOptions, calculateLoveStyleResult, communicationQuestions, conflictQuestions, empathyQuestions, teamworkQuestions, leadershipQuestions, decisionQuestions, executionQuestions, emotionSensitivityQuestions, resilienceQuestions, securityQuestions, socialEnergyQuestions, boundaryQuestions, pleasingQuestions, hiddenPersonalityQuestions, animalPersonalityQuestions, loveBrainQuestions, friendTypeQuestions, groupRoleQuestions, expressionQuestions, trustQuestions, attachmentQuestions, stressQuestions, emotionRecoveryQuestions, enneagramQuestions, careerQuestions } from "@/lib/data";
+import { tests, mbtiQuestions, mbtiOptions, bigFiveQuestions, bigFiveOptionsTemplate, calculateMbtiResult, sbtiQuestions, calculateSbtiResult, temperamentQuestions, temperamentOptions, calculateTemperamentResult, introversionQuestions, introversionOptions, calculateIntroversionResult, loveStyleQuestions, loveStyleOptions, calculateLoveStyleResult, communicationQuestions, conflictQuestions, empathyQuestions, teamworkQuestions, leadershipQuestions, decisionQuestions, executionQuestions, emotionSensitivityQuestions, resilienceQuestions, securityQuestions, socialEnergyQuestions, boundaryQuestions, pleasingQuestions, hiddenPersonalityQuestions, animalPersonalityQuestions, loveBrainQuestions, friendTypeQuestions, groupRoleQuestions, expressionQuestions, trustQuestions, attachmentQuestions, stressQuestions, emotionRecoveryQuestions, enneagramQuestions, careerQuestions, philosophyQuestions } from "@/lib/data";
 import { TestQuestion, TestOption } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -51,6 +51,7 @@ function getTestQuestions(testId: string): TestQuestion[] {
     "test-emotion-recovery": emotionRecoveryQuestions,
     "test-enneagram": enneagramQuestions,
     "test-career": careerQuestions,
+    "test-philosophy-personality": philosophyQuestions,
   };
   
   if (inlineTests[testId]) {
@@ -116,6 +117,7 @@ function getOptions(testId: string, questionId: string): TestOption[] {
     "test-emotion-recovery": emotionRecoveryQuestions,
     "test-enneagram": enneagramQuestions,
     "test-career": careerQuestions,
+    "test-philosophy-personality": philosophyQuestions,
   };
   
   if (inlineTests[testId]) {
